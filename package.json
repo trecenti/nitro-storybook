@@ -23,6 +23,7 @@
   "dependencies": {
     "css-loader": "^0.28.7",
     "nitro-theme": "git+ssh://git@github.com/powerhome/nitro-theme.git",
+    "node-sass": "^4.5.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "sass-loader": "^6.0.6",
