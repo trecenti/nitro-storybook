@@ -1,8 +1,8 @@
 /* @flow */
 
-export type Avatar = {|
-  alt: string,
-  disableLink: boolean,
-  thumb: string,
-  url: string,
-|}
+// export type Avatar = {|
+//   alt: string,
+//   disableLink: boolean,
+//   thumb: string,
+//   url: string,
+// |}

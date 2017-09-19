@@ -1,14 +1,18 @@
 /* @flow */
 
 import React from 'react'
+import classnames from 'classnames/bind'
 
 import {OverlayTrigger, Popover} from 'react-bootstrap'
+
+import styles from './styles.scss'
 
 export type Props = {
   alt: string,
   disableLink: boolean,
   thumb: string,
   url: string,
+  size: "smaller" | "small" | "base" | "large" | "larger"
 }
 
 /**
@@ -24,14 +28,18 @@ const Avatar = ({
   alt,
   disableLink,
   thumb,
-  url
+  url,
+  size,
 } : Props) => {
+  const imgCSS = [
+    "avatar",
+    styles[`avatar-${size}`],
+  ]
   const popover = (
-    <Popover id="avatar-popover">
-      <img className="avatar"
-          height={100}
-          src={url}
-          width={100}
+    <Popover>
+      <img
+        className={classnames(imgCSS)}
+        src={url}
       />
     </Popover>
   )
@@ -47,10 +55,8 @@ const Avatar = ({
           target="_blank"
       >
         <img alt={alt}
-            className="avatar"
-            height={56}
+            className={classnames(imgCSS, styles[`avatar-${size}-thumb`])}
             src={thumb}
-            width={56}
         />
       </a>
     </OverlayTrigger>
@@ -59,6 +65,7 @@ const Avatar = ({
 
 Avatar.defaultProps = {
   alt: 'Avatar Image',
+  size: 'larger',
 }
 
 export default Avatar
