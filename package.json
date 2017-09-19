@@ -21,6 +21,7 @@
     "@storybook/react": "^3.2.8"
   },
   "dependencies": {
+    "nitro-theme": "git+ssh://git@github.com/powerhome/nitro-theme.git",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   }
