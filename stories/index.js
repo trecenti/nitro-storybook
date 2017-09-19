@@ -1,10 +1,19 @@
-import React from 'react';
+import { keys } from 'lodash';
+
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+import { withKnobs } from '@storybook/addon-knobs';
 
-import { Text } from '../components/index';
+import * as basicComponents from "./basic";
 
-storiesOf('Text', module)
-  .add('default', () => (
-    <Text>Exlore Worly</Text>
-  ))
+const addStories = function(stories) {
+  let newStories = storiesOf(stories.title, module);
+  newStories.addDecorator(withKnobs);
+  keys(stories.components).forEach(function (key) {
+    stories.components[key](newStories)
+  })
+};
+
+addStories({
+  title: 'Basic Components',
+  components: basicComponents
+})

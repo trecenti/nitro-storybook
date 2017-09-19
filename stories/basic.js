@@ -1,0 +1,1 @@
+export AvatarStory from "../components/Avatar/AvatarStory";

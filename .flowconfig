@@ -1,0 +1,7 @@
+[include]
+
+[ignore]
+# Ignore invalid JSON file; see https://github.com/dylang/changelog/pull/30
+.*/node_modules/.*/changelog/examples/node.json
+.*/node_modules/radium
+.*/node_modules/babel-plugin-flow-runtime
