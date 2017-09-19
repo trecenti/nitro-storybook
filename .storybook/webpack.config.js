@@ -13,7 +13,7 @@ module.exports = {
            loader: 'sass-loader',
            options: {
              includePaths: [
-               path.resolve(__dirname, '../node_modules/nitro-theme/')
+               path.resolve(__dirname, '../node_modules/nitro-theme/app/assets/stylesheets')
              ]
            }
          }
