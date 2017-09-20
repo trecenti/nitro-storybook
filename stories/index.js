@@ -1,7 +1,6 @@
 import { keys } from 'lodash';
 
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs';
 
 import * as basicComponents from "./basic";
 

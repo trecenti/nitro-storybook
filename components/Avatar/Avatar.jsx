@@ -43,18 +43,20 @@ const Avatar = ({
   const popover = (
     <Popover>
       <img
-        className={classnames(imgCSS)}
-        src={url}
+          className={classnames(imgCSS)}
+          src={url}
       />
     </Popover>
   )
   const imgThumb = (
     <a href={disableLink ? "javascript:void(0)" : url}
         style={{maxHeight: 56}}
-        target="_blank">
+        target="_blank"
+    >
       <img alt={alt}
           className={classnames(imgCSS, styles[`avatar-${size}-thumb`])}
-          src={thumb}/>
+          src={thumb}
+      />
     </a>
   )
   if(showPopover) {
@@ -62,7 +64,8 @@ const Avatar = ({
       <OverlayTrigger
           overlay={popover}
           placement="right"
-          trigger={['hover']}>
+          trigger={['hover']}
+      >
         {imgThumb}
       </OverlayTrigger>
     )
