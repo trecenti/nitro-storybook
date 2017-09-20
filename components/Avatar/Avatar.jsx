@@ -7,7 +7,7 @@ import {OverlayTrigger, Popover} from 'react-bootstrap'
 
 import styles from './styles.scss'
 
-export type Props = {
+type Props = {
   alt: string,
   disableLink: boolean,
   showPopover: boolean,
