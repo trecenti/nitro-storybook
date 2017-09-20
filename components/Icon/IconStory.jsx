@@ -1,13 +1,13 @@
 import React from "react"
 import Icon from "./Icon"
 
-import { select, text, boolean } from "@storybook/addon-knobs"
+import { text, boolean } from "@storybook/addon-knobs"
 
 export default function IconStory(stories) {
   stories.add("Icon",
     () => {
       let props = {
-        name: select("name", ["battery-1", "battery-half", "battery-4"], "battery-half"),
+        name: text("name", "battery-half"),
         label: text("label", "Battery Percentage"),
         size: text("size", "lg"),
         spin: boolean("spin", false),
