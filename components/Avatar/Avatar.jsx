@@ -10,9 +10,10 @@ import styles from './styles.scss'
 export type Props = {
   alt: string,
   disableLink: boolean,
+  showPopover: boolean,
+  size: "smaller" | "small" | "base" | "large" | "larger",
   thumb: string,
   url: string,
-  size: "smaller" | "small" | "base" | "large" | "larger"
 }
 
 /**
@@ -20,6 +21,9 @@ export type Props = {
  * image on a new tab.
  *
  * @param {string} alt the text to display when hovering over the image.
+ * @param {bool} disableLink whether to disable the anchor link
+ * @param {bool} showPopover whether to show the popover image on hover
+ * @param {string} size the pre-defined avatar size.
  * @param {string} thumb the avatar thumbnail image URL.
  * @param {string} url the avatar original image URL.
  * @returns {ReactElement} JSX.
@@ -27,9 +31,10 @@ export type Props = {
 const Avatar = ({
   alt,
   disableLink,
+  showPopover,
+  size,
   thumb,
   url,
-  size,
 } : Props) => {
   const imgCSS = [
     "avatar",
@@ -43,29 +48,33 @@ const Avatar = ({
       />
     </Popover>
   )
-
-  return (
-    <OverlayTrigger
-        overlay={popover}
-        placement="right"
-        trigger={['hover']}
-    >
-      <a href={disableLink ? "javascript:void(0)" : url}
-          style={{maxHeight: 56}}
-          target="_blank"
-      >
-        <img alt={alt}
-            className={classnames(imgCSS, styles[`avatar-${size}-thumb`])}
-            src={thumb}
-        />
-      </a>
-    </OverlayTrigger>
+  const imgThumb = (
+    <a href={disableLink ? "javascript:void(0)" : url}
+        style={{maxHeight: 56}}
+        target="_blank">
+      <img alt={alt}
+          className={classnames(imgCSS, styles[`avatar-${size}-thumb`])}
+          src={thumb}/>
+    </a>
   )
+  if(showPopover) {
+    return (
+      <OverlayTrigger
+          overlay={popover}
+          placement="right"
+          trigger={['hover']}>
+        {imgThumb}
+      </OverlayTrigger>
+    )
+  } else {
+    return imgThumb
+  }
 }
 
 Avatar.defaultProps = {
   alt: 'Avatar Image',
-  size: 'larger',
+  size: 'base',
+  showPopover: true,
 }
 
 export default Avatar
