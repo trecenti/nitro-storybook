@@ -8,6 +8,7 @@ module.exports = {
         test: /\.(s?css|sass)$/,
         use: [
          {loader: 'style-loader'},
+         {loader: 'css-modules-flow-types-loader'},
          {loader: 'css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]'},
          {
            loader: 'sass-loader',
