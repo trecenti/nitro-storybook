@@ -7,7 +7,6 @@ import * as basicComponents from "./basic";
 
 const addStories = function(stories) {
   let newStories = storiesOf(stories.title, module);
-  newStories.addDecorator(withKnobs);
   keys(stories.components).forEach(function (key) {
     stories.components[key](newStories)
   })

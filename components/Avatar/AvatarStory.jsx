@@ -1,21 +1,16 @@
 import React from "react"
-import Avatar from './Avatar'
+import Avatar from "./Avatar"
 
-import { text, select } from '@storybook/addon-knobs'
+import { select, text } from "@storybook/addon-knobs"
 
-export default function BadgeStory(stories) {
-  stories.add(
-    'Avatar',
+export default function AvatarStory(stories) {
+  stories.add("Avatar",
     () => {
-      // const color = select('Colors', ['default', 'primary', 'success', 'info', 'warning', 'danger'], '');
-      // const className = text('className', null);
-      const props = {}
-      props.url = "https://i.giphy.com/l46CjoMYO5n2hQnWE.gif"
+      let props = {}
+      props.url = text("url", "https://i.giphy.com/l46CjoMYO5n2hQnWE.gif")
       props.thumb = props.url
-      // if (color) props.color = color
-      // if (className) props.className = className;
+      props.size = select("size", ["smaller", "small", "base", "large", "larger"], "base")
       return (<Avatar {...props}/>)
     },
-    { inline: true }
   )
 }
