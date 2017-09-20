@@ -1,4 +1,4 @@
 {
   "presets": ["es2015", "stage-0", "react", "flow"],
-  "plugins": ["jsx-control-statements"]
+  "plugins": ["transform-decorators-legacy", "jsx-control-statements"]
 }
