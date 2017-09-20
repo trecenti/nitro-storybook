@@ -12,6 +12,6 @@ export default function AvatarStory(stories) {
       props.size = select("size", ["smaller", "small", "base", "large", "larger"], "base")
       props.showPopover = boolean("showPopover", true)
       return (<Avatar {...props}/>)
-    },
+    }
   )
 }
