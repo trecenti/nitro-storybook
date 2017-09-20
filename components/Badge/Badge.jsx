@@ -3,7 +3,7 @@
 import React from 'react'
 
 type Props = {
-  children: Array<React.Component>,
+  children?: Array<React.Node>,
   style: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | "light" | "dark",
   className: string,
 }

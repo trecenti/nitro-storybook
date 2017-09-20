@@ -1,6 +1,16 @@
 import React from "react"
 import FontAwesome from "react-fontawesome"
 
+type Props = {
+  className: string,
+  name: string,
+  label: string,
+  onClick: () => mixed,
+  size: string,
+  spin: boolean,
+  title: string,
+}
+
 /**
  * Icon renders a FontAwesome icon followed by a label.
  *
@@ -13,43 +23,37 @@ import FontAwesome from "react-fontawesome"
  * @param {string} title an optional title as a tooltip on mouse hover.
  * @returns {ReactElement} JSX.
  */
-const Icon = ({
-  name,
-  label,
-  size,
-  spin,
-  onClick,
-  className,
-  title
-}: Props) => (
-  <span
-      className="icon"
-      onClick={onClick}
-      title={title}
-  >
-    <FontAwesome
-        className={className}
-        name={name}
-        size={size}
-        spin={spin}
-    />
-    {` ${label}`}
-  </span>
-)
 
-export type Props = {
-  className: string,
-  name: string,
-  label: string,
-  onClick: () => mixed,
-  size: string,
-  spin: boolean,
-  title: string,
+export default class Icon extends React.Component<Props> {
+  static defaultProps: {
+    label: "",
+    spin: false,
+  }
+  props: Props
+  render() {
+    const {
+      name,
+      label,
+      size,
+      spin,
+      onClick,
+      className,
+      title
+    } = this.props
+    return (
+      <span
+          className="icon"
+          onClick={onClick}
+          title={title}
+      >
+        <FontAwesome
+            className={className}
+            name={name}
+            size={size}
+            spin={spin}
+        />
+        {` ${label}`}
+      </span>
+    )
+  }
 }
-
-Icon.defaultProps = {
-  label: "",
-  spin: false,
-}
-
-export default Icon

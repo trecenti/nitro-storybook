@@ -32,8 +32,7 @@
     "babel-preset-flow": "^6.23.0",
     "eslint-plugin-jsx-control-statements": "^2.2.0",
     "eslint-plugin-react": "^7.3.0",
-    "flow-bin": "^0.54.1",
-    "jsx-control-statements": "^3.2.6"
+    "flow-bin": "^0.54.1"
   },
   "dependencies": {
     "@storybook/addon-knobs": "^3.2.8",
@@ -46,8 +45,8 @@
     "eslint-plugin-flowtype": "^2.35.1",
     "flow-bin": "^0.54.1",
     "flow-runtime": "^0.14.0",
+    "jsx-control-statements": "3.2.5",
     "lodash": "^4.17.4",
-    "nitro-theme": "git+ssh://git@github.com/powerhome/nitro-theme.git",
     "node-sass": "^4.5.3",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.3",

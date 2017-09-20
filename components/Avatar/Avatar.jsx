@@ -28,56 +28,64 @@ type Props = {
  * @param {string} url the avatar original image URL.
  * @returns {ReactElement} JSX.
  */
-const Avatar = ({
-  alt,
-  disableLink,
-  showPopover,
-  size,
-  thumb,
-  url,
-} : Props) => {
-  const imgCSS = [
-    "avatar",
-    styles[`avatar-${size}`],
-  ]
-  const popover = (
-    <Popover>
-      <img
-          className={classnames(imgCSS)}
-          src={url}
-      />
-    </Popover>
-  )
-  const imgThumb = (
-    <a href={disableLink ? "javascript:void(0)" : url}
-        style={{maxHeight: 56}}
-        target="_blank"
-    >
+export default class Avatar extends React.Component<Props> {
+  static defaultProps: {
+    alt: 'Avatar Image',
+    size: 'base',
+    showPopover: true,
+  }
+  props: Props
+  render() {
+    const {
+      alt,
+      disableLink,
+      showPopover,
+      size,
+      thumb,
+      url,
+    } = this.props
+    const imgCSS = [
+      "avatar",
+      styles[`avatar-${size}`],
+    ]
+    const popover = (
+      <Popover>
+        <img
+            className={classnames(imgCSS)}
+            src={url}
+        />
+      </Popover>
+    )
+    const image = (
       <img alt={alt}
           className={classnames(imgCSS, styles[`avatar-${size}-thumb`])}
           src={thumb}
       />
-    </a>
-  )
-  if(showPopover) {
-    return (
-      <OverlayTrigger
-          overlay={popover}
-          placement="right"
-          trigger={['hover']}
-      >
-        {imgThumb}
-      </OverlayTrigger>
     )
-  } else {
-    return imgThumb
+    const imgThumb = (
+      <If condition={disableLink}>
+        {image}
+      <Else/>
+        <a href={disableLink ? "javascript:void(0)" : url}
+            style={{maxHeight: 56}}
+            target="_blank"
+        >
+          {image}
+        </a>
+      </If>
+    )
+    if(showPopover) {
+      return (
+        <OverlayTrigger
+            overlay={popover}
+            placement="right"
+            trigger={['hover']}
+        >
+          {imgThumb}
+        </OverlayTrigger>
+      )
+    } else {
+      return imgThumb
+    }
   }
 }
-
-Avatar.defaultProps = {
-  alt: 'Avatar Image',
-  size: 'base',
-  showPopover: true,
-}
-
-export default Avatar
