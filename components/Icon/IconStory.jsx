@@ -7,8 +7,9 @@ export default function IconStory(stories) {
   stories.add("Icon",
     () => {
       let props = {
+        className: text("className", ""),
         name: text("name", "battery-half"),
-        label: text("label", "Battery Percentage"),
+        label: text("label", "50%"),
         size: text("size", "lg"),
         spin: boolean("spin", false),
         onClick: () => {
@@ -16,10 +17,6 @@ export default function IconStory(stories) {
         },
         title: text("title", "Battery Percentage")
       }
-      // props.url = text("url", "https://i.giphy.com/l46CjoMYO5n2hQnWE.gif")
-      // props.thumb = props.url
-      // props.size = select("size", ["smaller", "small", "base", "large", "larger"], "base")
-      // props.showPopover = boolean("showPopover", true)
       return (<Icon {...props}/>)
     }
   )
