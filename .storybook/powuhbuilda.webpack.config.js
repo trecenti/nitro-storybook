@@ -3,22 +3,23 @@ const path = require('path');
 
 module.exports = {
   entry: [
-    'es5-shim/es5-shim',
-    'es5-shim/es5-sham',
-    'babel-polyfill',
     path.resolve(__dirname, '../components/index.js')
   ],
 
   output: {
     filename: 'webpack-bundle.js',
     path: path.resolve(__dirname, '../'),
+    library: "modules",
+    libraryTarget: "var"
   },
 
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        use: [{loader: 'babel-loader'}],
+        use: [{
+          loader: 'babel-loader'
+        }],
         exclude: /node_modules/
       },
       {
