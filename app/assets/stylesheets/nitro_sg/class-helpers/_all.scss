@@ -1,0 +1,12 @@
+@import "type";
+@import "color";
+@import "borders-and-shadows";
+@import "screen-readers";
+@import "spacing";
+@import "glyphicons";
+
+
+// [converter] extracted as `@mixin form-inline` for libsass compatibility
+.form-inline {
+  @include form-inline;
+}
