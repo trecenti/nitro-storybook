@@ -9,7 +9,7 @@ export default function ButtonStory(stories) {
       let props = {
         className: text("className", ""),
         text: text("text", "BUTT"),
-        type: select("type", ["anchor", "button", "submit"], "button")
+        type: select("type", ["anchor", "button", "submit", ""], "button")
       }
       return (
         <Button {...props}/>

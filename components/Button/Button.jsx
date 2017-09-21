@@ -6,7 +6,7 @@ import classnames from 'classnames'
 import styles from './styles.scss'
 
 type Props = {
-  type: "anchor" | "button" | "submit",
+  type: "anchor" | "button" | "submit" | "",
   text: string,
   className: string,
 }
