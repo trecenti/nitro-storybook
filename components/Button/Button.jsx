@@ -7,17 +7,17 @@ import styles from './styles.scss'
 
 type Props = {
   type: "anchor" | "button" | "submit",
-  children?: Array<React.Node>,
+  text: string,
   className: string,
 }
 
 export default class Button extends React.Component<Props> {
   static defaultProps = {
-    children: <span>{`Herp Derp`}</span>
+    text: "button",
   }
   props: Props
   createElementTag = () => {
-    const {type} = this.props;
+    const {className, text, type} = this.props;
     let tag
     let props = {}
     switch(type) {
@@ -25,39 +25,39 @@ export default class Button extends React.Component<Props> {
         tag = "a"
       break
       case "button":
-        tag = "button"
+        tag = "input"
+        props.type = "button"
+        props.value = text
       break
       case "submit":
         tag = "input"
         props.type = "submit"
+        props.value = text
       break
       default:
         tag = "span"
       break
     }
-    return React.createElement(tag, props)
-  }
-  render() {
-    const {
-      children,
-      className,
-    } = this.props
-
-    const ElementTag = this.createElementTag()
-
     const css = [
       "btn",
       className,
       styles.btn,
     ]
+    props.className = classnames(css)
 
-    return (
-      <ElementTag.type
-          {...ElementTag.props}
-          className={classnames(css)}
-      >
-        {children}
-      </ElementTag.type>
-    )
+    const element = React.createElement(tag, props)
+
+    if(tag === "input") {
+      return <element.type {...element.props} />
+    } else {
+      return (
+        <element.type {...element.props}>
+          {text}
+        </element.type>
+      )
+    }
+  }
+  render() {
+    return this.createElementTag()
   }
 }
