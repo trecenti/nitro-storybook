@@ -4,7 +4,7 @@
   "description": "Nitro UI Styleguide + React component dev env",
   "main": "index.js",
   "scripts": {
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook": "start-storybook -p 9001 -c .storybook -s ./app/assets/stylesheets/nitro_sg",
     "test": "echo \"Error: no test specified\" && exit 1",
     "flow": "flow",
     "deploy-storybook": "storybook-to-ghpages",
@@ -33,6 +33,7 @@
     "babel-preset-flow": "^6.23.0",
     "eslint-plugin-jsx-control-statements": "^2.2.0",
     "eslint-plugin-react": "^7.3.0",
+    "file-loader": "^0.11.2",
     "flow-bin": "^0.54.1"
   },
   "dependencies": {
