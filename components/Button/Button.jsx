@@ -5,6 +5,7 @@ import classnames from 'classnames'
 
 import styles from './styles.scss'
 
+
 type Props = {
   type: "anchor" | "button" | "submit" | "",
   text: string,
@@ -13,7 +14,7 @@ type Props = {
 
 export default class Button extends React.Component<Props> {
   static defaultProps = {
-    text: "button",
+    text: vars.number,
   }
   props: Props
   createElementTag = () => {
