@@ -3,6 +3,7 @@ import { keys } from 'lodash';
 import { storiesOf } from '@storybook/react';
 
 import * as basicComponents from "./basic";
+import * as formComponents from "./form";
 
 import "../sass-mixins/application.scss";
 
@@ -12,6 +13,11 @@ const addStories = function(stories) {
     stories.components[key](newStories)
   })
 };
+
+addStories({
+  title: 'Form Components',
+  components: formComponents
+})
 
 addStories({
   title: 'Basic Components',

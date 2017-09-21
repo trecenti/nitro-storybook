@@ -1441,11 +1441,7 @@ declare module.exports: {|
   +'text-ink-light': string;
   +'text-ink-lighter': string;
   +'text-ink-lightest': string;
-  +'text-jumbo': string;
   +'text-justify': string;
-  +'text-large': string;
-  +'text-larger': string;
-  +'text-largest': string;
   +'text-left': string;
   +'text-lg-center': string;
   +'text-lg-left': string;
@@ -1457,7 +1453,6 @@ declare module.exports: {|
   +'text-meta': string;
   +'text-meta-bold': string;
   +'text-muted': string;
-  +'text-normal': string;
   +'text-nowrap': string;
   +'text-p-blue-opacity-1': string;
   +'text-p-blue-opacity-2': string;
@@ -1528,9 +1523,6 @@ declare module.exports: {|
   +'text-sm-center': string;
   +'text-sm-left': string;
   +'text-sm-right': string;
-  +'text-small': string;
-  +'text-smaller': string;
-  +'text-smallest': string;
   +'text-subheader': string;
   +'text-subheader-bold': string;
   +'text-success': string;

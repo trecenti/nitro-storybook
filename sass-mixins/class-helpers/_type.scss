@@ -3,15 +3,6 @@
 // Text
 //
 
-.text-jumbo { font-size: $font-jumbo }
-.text-largest { font-size: $font-largest }
-.text-larger { font-size: $font-larger }
-.text-large { font-size: $font-large }
-.text-normal {font-size: $font-base }
-.text-small { font-size: $font-small }
-.text-smaller { font-size: $font-smaller }
-.text-smallest { font-size: $font-smallest }
-
 // Alignment
 
 .text-justify  { text-align: justify !important; }
@@ -35,6 +26,11 @@
 .text-lowercase  { text-transform: lowercase !important; }
 .text-uppercase  { text-transform: uppercase !important; }
 .text-capitalize { text-transform: capitalize !important; }
+
+// Transformation
+.text-lowercase      { text-transform: lowercase; }
+.text-uppercase      { text-transform: uppercase; }
+.text-capitalize     { text-transform: capitalize; }
 
 // Weight and italics
 
@@ -101,10 +97,7 @@ mark,
 .text-justify        { text-align: justify; }
 .text-nowrap         { white-space: nowrap; }
 
-// Transformation
-.text-lowercase      { text-transform: lowercase; }
-.text-uppercase      { text-transform: uppercase; }
-.text-capitalize     { text-transform: capitalize; }
+
 
 // Contextual colors
 .text-muted {
