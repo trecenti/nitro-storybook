@@ -8,11 +8,11 @@ export default function BadgeStory(stories) {
     () => {
       let props = {
         className: text("className", ""),
-        style: select("style", ["primary", "secondary", "success", "danger", "warning", "info", "light", "dark"], "primary")
+        style: select("style", ["primary", "default", "success", "danger", "warning", "info", "inverse"], "primary")
       }
       return (
         <Badge {...props}>
-          {`Hi`}
+          {`I'm A Badge`}
         </Badge>
       )
     }
