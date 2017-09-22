@@ -12,9 +12,29 @@ export default function BadgeStory(stories) {
       }
       return (
         <div className="container my-5">
-          <Badge {...props}>
-            {`I'm A Badge`}
-          </Badge>
+          <div className="row">
+            <div className="col-sm-1">
+              <Badge {...props}>Primary</Badge>
+            </div>
+            <div className="col-sm-1">
+              <Badge style="default">Default</Badge>
+            </div>
+            <div className="col-sm-1">
+              <Badge style="success">Success</Badge>
+            </div>
+            <div className="col-sm-1">
+              <Badge style="danger">Danger</Badge>
+            </div>
+            <div className="col-sm-1">
+              <Badge style="warning">Warning</Badge>
+            </div>
+            <div className="col-sm-1">
+              <Badge style="info">Info</Badge>
+            </div>
+            <div className="col-sm-1">
+              <Badge style="inverse">Inverse</Badge>
+            </div>
+          </div>
         </div>
       )
     }

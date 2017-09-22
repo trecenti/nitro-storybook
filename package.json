@@ -40,9 +40,11 @@
   },
   "dependencies": {
     "@storybook/addon-knobs": "^3.2.8",
+    "babel-cli": "^6.26.0",
     "babel-plugin-flow-runtime": "^0.11.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-preset-es2015": "^6.24.1",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.7",
     "css-modules-flow-types-loader": "^0.3.1",
