@@ -6,7 +6,7 @@ import TextInput from "./TextInput"
 import { text, select, boolean } from "@storybook/addon-knobs"
 
 export default function TextInputStory(stories) {
-  stories.add("TextInput",
+  stories.add("Text Input",
     () => {
       let props = {
         className: text("className", ""),
@@ -14,7 +14,9 @@ export default function TextInputStory(stories) {
         disabled: boolean("disabled", false),
       }
       return (
-        <TextInput {...props} />
+        <div className="container my-5">
+          <TextInput {...props} />
+        </div>
       )
     }
   )

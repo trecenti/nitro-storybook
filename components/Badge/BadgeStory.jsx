@@ -11,9 +11,11 @@ export default function BadgeStory(stories) {
         style: select("style", ["primary", "default", "success", "danger", "warning", "info", "inverse"], "primary")
       }
       return (
-        <Badge {...props}>
-          {`I'm A Badge`}
-        </Badge>
+        <div className="container my-5">
+          <Badge {...props}>
+            {`I'm A Badge`}
+          </Badge>
+        </div>
       )
     }
   )

@@ -14,7 +14,7 @@ type Props = {
 
 export default class Button extends React.Component<Props> {
   static defaultProps = {
-    text: vars.number,
+    text: "button",
   }
   props: Props
   createElementTag = () => {

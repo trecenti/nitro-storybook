@@ -9,11 +9,13 @@ export default function ButtonStory(stories) {
     () => {
       let props = {
         className: text("className", "btn-default"),
-        
+        text: text("text", "Click Me"),
         type: select("type", ["anchor", "button", "submit", ""], "button")
       }
       return (
-        <Button {...props}/>
+        <div className="container my-5">
+          <Button {...props}/>
+        </div>
       )
     }
   )
@@ -22,18 +24,23 @@ export default function ButtonStory(stories) {
     () => {
       const props = {
         className: text("className", "btn-ghost-power-royal"),
-        text: text("text", "Click Me, I'm Blue"),
+        text: text("text", "Power Royal"),
         type: select("type", ["anchor", "button", "submit", ""], "button")
       }
-      const props2 = {
-        className: text("className", "btn-ghost-power-green"),
-        text: text("text", "I'm Lucky"),
-        type: select("type", ["anchor", "button", "submit", ""], "button")
-      }
+
       return (
-        <div className="container">
-          <Button {...props}/>
-          <Button {...props2}/>
+        <div className="container my-5">
+          <div className="row">
+            <div className="col-sm-2">
+              <Button {...props}/>
+            </div>
+            <div className="col-sm-2">
+              <Button className="btn-ghost-power-green" text="Power Green" type="button" />
+            </div>
+            <div className="col-sm-2">
+              <Button className="btn-ghost-power-red" text="Power Red" type="button" />
+            </div>
+          </div>
         </div>
 
       )

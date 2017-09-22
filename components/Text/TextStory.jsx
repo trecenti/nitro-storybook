@@ -14,9 +14,11 @@ export default function TextStory(stories) {
         italic: boolean("italic", false),
       }
       return (
-        <Text {...props}>
-          {`She stared through the window at the stars.`}
-        </Text>
+        <div className="container my-5">
+          <Text {...props}>
+            {`She stared through the window at the stars.`}
+          </Text>
+        </div>
       )
     }
   )

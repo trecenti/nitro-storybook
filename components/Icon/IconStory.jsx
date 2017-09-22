@@ -17,7 +17,11 @@ export default function IconStory(stories) {
         },
         title: text("title", "Battery Percentage")
       }
-      return (<Icon {...props}/>)
+      return (
+        <div className="container my-5">
+          <Icon {...props}/>
+        </div>
+      )
     }
   )
 }
