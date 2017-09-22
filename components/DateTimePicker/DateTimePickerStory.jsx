@@ -1,6 +1,5 @@
 import React from "react"
 import DateTimePicker from "./DateTimePicker"
-import classnames from "classnames"
 
 import { select, boolean } from "@storybook/addon-knobs"
 
@@ -18,19 +17,11 @@ export default function DateTimePickerStory(stories) {
           clock: select("timePickerProps.clock", [12, 24], 12),
           disabled: boolean("timePickerProps.disabled", false),
         },
-        onChange: () => {}
+        onChange: () => {},
+        className: styles.root,
       }
-      const css = [
-        "container",
-        "mt-4",
-        styles.root,
-      ]
       return (
-        <div className={classnames(css)}>
-          <div className="card p-4">
-            <DateTimePicker {...props}/>
-          </div>
-        </div>
+        <DateTimePicker {...props}/>
       )
     }
   )
