@@ -1,6 +1,5 @@
 import React from "react"
 import Button from "./Button"
-import _ from 'lodash'
 
 import { text, select } from "@storybook/addon-knobs"
 
@@ -45,20 +44,17 @@ export default function ButtonStory(stories) {
       }
 
       return (
-        <div className="container my-5">
-          <div className="row">
-            <div className="col-sm-2">
-              <Button {...props}/>
-            </div>
-            <div className="col-sm-2">
-              <Button className="btn-ghost-power-green" text="Power Green" type="button" />
-            </div>
-            <div className="col-sm-2">
-              <Button className="btn-ghost-power-red" text="Power Red" type="button" />
-            </div>
+        <div className="row">
+          <div className="col-sm-2">
+            <Button {...props}/>
+          </div>
+          <div className="col-sm-2">
+            <Button className="btn-ghost-power-green" text="Power Green" type="button" />
+          </div>
+          <div className="col-sm-2">
+            <Button className="btn-ghost-power-red" text="Power Red" type="button" />
           </div>
         </div>
-
       )
     }
   )

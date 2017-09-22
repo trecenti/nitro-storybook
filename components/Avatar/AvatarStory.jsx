@@ -13,7 +13,7 @@ export default function AvatarStory(stories) {
         thumb: text("url", "https://i.giphy.com/l46CjoMYO5n2hQnWE.gif"),
         url: text("url", "https://i.giphy.com/l46CjoMYO5n2hQnWE.gif"),
       }
-      return (<div className="container my-5"><Avatar {...props}/></div>)
+      return <Avatar {...props}/>
     }
   )
 }

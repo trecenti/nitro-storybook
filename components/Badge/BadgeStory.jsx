@@ -11,29 +11,27 @@ export default function BadgeStory(stories) {
         style: select("style", ["primary", "default", "success", "danger", "warning", "info", "inverse"], "primary")
       }
       return (
-        <div className="container my-5">
-          <div className="row">
-            <div className="col-sm-1">
-              <Badge {...props}>Primary</Badge>
-            </div>
-            <div className="col-sm-1">
-              <Badge style="default">Default</Badge>
-            </div>
-            <div className="col-sm-1">
-              <Badge style="success">Success</Badge>
-            </div>
-            <div className="col-sm-1">
-              <Badge style="danger">Danger</Badge>
-            </div>
-            <div className="col-sm-1">
-              <Badge style="warning">Warning</Badge>
-            </div>
-            <div className="col-sm-1">
-              <Badge style="info">Info</Badge>
-            </div>
-            <div className="col-sm-1">
-              <Badge style="inverse">Inverse</Badge>
-            </div>
+        <div className="row">
+          <div className="col-sm-1">
+            <Badge {...props}>Primary</Badge>
+          </div>
+          <div className="col-sm-1">
+            <Badge style="default">Default</Badge>
+          </div>
+          <div className="col-sm-1">
+            <Badge style="success">Success</Badge>
+          </div>
+          <div className="col-sm-1">
+            <Badge style="danger">Danger</Badge>
+          </div>
+          <div className="col-sm-1">
+            <Badge style="warning">Warning</Badge>
+          </div>
+          <div className="col-sm-1">
+            <Badge style="info">Info</Badge>
+          </div>
+          <div className="col-sm-1">
+            <Badge style="inverse">Inverse</Badge>
           </div>
         </div>
       )
