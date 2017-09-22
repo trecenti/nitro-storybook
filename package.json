@@ -54,6 +54,7 @@
     "flow-runtime": "^0.14.0",
     "jsx-control-statements": "3.2.5",
     "lodash": "^4.17.4",
+    "moment-timezone": "^0.5.13",
     "node-sass": "^4.5.3",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.3",

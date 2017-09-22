@@ -54,23 +54,22 @@ export default class TextInput extends React.Component<Props> {
       <Choose>
         <When condition={kind == 'input'}>
           <input
-            placeholder={placeholder}
-            value={defaultValue}
-            disabled={disabled}
-            className={classnames(css)}
+              className={classnames(css)}
+              disabled={disabled}
+              placeholder={placeholder}
+              value={defaultValue}
           />
         </When>
         <When condition={kind == 'select'}>
           <select
-            disabled={disabled}
-            className={classnames(css)}
-          >
-          </select>
+              className={classnames(css)}
+              disabled={disabled}
+          />
         </When>
         <When condition={kind == 'textarea'}>
           <textarea
-            disabled={disabled}
-            className={classnames(css)}
+              className={classnames(css)}
+              disabled={disabled}
           >
             {children}
           </textarea>

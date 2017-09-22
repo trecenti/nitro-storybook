@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import * as basicComponents from "./basic";
 import * as formComponents from "./form";
+import * as complexComponents from "./complex";
 
 const addStories = function(stories) {
   let newStories = storiesOf(stories.title, module);
@@ -20,4 +21,9 @@ addStories({
 addStories({
   title: 'Basic Components',
   components: basicComponents
+})
+
+addStories({
+  title: 'Complex Components',
+  components: complexComponents
 })
