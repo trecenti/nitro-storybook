@@ -1,135 +1,137 @@
-# NitroSg
+# Nitro Styleguide
 
-This component implements several view components which make up the visual appearance of Nitro, mostly around navigation:
+This repo provides the tools to implement view components which make up the visual appearance of Nitro.
 
-* The Rails layout templates
 * Stylesheets for the app navigation and general appearance
-* Javascript necessary for functioning navigation
-* Routes for the full menu bar
-* Images loaded on every Nitro page, such as the logo
+* Self-contained React components for use in building views
 
-The intent of this component is to provide a base on which other components and indeed applications can be built such that they maintain visual consistency and the Nitro brand.
+The intent of this repo is to provide a base on which other UIs can be built such that they maintain visual consistency and the Nitro brand.
 
-Because it cannot be known to this component, this component by default renders dummy navigational data; it is intended that real substitutes be provided by the consuming application by injection into the request environment by the mechanism described below.
+## Creating Components
 
-## Usage
+Creation of new components requires a bit of forethought. Ask yourself these questions first:
 
-In order to use this component to theme an application, the following steps are necessary:
+1. Does the component already exist in `nitro_react` ?
+    1. Yes - see [Converting Existing Components](#converting-existing-components)
+    1. No - continue
+1. Ensure you are familiar with these concepts:
+    - using Flow.js (install tooling in your editor/IDE)
+    - creating "dumb components" in React - your new component **will not** need to be concerned with XHR requests, servers, ect.
+    - ESLint (install tooling in your editor/IDE)
+    - CSSModules
+    - Composing complex React components/organisms (so that you don't create them here!)
+    - [Storybook]()
 
-1. Include `nitro_sg` in the application Gemfile.
-1. Set the application to use layouts from this component:
+## Converting Existing Components
 
-  ```ruby
-  class ApplicationController < ActionController::Base
-    layout "nitro_sg/application"
+Conversion of existing components in `nitro_react` is a little different since we already have a decent class structure in the jsx component. There are, however, a few considerations:
 
-    # If your component needs zero margins around the main content
-    # area to accommodate designs that run to the very bottom of
-    # the header and to the extreme far left/right of the page,
-    # use this layout instead.
-    #
-    # layout "nitro_sg/application_full_width"
-    #
-  end
-  ```
+- Use Flow.js types instead of `PropTypes`
+- use `class` instead of `function` (see the examples below)
+- Try and fix as many eslint and Flow warnings as possible - this is your chance and the time is now! 😬 💀
 
-1. Include this component's stylesheets in the application's `application.scss`:
+1. Create a `Props` flow type
+    ```javascript
+    type Props = {
+      children?: Array<React.Node>,
+      bold: boolean,
+      italic: boolean,
+      className: string,
+    }
+    ```
+1. Add the type to your class
+    ```javascript
+    export default class Foo extends React.Component<Props> {
+      static defaultProps = {}
+      props: Props
+      ...
+    ```
+1. You can still deconstruct `this.props` in any of your methods in the normal way
+    ```javascript
+    const {bar} = this.props
+    ```
+1. Lint your code `npm run lint`
+1. For some lint warning you can `npm run lint-fix` which will automagically fix things like indentation.
 
-  ```css
-  @import "nitro_sg/application";
-  ```
 
-1. Include this component's javascript in the application's `application.js`:
 
-  ```javascript
-  //=require nitro_sg/application
-  ```
+### Now You Can Begin 😉
 
-1. Mount this component in the application's `router.rb`:
+Here are the steps to creating a new `Foo` component (in order):
 
-  ```ruby
-  Rails.application.routes.draw do
-    mount NitroSg::Engine, at: "/main_menu"
-  end
-  ```
+1. Create a new directory under `/components` named `Foo`
+1. Create `Foo.jsx` inside the directory with the contents:
+    ```javascript
+    /* @flow */
 
-1. Inject navigational state into the theme. This can be done in Rack middleware:
+    import React from 'react'
 
-  ```ruby
-  class UIState < NitroSg::UIState
-    include Rails.application.routes.url_helpers
-    include Rails.application.routes.mounted_helpers
+    type Props = {}
 
-    def initialize(user)
-      @user = user
-    end
-
-    def main_menu
-      return [] unless @user
-      [
-        {group: "System Settings", icon: "fa-gear"},
-          {label: "Main Settings", url: main_settings_path, enabled: @user.can?(:manage, Settings)}
-      ]
-    end
-
-    def breadcrumbs
-      return [] unless @user
-      ["Home", "Main Settings"]
-    end
-
-    def current_user
-      return unless @user
-      {
-        id: 123,
-        goes_by_with_last_name: "Foo User",
-        avatar_url: "foo.jpg",
-        connect_enabled: true,
-        shared_session_key: "1234",
-        scheduler_status: "unavailable",
+    export default class Foo extends React.Component<Props> {
+      static defaultProps = {}
+      props: Props
+      render() {
+        return <span>{`I'm a Foo`}</span>
       }
-    end
+    }
 
-    def test_phone_numbers_count
-      1
-    end
+    ```
+1. Create `styles.scss` inside the directory with the contents:
+    ```scss
+    .foo {}
+    ```
+1. Add the stylesheet as an import by adding this line:
+    ```javascript
+    import styles from './styles.scss'
+    ```
+1. Then make use of the import by adding `styles.foo` as the `className`:
+    ```javascript
+    render() {
+      return <span className={styles.foo}>{`I'm a Foo`}</span>
+    }
+    ```
+1. Add `Foo.jsx` to the component index in `components/index.js`
+    ```javascript
+    export Foo from '../Foo/Foo.jsx'
+    ```
 
-    def communication_actions
-      [
-        { label: "Home", url: "/", enabled: true },
-      ]
-    end
+#### Create the Story
 
-    def power_actions
-      [
-        { label: "Home", url: "/", enabled: true },
-      ]
-    end
+1. Within the same directory, create a `FooStory.jsx` with the contents:
+    ```javascript
+    import React from "react"
+    import Text from "./Foo"
 
-    def user_actions
-      [
-        { label: "Home", url: "/", enabled: true },
-      ]
-    end
-  end
-  ```
+    import { text, select, boolean } from "@storybook/addon-knobs"
 
-  ```ruby
-  class UIStateMiddleware
-    def initialize(app)
-      @app = app
-    end
+    export default function TextStory(stories) {
+      stories.add("Foo",
+        () => {
+          let props = {}
+          return (
+            <Foo {...props}/>
+          )
+        }
+      )
+    }
+    ```
+1. Add the story to the appropriate story index. This will depend on the intent of your component. `Foo` is pretty simply 😁, hence we will add it to `/stories/basic.js` like so:
+    ```javascript
+    export FooStory from '../components/Foo/FooStory'
+    ```
+    This will add your `Foo` story to the categoy "Basic Components" in Storybook
 
-    def call(env)
-      env[:nitro_ui_state] = UIState.new(env['warden'].user)
-      @app.call(env)
-    end
-  end
-  ```
+#### Test Your Shiz (a.k.a. Running Storybook Locally)
 
-  ```ruby
-  config.middleware.insert_after Warden::Manager, "UIStateMiddleware"
-  ```
+From the current project directory, run:
 
-Usage in a Rails engine (such as a Nitro Component) is similar; generated components come pre-configured to use NitroSg.
+1. ensure you are running proper node version (see `package.json` => `engines`)
+1. `npm install`
+1. `npm run storybook`
+1. navigate to [localhost:9001](http://localhost:9001)
 
-The core requirement from the consuming application is that it inject its state via the request environment, in the key `:nitro_ui_state`, with a value which implements the `NitroSg::UIState` interface as documented on that abstract class.
+
+
+
+
