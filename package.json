@@ -60,7 +60,6 @@
     "lodash": "^4.17.4",
     "moment-timezone": "^0.5.13",
     "node-sass": "^4.5.3",
-    "nitro-styleguide": "https://github.com/powerhome/nitro-styleguide.git",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.3",
     "react-dom": "^15.6.1",
