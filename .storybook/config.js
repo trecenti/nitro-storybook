@@ -1,8 +1,6 @@
 import React from 'react'
 import { addDecorator, configure } from '@storybook/react'
 import { withKnobs } from '@storybook/addon-knobs'
-
-// This addon is broken AF
 import { withInfo, setDefaults } from '@storybook/addon-info'
 
 setDefaults({
