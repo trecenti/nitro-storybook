@@ -8,7 +8,7 @@ $nav-caret-color: #fff;
   height: $header-height + $nav-height;
 }
 
-#header {
+.header {
   @include title-font;
   background: $power-royal;
   color: #999;
@@ -245,6 +245,10 @@ $nav-caret-color: #fff;
 
 } /* #header */
 
+body.training #main-header {
+  background: $ink-lighter;
+}
+
 #connect-notifier {
   h6 {
     color: #fff;
@@ -330,6 +334,10 @@ $nav-caret-color: #fff;
   }
 
 } /* #main-crumbs.navbar-default */
+
+body.training #main-crumbs {
+  background-color: $ink;
+}
 
 .poker-session {
   a {
