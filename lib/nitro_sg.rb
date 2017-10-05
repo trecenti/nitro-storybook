@@ -1,10 +1,4 @@
-require "jquery-rails"
 require "sassc-rails"
-require "bootstrap-sass"
-require "font-awesome-sass"
-require "simple_form"
-require "will_paginate"
-require "will_paginate/bootstrap"
 
 require "nitro_sg/engine"
 
