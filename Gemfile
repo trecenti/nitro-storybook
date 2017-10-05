@@ -5,11 +5,3 @@ git_source(:github) do |repo_name|
 end
 
 gemspec
-
-gem "font-awesome-sass", github: "powerhome/font-awesome-sass", branch: :master
-
-path '..' do
-  gem 'naughty'
-end
-
-gem "simple_form", github: "powerhome/simple_form"
