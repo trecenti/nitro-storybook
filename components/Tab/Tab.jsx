@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
 
-import Icon from '../Icon'
+import Icon from '../Icon/Icon'
 
 type Props = {
   active: boolean,

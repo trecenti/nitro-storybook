@@ -1,0 +1,49 @@
+@import "base-variables/_colors.scss";
+
+.toggle-button {
+
+  @mixin toggle-btn($radius) {
+    $inactive: $gray-2;
+    $active: $power-green;
+    $offset: $radius / ($radius / 2);
+    border: 1px solid $inactive;
+    border-radius: $radius;
+    background: $inactive;
+    padding: $radius / 2;
+    position: relative;
+    width: $radius * 2;
+    transition-property: background border;
+    transition-duration: 0.5s;
+    &::before {
+      content: ' ';
+      cursor: pointer;
+      border-radius: $radius;
+      background: $white;
+      padding: ($radius / 2) - $offset;
+      position: absolute;
+      left: $offset + 0px;
+      top: $offset + 0px;
+      transition-property: left;
+      transition-duration: 0.5s;
+    }
+    &-active {
+      background: $active;
+      border: 1px solid $active;
+      &::before {
+        left: $radius;
+      }
+    }
+  }
+
+  $radius: 30px;
+
+  &-small {
+    @include toggle-btn($radius / 2);
+  }
+  &-med {
+    @include toggle-btn($radius);
+  }
+  &-large {
+    @include toggle-btn($radius * 2);
+  }
+}
