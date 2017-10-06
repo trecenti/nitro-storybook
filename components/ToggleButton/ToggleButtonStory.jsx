@@ -1,46 +1,27 @@
 import React from "react"
 import ToggleButton from "./ToggleButton"
 
-import { text, select } from "@storybook/addon-knobs"
+import Wip from '../Wip/Wip'
 
-class StoryWrapper extends React.Component {
-  render() {
-    const { children } = this.props
-    const child = React.cloneElement(children, {
-      onToggle: (active) => {
-        this.setState({active})
-      },
-      ...this.state
-    })
-    return (
-      <div>
-        <div className="alert alert-warning">
-          {`W.I.P see `}
-          <a
-              href="https://github.com/powerhome/nitro-styleguide/pull/3"
-          >
-              {`PR: feature/se-settings-ui`}
-          </a>
-        </div>
-        {child}
-      </div>
-    )
-  }
-}
+import { boolean, text, select } from "@storybook/addon-knobs"
 
 export default function ToggleButtonStory(stories) {
   stories.add("ToggleButton",
     () => {
       let props = {
+        active: boolean("active", false),
         className: text("className", ""),
         offLabel: text("offLabel", "Deactivated"),
         onLabel: text("onLabel", "Activated"),
         size: select("size", ["small", "med", "large"]),
       }
       return (
-        <StoryWrapper>
+        <Wip
+            prNumber={3}
+            branch="feature/se-settings-ui"
+        >
           <ToggleButton {...props}/>
-        </StoryWrapper>
+        </Wip>
       )
     }
   )

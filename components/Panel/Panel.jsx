@@ -14,7 +14,7 @@ import styles from './panel.scss'
 
 export default class Panel extends Component<Props> {
   static defaultProps = {
-    className: "panel-info",
+    className: "panel-default",
   }
 
   props: Props
