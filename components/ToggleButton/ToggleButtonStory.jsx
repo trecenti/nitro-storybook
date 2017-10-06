@@ -14,6 +14,14 @@ class StoryWrapper extends React.Component {
     })
     return (
       <div>
+        <div className="alert alert-warning">
+          {`W.I.P see `}
+          <a
+              href="https://github.com/powerhome/nitro-styleguide/pull/3"
+          >
+              {`PR: feature/se-settings-ui`}
+          </a>
+        </div>
         {child}
       </div>
     )
