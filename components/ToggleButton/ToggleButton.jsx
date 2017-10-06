@@ -18,6 +18,7 @@ export default class ToggleButton extends Component<Props> {
   static defaultProps = {
     active: false,
     size: 'med',
+    onToggle: () => {},
   }
 
   props: Props
@@ -38,18 +39,17 @@ export default class ToggleButton extends Component<Props> {
     const css = [
       styles[`toggle-button-${size}`],
       active ? styles[`toggle-button-${size}-active`] : null,
-      "pull-left",
     ]
 
     return (
-      <div className={className}>
+      <div className={classnames(className, "clearfix", styles.root)}>
         <div
             className={classnames(css)}
             onClick={this.handleToggle}
         />
         <If condition={offLabel && onLabel}>
           <label
-              className="pl-4"
+              className={classnames(styles[`toggle-button-${size}-label`], styles[`toggle-button-${size}-label-${active ? 'active' : 'inactive'}`])}
               onClick={this.handleToggle}
           >
             <If condition={active}>

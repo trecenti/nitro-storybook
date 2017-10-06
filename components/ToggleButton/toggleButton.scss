@@ -1,4 +1,10 @@
 @import "base-variables/_colors.scss";
+@import "base-variables/_spacing.sass";
+@import "base-variables/_typography.sass";
+
+.root {
+  cursor: pointer;
+}
 
 .toggle-button {
 
@@ -9,6 +15,8 @@
     border: 1px solid $inactive;
     border-radius: $radius;
     background: $inactive;
+    float: left;
+    margin-right: $space-base;
     padding: $radius / 2;
     position: relative;
     width: $radius * 2;
@@ -23,7 +31,7 @@
       position: absolute;
       left: $offset + 0px;
       top: $offset + 0px;
-      transition-property: left;
+      transition-property: all;
       transition-duration: 0.5s;
     }
     &-active {
@@ -39,11 +47,24 @@
 
   &-small {
     @include toggle-btn($radius / 2);
+    &-label {
+      cursor: pointer;
+      font-size: $font-smaller;
+    }
   }
   &-med {
     @include toggle-btn($radius);
+    &-label {
+      cursor: pointer;
+      margin-top: 5px;
+    }
   }
   &-large {
     @include toggle-btn($radius * 2);
+    &-label {
+      cursor: pointer;
+      margin-top: 5px;
+      font-size: $font-larger;
+    }
   }
 }
