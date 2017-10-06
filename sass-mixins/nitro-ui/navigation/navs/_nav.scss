@@ -245,8 +245,10 @@ $nav-caret-color: #fff;
 
 } /* #header */
 
-body.training #main-header {
+body.training {
+  #header {
   background: $ink-lighter;
+  }
 }
 
 #connect-notifier {
