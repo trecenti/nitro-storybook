@@ -8,7 +8,7 @@ $nav-caret-color: #fff;
   height: $header-height + $nav-height;
 }
 
-.header {
+#header {
   @include title-font;
   background: $power-royal;
   color: #999;
