@@ -5,7 +5,7 @@ import classnames from 'classnames'
 
 import Icon from '../Icon/Icon'
 
-type Props = {
+export type TabType = {
   active: boolean,
   href?: string,
   icon?: string, //fa- icon
@@ -15,8 +15,8 @@ type Props = {
 
 import styles from './tab.scss'
 
-export default class Tab extends Component<Props> {
-  props: Props
+export default class Tab extends Component<TabType> {
+  props: TabType
 
   renderIcon() {
     const { icon } = this.props
@@ -32,11 +32,17 @@ export default class Tab extends Component<Props> {
       text,
     } = this.props
 
+    const css = [
+      "tab",
+      styles.tab,
+      active ? styles[`tab-active`] : null
+    ]
+
     return (
       <Choose>
         <When condition={href}>
           <a
-              className={classnames(styles.tabAnchor, active ? styles.tabActive : null)}
+              className={classnames(css)}
               href={href}
           >
             { this.renderIcon() }
@@ -45,7 +51,7 @@ export default class Tab extends Component<Props> {
         </When>
         <When condition={!href}>
           <div
-              className={classnames(styles.tab, active ? styles.tabActive : null)}
+              className={classnames(css)}
               onClick={onClick}
           >
             { this.renderIcon() }
