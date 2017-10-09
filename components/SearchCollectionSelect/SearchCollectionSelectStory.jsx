@@ -19,12 +19,14 @@ class Wrapper extends React.Component {
     const {children} = this.props
     return (
       <div className="container my-5">
-        {
-          React.cloneElement(children, {
-            onChange: this.handleOnChange,
-            value: this.state.value,
-          })
-        }
+        <div className="col-sm-6">
+          {
+            React.cloneElement(children, {
+              onChange: this.handleOnChange,
+              value: this.state.value,
+            })
+          }
+        </div>
       </div>
     )
   }
