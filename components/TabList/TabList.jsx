@@ -6,6 +6,7 @@ import classnames from 'classnames'
 import { TabType } from '../Tab/Tab'
 
 type Props = {
+  className?: string,
   children: Array<TabType>,
 }
 
@@ -16,10 +17,12 @@ export default class TabList extends Component<Props> {
 
   render() {
     const {
+      className,
       children,
     } = this.props
 
     const css = [
+      className,
       styles[`tabList`],
     ]
 

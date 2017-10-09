@@ -7,9 +7,11 @@ import Icon from '../Icon/Icon'
 
 export type TabType = {
   active: boolean,
+  className?: string,
   href?: string,
-  icon?: string, //fa- icon
+  icon?: string,
   onClick?: () => mixed,
+  target?: '_blank' | '_top',
   text: string,
 }
 
@@ -27,15 +29,18 @@ export default class Tab extends Component<TabType> {
   render() {
     const {
       active,
+      className,
       href,
       onClick,
+      target,
       text,
     } = this.props
 
     const css = [
       "tab",
       styles.tab,
-      active ? styles[`tab-active`] : null
+      active ? styles[`tab-active`] : null,
+      className,
     ]
 
     return (
@@ -44,6 +49,7 @@ export default class Tab extends Component<TabType> {
           <a
               className={classnames(css)}
               href={href}
+              target={target}
           >
             { this.renderIcon() }
             {text}

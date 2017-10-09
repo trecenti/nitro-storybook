@@ -81,8 +81,6 @@ declare module.exports: {|
   +'sky-lighter': string;
   +'tab': string;
   +'tab-active': string;
-  +'tabAnchor': string;
-  +'tabAnchor-active': string;
   +'white-opacity-1': string;
   +'white-opacity-2': string;
   +'white-opacity-3': string;
