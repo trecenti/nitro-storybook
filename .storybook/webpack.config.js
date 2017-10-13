@@ -19,7 +19,5 @@ module.exports = (storybookBaseConfig, configType) => {
    ]
   });
 
-  console.dir(storybookBaseConfig.module.rules)
-
   return storybookBaseConfig;
 }
