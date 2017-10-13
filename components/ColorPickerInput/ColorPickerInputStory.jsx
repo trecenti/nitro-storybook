@@ -1,5 +1,4 @@
 import React from "react"
-import Wip from '../Wip/Wip'
 import ColorPickerInput from './ColorPickerInput'
 
 class Wrapper extends React.Component {
@@ -29,14 +28,9 @@ export default function ColorPickerStory(stories) {
   stories.add("ColorPickerInput",
     () => {
       return (
-        <Wip
-            branch="feature/se-settings-ui"
-            prNumber={3}
-        >
-          <Wrapper>
-            <ColorPickerInput/>
-          </Wrapper>
-        </Wip>
+        <Wrapper>
+          <ColorPickerInput/>
+        </Wrapper>
       )
     }
   )

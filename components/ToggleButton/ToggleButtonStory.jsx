@@ -1,8 +1,6 @@
 import React from "react"
 import ToggleButton from "./ToggleButton"
 
-import Wip from '../Wip/Wip'
-
 import { text, select } from "@storybook/addon-knobs"
 
 class Wrapper extends React.Component {
@@ -15,21 +13,16 @@ class Wrapper extends React.Component {
   render() {
     const {children} = this.props
     return (
-      <Wip
-          prNumber={3}
-          branch="feature/se-settings-ui"
-      >
-        <div className="container my-5">
-          <div className="col-sm-6">
-            {
-              React.cloneElement(children, {
-                onToggle: this.handleOnChange,
-                active: this.state.active,
-              })
-            }
-          </div>
+      <div className="container my-5">
+        <div className="col-sm-6">
+          {
+            React.cloneElement(children, {
+              onToggle: this.handleOnChange,
+              active: this.state.active,
+            })
+          }
         </div>
-      </Wip>
+      </div>
     )
   }
 }
