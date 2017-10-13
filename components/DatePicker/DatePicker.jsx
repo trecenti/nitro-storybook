@@ -82,7 +82,7 @@ export default class DatePicker extends React.Component<Props> {
     let inputProps = this.props.inputProps
     if(required) inputProps.required = "required"
 
-    if(!defaultValue) defaultValue = ""
+    if(defaultValue) defaultValue = moment(defaultValue).format(dateFormat)
 
     return (
       <div className={classnames(wrapperCSS)}>
