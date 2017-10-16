@@ -102,7 +102,9 @@ export default class Survey extends React.Component<Props> {
     } = this.props
     return (
       <div>
-        <Errors messages={errors} />
+        <If condition={errors && errors.length}>
+          <Errors messages={errors} />
+        </If>
       </div>
     )
   }
