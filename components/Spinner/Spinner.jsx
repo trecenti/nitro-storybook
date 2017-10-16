@@ -4,7 +4,7 @@ import classnames from "classnames"
 import spinnerStyles from "./spinner.scss"
 
 type Props = {
-   className?: string,
+   position?: 'centered',
    top?: number,
    right?: number,
    bottom?: number,
@@ -24,7 +24,7 @@ export default class Spinner extends React.Component<Props> {
   render() {
     const {
       active,
-      className,
+      position,
       top,
       right,
       bottom,
@@ -32,12 +32,12 @@ export default class Spinner extends React.Component<Props> {
     } = this.props
 
     let styles
-    if(!className) styles = { top: top, right: right, bottom: bottom, left: left }
+    if(!position) styles = { top: top, right: right, bottom: bottom, left: left }
 
     const css = classnames([
       "Spinner",
       active ? "visible" : "hidden",
-      spinnerStyles[className],
+      position ? spinnerStyles[position] : null,
     ])
 
     return (

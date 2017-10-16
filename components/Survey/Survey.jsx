@@ -2,7 +2,6 @@
 
 import React from 'react'
 
-// import FontAwesome from 'react-fontawesome'
 import classnames from 'classnames'
 import styles from './survey.scss'
 
@@ -196,7 +195,7 @@ export default class Survey extends React.Component<Props> {
     return (
       <div className={styles.overlay}>
         <Spinner
-            className="centered"
+            position="centered"
         />
       </div>
     )
