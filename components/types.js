@@ -9,3 +9,13 @@ export type SurveyQuestions = [
     }],
   }
 ]
+
+export type IconType = {
+  className: string,
+  name: string,
+  label: string,
+  onClick: () => mixed,
+  size: string,
+  spin: boolean,
+  title: string,
+}

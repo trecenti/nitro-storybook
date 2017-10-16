@@ -1,15 +1,6 @@
 import React from "react"
 import FontAwesome from "react-fontawesome"
-
-type Props = {
-  className: string,
-  name: string,
-  label: string,
-  onClick: () => mixed,
-  size: string,
-  spin: boolean,
-  title: string,
-}
+import { IconType } from "../types"
 
 /**
  * Icon renders a FontAwesome icon followed by a label.
@@ -29,7 +20,7 @@ export default class Icon extends React.Component<Props> {
     label: "",
     spin: false,
   }
-  props: Props
+  props: IconType
   render() {
     const {
       name,
@@ -52,7 +43,7 @@ export default class Icon extends React.Component<Props> {
             size={size}
             spin={spin}
         />
-        {` ${label}`}
+        <If condition={label}>{label}</If>
       </span>
     )
   }

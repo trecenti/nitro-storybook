@@ -7,13 +7,22 @@ import classnames from 'classnames'
 import styles from './survey.scss'
 
 import Wip from '../Wip/Wip'
+import {
+  Errors,
+} from '..'
 
 import { SurveyQuestions } from '../types'
-import Button from '../Button/Button'
-import Panel from '../Panel/Panel'
+
+import {
+  Button,
+  Icon,
+  Panel,
+} from '../index'
 
 type Props = {
+  canSubmit?: boolean,
   dismissable?: boolean,
+  errors: Array<string>,
   loading?: boolean,
   onChange: () => mixed,
   onDismiss: () => mixed,
@@ -24,7 +33,9 @@ type Props = {
 
 export default class Survey extends React.Component<Props> {
   static defaultProps = {
+    canSubmit: true,
     dismissable: true,
+    errors: [],
     loading: false,
     modal: false,
     onChange: function(){},
@@ -71,7 +82,8 @@ export default class Survey extends React.Component<Props> {
           }
         ],
       }
-    ]
+    ],
+    submitting: false,
   }
   props: Props
 
@@ -85,11 +97,19 @@ export default class Survey extends React.Component<Props> {
   }
 
   renderHeader() {
-    return (<div/>)
+    const {
+      errors,
+    } = this.props
+    return (
+      <div>
+        <Errors messages={errors} />
+      </div>
+    )
   }
   renderBody() {
     const {
       questions,
+      submitting,
     } = this.props
     const css = classnames([
       'panel-default',
@@ -115,6 +135,7 @@ export default class Survey extends React.Component<Props> {
                     let otherProps = {
                       onChange: this.handleOnChange.bind(this, [i, x]),
                     }
+                    if(submitting) otherProps.disabled = true
                     if(answer.selected) otherProps.checked = 'checked'
 
                     return (
@@ -145,11 +166,31 @@ export default class Survey extends React.Component<Props> {
     )
   }
   renderFooter() {
+    const {
+      canSubmit,
+      submitting,
+    } = this.props
+
+    if(!canSubmit) return null
+
+    let props = {
+      className: "btn-primary",
+      text: submitting ? "Submitting Answers" : "Submit Answers",
+      type: submitting ? "" : "submit",
+    }
+    if(submitting) {
+      props.disabled = true
+      props.icon = (
+        <Icon
+            className="mr-3 fa-spin"
+            name="spinner"
+            spin
+        />
+      )
+    }
+
     return (
-      <Button className="btn-primary"
-          text="Submit"
-          type="submit"
-      />
+      <Button {...props} />
     )
   }
   render() {
@@ -159,23 +200,19 @@ export default class Survey extends React.Component<Props> {
 
     return (
       <Wip
-        branch="feature/survey-modal"
-        prNumber={7}
-        >
+          branch="feature/survey-modal"
+          prNumber={7}
+      >
         <form
-          className={styles.survey}
-          onSubmit={this.handleOnSubmit}
-          >
-          <If condition={loading}>
-            <div>
-              <div className={styles.overlay}/>
-              {this.renderBody()}
-              {this.renderFooter()}
-            </div>
-          <Else/>
+            className={styles.survey}
+            onSubmit={this.handleOnSubmit}
+        >
+          <div>
+            <If condition={loading}><div className={styles.overlay}/></If>
+            {this.renderHeader()}
             {this.renderBody()}
             {this.renderFooter()}
-          </If>
+          </div>
         </form>
       </Wip>
     )
