@@ -41,48 +41,7 @@ export default class Survey extends React.Component<Props> {
     onChange: function(){},
     onDismiss: function(){},
     onSubmit: function(){},
-    questions: [
-      {
-        question: 'Do you like food?',
-        answers: [
-          {
-            label: 'Yes, I do!',
-            selected: true,
-            value: 1,
-          },
-          {
-            label: 'No, I don\'t!',
-            selected: false,
-            value: 0,
-          },
-          {
-            label: 'Kinda..',
-            selected: false,
-            value: 2,
-          }
-        ],
-      },
-      {
-        question: 'Do you like work?',
-        answers: [
-          {
-            label: 'Yes, I do!',
-            selected: true,
-            value: 1,
-          },
-          {
-            label: 'No, I don\'t!',
-            selected: false,
-            value: 0,
-          },
-          {
-            label: 'Kinda..',
-            selected: false,
-            value: 2,
-          }
-        ],
-      }
-    ],
+    questions: [],
     submitting: false,
   }
   props: Props
