@@ -9,6 +9,7 @@ import styles from './survey.scss'
 import Wip from '../Wip/Wip'
 import {
   Errors,
+  Spinner,
 } from '..'
 
 import { SurveyQuestions } from '../types'
@@ -171,15 +172,13 @@ export default class Survey extends React.Component<Props> {
       submitting,
     } = this.props
 
-    if(!canSubmit) return null
-
     let props = {
       className: "btn-primary",
       text: submitting ? "Submitting Answers" : "Submit Answers",
       type: submitting ? "" : "submit",
     }
+    if(!canSubmit || submitting) props.disabled = true
     if(submitting) {
-      props.disabled = true
       props.icon = (
         <Icon
             className="mr-3 fa-spin"
@@ -191,6 +190,15 @@ export default class Survey extends React.Component<Props> {
 
     return (
       <Button {...props} />
+    )
+  }
+  renderLoading() {
+    return (
+      <div className={styles.overlay}>
+        <Spinner
+            className="centered"
+        />
+      </div>
     )
   }
   render() {
@@ -208,7 +216,7 @@ export default class Survey extends React.Component<Props> {
             onSubmit={this.handleOnSubmit}
         >
           <div>
-            <If condition={loading}><div className={styles.overlay}/></If>
+            <If condition={loading}>{this.renderLoading()}</If>
             {this.renderHeader()}
             {this.renderBody()}
             {this.renderFooter()}
