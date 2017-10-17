@@ -40,6 +40,7 @@ export default class Icon extends React.Component<Props> {
       className,
       title
     } = this.props
+
     return (
       <span
           className="icon"
@@ -50,9 +51,11 @@ export default class Icon extends React.Component<Props> {
             className={className}
             name={name}
             size={size}
-            spin={spin}
-        />
-        {` ${label}`}
+            spin={spin} />
+
+        <If condition={label}>
+          {label}
+        </If>
       </span>
     )
   }

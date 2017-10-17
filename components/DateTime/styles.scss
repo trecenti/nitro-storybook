@@ -1,0 +1,49 @@
+@import "base-mixins/_all.scss";
+@import "base-variables/_all.scss";
+.date-time {
+  &-time {
+    line-height: $font-large;
+  }
+  &-timezone {
+    margin-left: $space-smallest;
+  }
+  &-calendar {
+    margin-top: -($space-small)
+  }
+  &-calendar-icon {
+    margin-right: $space-smaller;
+  }
+}
+
+
+
+.time-date {
+  @include clearfix;
+  &-calendar {
+    float: left;
+    padding-top: $space-smallest + 2px;
+  }
+  &-calendar-icon {
+    margin-right: $space-smallest;
+  }
+  &-day {
+    display: block;
+    line-height: $font-large;
+  }
+  &-month {
+    display: block;
+    line-height: $font-smallest;
+  }
+  &-time-wrap {
+    float: left;
+    margin-left: $space-small;
+  }
+  &-timezone {
+    display: block;
+    margin-left: $space-smallest;
+  }
+  &-time {
+    display: block;
+  }
+
+}
