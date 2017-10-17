@@ -1,0 +1,9 @@
+.foo {
+  color: pink;
+  &.blue {
+    color: blue;
+  }
+  &.brown {
+    color: brown;
+  }
+}

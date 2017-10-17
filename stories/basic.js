@@ -6,4 +6,4 @@ export IconStory from "../components/Icon/IconStory";
 export PanelStory from "../components/Panel/PanelStory";
 export TabListStory from "../components/TabList/TabListStory";
 export TextStory from "../components/Text/TextStory";
-
+export FooStory from "../components/Foo/FooStory";
