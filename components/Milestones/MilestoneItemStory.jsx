@@ -13,14 +13,12 @@ export default function MilestoneItemStory(stories) {
         status: select("status", ["done", "started", "none"], "done"),
       }
       return (
-        <div className="milestones">
-          <MilestoneItem
-              background={props.background}
-              className={props.className}
-              name={props.name}
-              status={props.status}
-          />
-        </div>
+        <MilestoneItem
+            background={props.background}
+            className={props.className}
+            name={props.name}
+            status={props.status}
+        />
       )
     }
   )
