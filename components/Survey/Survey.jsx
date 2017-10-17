@@ -5,7 +5,6 @@ import React from 'react'
 import classnames from 'classnames'
 import styles from './survey.scss'
 
-import Wip from '../Wip/Wip'
 import {
   Errors,
   Spinner,
@@ -133,11 +132,14 @@ export default class Survey extends React.Component<Props> {
     } = this.props
 
     let props = {
-      className: "btn-primary",
       text: submitting ? "Submitting Answers" : "Submit Answers",
       type: submitting ? "" : "submit",
     }
     if(!canSubmit || submitting) props.disabled = true
+    props.className = classnames([
+      "btn-primary",
+      styles.submit,
+    ])
     if(submitting) {
       props.icon = (
         <Icon
@@ -167,22 +169,17 @@ export default class Survey extends React.Component<Props> {
     } = this.props
 
     return (
-      <Wip
-          branch="feature/survey-modal"
-          prNumber={7}
+      <form
+          className={styles.survey}
+          onSubmit={this.handleOnSubmit}
       >
-        <form
-            className={styles.survey}
-            onSubmit={this.handleOnSubmit}
-        >
-          <div>
-            <If condition={loading}>{this.renderLoading()}</If>
-            {this.renderHeader()}
-            {this.renderBody()}
-            {this.renderFooter()}
-          </div>
-        </form>
-      </Wip>
+        <div>
+          <If condition={loading}>{this.renderLoading()}</If>
+          {this.renderHeader()}
+          {this.renderBody()}
+          {this.renderFooter()}
+        </div>
+      </form>
     )
   }
 }

@@ -10,6 +10,7 @@ type Props = {
   className: string,
   disabled: boolean,
   icon: IconType,
+  onClick: () => mixed,
   text: string,
   type: "anchor" | "button" | "submit" | "",
 }
@@ -24,6 +25,7 @@ export default class Button extends React.Component<Props> {
       className,
       disabled,
       icon,
+      onClick,
       text,
       type
     } = this.props
@@ -52,6 +54,7 @@ export default class Button extends React.Component<Props> {
       className,
       styles.btn,
     ]
+    props.onClick = onClick
     props.className = classnames(css)
     if(disabled) props.disabled = true
 

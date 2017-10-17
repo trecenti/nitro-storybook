@@ -80,6 +80,7 @@ declare module.exports: {|
   +'sky-dark': string;
   +'sky-light': string;
   +'sky-lighter': string;
+  +'submit': string;
   +'survey': string;
   +'survey-question': string;
   +'survey-question-answer': string;

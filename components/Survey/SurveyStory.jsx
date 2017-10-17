@@ -1,5 +1,5 @@
 import React from "react"
-
+import Wip from '../Wip/Wip'
 import Survey from './Survey'
 
 import { boolean } from "@storybook/addon-knobs"
@@ -102,7 +102,15 @@ class SurveyContainer extends React.Component {
       questions,
       submitting: boolean("submitting", submitting || false),
     }
-    return React.cloneElement(this.props.children, props)
+    const child = React.cloneElement(this.props.children, props)
+    return (
+      <Wip
+          branch="feature/survey-modal"
+          prNumber={7}
+      >
+      {child}
+    </Wip>
+    )
   }
 }
 
