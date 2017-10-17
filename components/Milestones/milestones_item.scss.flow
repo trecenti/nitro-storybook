@@ -18,7 +18,7 @@ declare module.exports: {|
   +'ink-light': string;
   +'ink-lighter': string;
   +'ink-lightest': string;
-  +'milestones': string;
+  +'milestone-item': string;
   +'p-blue-opacity-1': string;
   +'p-blue-opacity-2': string;
   +'p-blue-opacity-3': string;

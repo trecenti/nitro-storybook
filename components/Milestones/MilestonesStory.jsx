@@ -22,7 +22,7 @@ export default function MilestonesStory(stories) {
       ]
       let props = {
         className: text("className", ""),
-        background: select("background", ["dark", "light"], "dark"),
+        background: select("background", ["dark", "light"], "light"),
         steps: object('steps', example)
       }
       return <Milestones {...props}/>

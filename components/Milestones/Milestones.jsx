@@ -4,7 +4,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 import MilestoneItem from './MilestoneItem'
-import styles from './styles.scss'
+import styles from './milestones.scss'
 
 type Props = {
   background: string,
@@ -13,10 +13,9 @@ type Props = {
 }
 
 export default class Milestones extends React.Component<Props> {
-  static defaultProps: {
-    background: 'dark',
+  static defaultProps = {
     className: "",
-    steps: [],
+    background: "light"
   }
   props: Props
 
@@ -29,7 +28,6 @@ export default class Milestones extends React.Component<Props> {
     const css = [
       className,
       styles[`milestones`],
-      styles[`background-${background}`],
     ]
     return (
       <span className={classnames(css)}>
@@ -38,6 +36,7 @@ export default class Milestones extends React.Component<Props> {
             [...steps].map((item, index) => {
               return (
                 <MilestoneItem
+                    background={background}
                     key={index}
                     name={item.name}
                     status={item.status}
