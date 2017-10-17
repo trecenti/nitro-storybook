@@ -1,33 +1,28 @@
 import React from "react"
 import Milestones from "./Milestones"
 
-import { text, select, object } from "@storybook/addon-knobs"
+import { text, select } from "@storybook/addon-knobs"
 
 export default function MilestonesStory(stories) {
   stories.add("Milestones",
     () => {
-      const example = [
-        {
-          name: 'First',
-          status: 'done'
-        },
-        {
-          name: 'Second',
-          status: 'started'
-        },
-        {
-          name: 'Third',
-          status: "none"
-        },
-        {
-          name: 'Fourth',
-          status: null
-        }
-      ]
       let props = {
         className: text("className", ""),
         background: select("background", ["dark", "light"], "light"),
-        steps: object('steps', example)
+        steps: [
+          {
+            name: "First",
+            status: select("1 Status", ["done", "started", "none"], "done")
+          },
+          {
+            name: "Second",
+            status: select("2 Status", ["done", "started", "none"], "started")
+          },
+          {
+            name: "Third",
+            status: select("3 Status", ["done", "started", "none"], "none")
+          }
+        ]
       }
       return <Milestones {...props}/>
     }
