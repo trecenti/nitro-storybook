@@ -17,6 +17,10 @@ export default function MilestonesStory(stories) {
         },
         {
           name: 'Third',
+          status: "none"
+        },
+        {
+          name: 'Fourth',
           status: null
         }
       ]
