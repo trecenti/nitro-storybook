@@ -69,6 +69,8 @@ $badge-link-hover-color:      #fff !default;
   border-radius: .25em;
   border: 1px solid transparent;
 
+
+
   table & {
     font-size: $font-smaller;
   }
@@ -149,6 +151,11 @@ $badge-link-hover-color:      #fff !default;
     @include badge-variant($ink);
   }
 
+}
+
+.text-helper {
+  font-weight: $regular;
+  margin-right: $space-smaller;
 }
 
 .pill {

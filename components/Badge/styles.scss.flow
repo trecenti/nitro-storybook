@@ -112,6 +112,7 @@ declare module.exports: {|
   +'sky-dark': string;
   +'sky-light': string;
   +'sky-lighter': string;
+  +'text-helper': string;
   +'visible-xxs': string;
   +'white-opacity-1': string;
   +'white-opacity-2': string;

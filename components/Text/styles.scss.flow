@@ -93,6 +93,7 @@ declare module.exports: {|
   +'text-black-opacity-7': string;
   +'text-black-opacity-8': string;
   +'text-black-opacity-9': string;
+  +'text-capitalize': string;
   +'text-danger': string;
   +'text-gray-1': string;
   +'text-gray-2': string;
@@ -114,6 +115,7 @@ declare module.exports: {|
   +'text-large': string;
   +'text-larger': string;
   +'text-largest': string;
+  +'text-lowercase': string;
   +'text-muted': string;
   +'text-normal': string;
   +'text-p-blue-opacity-1': string;
@@ -185,6 +187,7 @@ declare module.exports: {|
   +'text-smaller': string;
   +'text-smallest': string;
   +'text-success': string;
+  +'text-uppercase': string;
   +'text-warning': string;
   +'text-white-opacity-1': string;
   +'text-white-opacity-2': string;

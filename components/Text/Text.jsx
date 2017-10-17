@@ -12,6 +12,7 @@ type Props = {
   size: "base" | "large" | "larger" | "largest" | "small" | "smaller" | "smallest",
   bold: boolean,
   italic: boolean,
+  textTransform: "none" | "uppercase" | "lowercase" | "capitalize",
   className: string,
 }
 
@@ -22,6 +23,7 @@ export default class Text extends React.Component<Props> {
     color: "ink",
     bold: false,
     italic: false,
+    textTransform: "none",
     className: "",
   }
   props: Props
@@ -31,6 +33,7 @@ export default class Text extends React.Component<Props> {
       className,
       bold,
       italic,
+      textTransform,
       size,
       color,
     } = this.props
@@ -39,6 +42,7 @@ export default class Text extends React.Component<Props> {
       styles.badge,
       styles[`text-${color}`],
       styles[`text-${size}`],
+      styles[`text-${textTransform}`],
       bold ? styles["font-weight-bold"] : null,
       italic ? styles["font-italic"] : null,
     ]

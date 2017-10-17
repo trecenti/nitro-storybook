@@ -8,10 +8,11 @@ export default function TextStory(stories) {
     () => {
       let props = {
         className: text("className", ""),
-        color: select("color", ["sky-lighter", "sky-light", "sky", "sky-dark", "ink-lightest", "ink-lighter", "ink-light", "ink", "ink-dark"], "ink"),
-        size: select("size", ["base", "large", "larger", "largest", "small", "smaller", "smallest"], "base"),
-        bold: boolean("bold", false),
-        italic: boolean("italic", false),
+        color: select("Color", ["sky-lighter", "sky-light", "sky", "sky-dark", "ink-lightest", "ink-lighter", "ink-light", "ink", "ink-dark"], "ink"),
+        size: select("Size", ["base", "large", "larger", "largest", "small", "smaller", "smallest"], "base"),
+        bold: boolean("Bold", false),
+        textTransform: select("Text Transform", ["none", "uppercase", "lowercase", "capitalize"], "none"),
+        italic: boolean("Italic", false),
       }
       return (
         <Text {...props}>

@@ -33,3 +33,8 @@
 .font-weight-normal { font-weight: $regular; }
 .font-weight-bold   { font-weight: $bold; }
 .font-italic        { font-style: italic; }
+
+// text transform
+.text-lowercase  { text-transform: lowercase !important; }
+.text-uppercase  { text-transform: uppercase !important; }
+.text-capitalize { text-transform: capitalize !important; }
