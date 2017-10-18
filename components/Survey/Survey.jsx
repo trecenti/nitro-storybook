@@ -96,7 +96,7 @@ export default class Survey extends React.Component<Props> {
                       onChange: this.handleOnChange.bind(this, [i, x]),
                     }
                     if(submitting) otherProps.disabled = true
-                    if(answer.selected) otherProps.checked = 'checked'
+                    if(answer.selected) otherProps.checked = true
 
                     return (
                       <li
@@ -107,7 +107,7 @@ export default class Survey extends React.Component<Props> {
                             <input
                                 name={`question-${i}-answer`}
                                 type="radio"
-                                value={answer.value}
+                                defaultValue={answer.value}
                                 {...otherProps}
                             />
                             <span>
