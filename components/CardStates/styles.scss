@@ -1,0 +1,38 @@
+@import "base-mixins/_all.scss";
+@import "base-variables/_all.scss";
+
+.card {
+  color: $white;
+  font-size: $font-large;
+  text-align: center;
+  border-radius: $border-rad-light;
+  padding: 20px;
+
+  &.card-danger {
+    background: $power-red;
+  }
+
+  &.card-default {
+    background: $ink-lightest;
+  }
+  &.card-success {
+    background: $power-green;
+  }
+
+  &.card-primary {
+    background: $power-blue;
+  }
+
+  &.card-warning {
+    background: $power-gold;
+  }
+  &.card-inverse {
+    background: $power-black;
+  }
+
+}
+
+.notifyIcon{
+align-content: center;
+
+}

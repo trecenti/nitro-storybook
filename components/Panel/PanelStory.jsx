@@ -9,11 +9,17 @@ export default function PanelStory(stories) {
     () => {
       let props = {
         title: text("title", "Hi, World."),
+
       }
       return (
-        <Panel {...props}>
+
+        <div><Panel {...props}>
           <Text>{`It's gunna be yuge!`}</Text>
         </Panel>
+
+        <Panel title="panel_1" >
+          <Text>{`It's gunna be yuge!`}</Text>
+        </Panel></div>
       )
     }
   )
