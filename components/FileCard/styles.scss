@@ -1,0 +1,61 @@
+@import "base-mixins/_all.scss";
+@import "base-variables/_all.scss";
+
+$file-icon-size: 80px;
+
+.file-card {
+  display: block;
+  width: 100%;
+
+  .file-type-box {
+    padding: $space-largest $space-large $space-jumbo;
+    text-align: center;
+
+    .icon-large {
+      font-size: $file-icon-size;
+      line-height: $file-icon-size;
+      display: block;
+    }
+  }
+
+  .file-content-box {
+    padding: $space-large $space-large 0;
+    border-top: 1px solid $gray-2;
+  }
+
+  &.layout-{
+    &vertical {}
+    &horizontal {
+      display: flex;
+      flex-direction: row;
+
+      .file-type-box {
+        width: $file-icon-size;
+        box-sizing: border-box;
+        border-right: 1px solid $gray-2;
+        vertical-align: middle;
+        padding: $space-small $space-small $space-small 0;
+        flex: 0 0 $file-icon-size;
+
+        .icon-large {
+          font-size: $file-icon-size/2.5;
+          line-height: $file-icon-size/1.5;
+        }
+      }
+      .file-content-box {
+        border-top: 0;
+        vertical-align: middle;
+        padding: $space-small 0 $space-small $space-large;
+        flex: 0 0 calc(100% - #{$file-icon-size});
+      }
+
+      &::after {
+        content: '';
+        clear: both;
+        float: none;
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}
