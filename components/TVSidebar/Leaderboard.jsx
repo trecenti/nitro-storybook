@@ -18,11 +18,29 @@ export default class Leaderboard extends React.Component<Props> {
     list: [],
     speed: 120
   }
+
+  state = {
+    items: [],
+    renderKey: Date.now(),
+  }
+
+  componentWillMount() {
+    this.handleAnimate()
+  }
   props: Props
+
+  handleAnimate = () => {
+    const {list} = this.props
+    this.setState({items: [], renderKey: Date.now()})
+    if(list) {
+      setTimeout(() => {
+        this.setState({items: list, renderKey: Date.now()})
+      }, 100)
+    }
+  }
 
   render() {
     const {
-      list,
       animate,
       speed
     } = this.props
@@ -32,7 +50,7 @@ export default class Leaderboard extends React.Component<Props> {
     return (
       <div className={classnames(css)}>
         {
-          [...list].map((item, index) => {
+          [...this.state.items].map((item, index) => {
             const waitTime = speed*(index+ 1);
             return (
               <LeaderboardItem

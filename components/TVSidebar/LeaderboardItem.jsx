@@ -79,7 +79,7 @@ export default class LeaderboardItem extends React.Component<Props> {
               <AnimatedContainer
                   animate={animate}
                   border="true"
-                  feedback="true"
+                  feedback="corner-spark"
                   position="right"
                   speed="faster"
                   type="slide"
@@ -87,8 +87,8 @@ export default class LeaderboardItem extends React.Component<Props> {
                 <div className={styles[`stat-container-top`]}>
                   <AnimatedContainer
                       animate={animate}
+                      feedback="bottom-line"
                       levels={["ink-lightest", "ink", "power-navy"]}
-                      lined="true"
                       position="top"
                       speed="fast"
                   >

@@ -10,14 +10,14 @@ export default function AnimatedContainerStory(stories) {
   stories.add("Animated Container",
     () => {
       let props = {
-        animate: boolean("animate", false),
+        animate: boolean("animate", true),
+        type: select("type", ["flip", "slide"], "flip"),
+        feedback: select("feedback", ["none", "bottom-line", "corner-spark"], "none"),
+        position: select("position", ["left", "right", "top", "bottom"], "left"),
         speed: select("speed", ["fastest", "faster", "fast", "base", "slow", "slower", "slowest", "slug"], "fast"),
         timing: select("timing", ["linear", "ease", "ease-in", "ease-out", "ease-in-out", "step-start", "step-end"], "ease"),
-        position: select("position", ["left", "right", "top", "bottom"], "left"),
         levels: array("levels", ['blank', 'power-royal', 'power-navy', 'black']),
-        feedback: boolean("feedback", false),
         border: boolean("border", false),
-        type: select("type", ["flip", "slide"], "flip"),
       }
       const inlineCSS = {
         width: '65px',

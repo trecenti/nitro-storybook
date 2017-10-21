@@ -14,20 +14,19 @@ type Props = {
   levels: Array<string>,
   type: string,
   border: boolean,
-  feedback: boolean,
+  feedback: string,
   lined: boolean
 }
 
 export default class AnimatedContainer extends React.Component<Props> {
   static defaultProps = {
-    animate: false,
+    animate: true,
     speed: "fast",
     timing: "ease",
     position: "left",
     type: "flip",
     border: false,
-    feedback: false,
-    lined: false,
+    feedback: "",
     levels: ['blank', 'power-royal', 'power-navy', 'black'] // Last color is on top
   }
   props: Props
@@ -42,8 +41,7 @@ export default class AnimatedContainer extends React.Component<Props> {
       levels,
       type,
       border,
-      feedback,
-      lined
+      feedback
     } = this.props
     const css = [
       styles[`animated-container`],
@@ -51,10 +49,10 @@ export default class AnimatedContainer extends React.Component<Props> {
       styles[`timing-${timing}`],
       styles[`position-${position}`],
       styles[`animation-${type}`],
-      lined ? styles[`lined-bottom`] : ``,
       animate ? styles[`animate`] : ``,
       border ? styles[`has-border`] : ``,
-      feedback ? styles[`show-feedback`] : ``
+      feedback == "bottom-line" ? styles[`lined-bottom`] : ``,
+      feedback == "corner-spark" ? styles[`show-feedback`] : ``
     ]
     return (
       <div className={classnames(css)}>
