@@ -5,6 +5,7 @@ import { storiesOf } from '@storybook/react';
 import * as basicComponents from "./basic";
 import * as formComponents from "./form";
 import * as complexComponents from "./complex";
+import * as powertvComponents from "./powertv";
 
 const addStories = function(stories) {
   let newStories = storiesOf(stories.title, module);
@@ -26,4 +27,9 @@ addStories({
 addStories({
   title: 'Complex Components',
   components: complexComponents
+})
+
+addStories({
+  title: 'PowerTV Components',
+  components: powertvComponents
 })
