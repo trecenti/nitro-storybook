@@ -17,7 +17,7 @@ export default function LeaderboardItemStory(stories) {
         wait: text("wait", "120")
       }
       return (
-        <TVSidebar {...props}>
+        <TVSidebar>
           <TVBackground className="p-5">
             <LeaderboardItem {...props}/>
           </TVBackground>

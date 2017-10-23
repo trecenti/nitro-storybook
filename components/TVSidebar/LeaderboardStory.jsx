@@ -24,7 +24,7 @@ export default function LeaderboardStory(stories) {
         ]
       }
       return (
-        <TVSidebar {...props}>
+        <TVSidebar>
           <TVBackground className="p-5">
             <Leaderboard
                 {...props}
