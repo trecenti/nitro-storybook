@@ -92,6 +92,16 @@ $label-offset: 27px;
   margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
 }
 
+// Override for our custom columnar grouping of options.
+.form-group {
+  &.radio-checkbox-columns {
+    .checkbox,
+    .radio {
+      margin-top: -5px;
+    }
+  }
+}
+
 // Radios and checkboxes on same line
 .radio-inline,
 .checkbox-inline {
