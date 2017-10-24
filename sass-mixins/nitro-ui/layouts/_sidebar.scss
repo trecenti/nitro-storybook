@@ -1,0 +1,44 @@
+.sidebar-layout {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  .no-scroll {
+    flex: auto;
+  }
+  .sidebar-row {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: row;
+  }
+  .sidebar-content {
+    box-orient: vertical;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    &-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+  }
+  .sidebar-nav {
+    order: -1;
+    flex: 0 0 auto;
+    border-width: 0 1px 0 0;
+    z-index: 0;
+    &-item {
+      display: block;
+      padding: $space-small $space-smallest $space-small $space-base;
+      color: $ink-lighter;
+      &:hover {
+        background: $p-blue-opacity-6;
+        color: $white;
+      }
+      &.active {
+        background: $power-blue;
+        color: $white;
+      }
+    }
+
+  }
+}

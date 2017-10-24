@@ -1,11 +1,11 @@
-$header-height: 57px;
+$header-height: 60px;
 $header-icon-color: #fff;
 $header-icon-hover-color: $power-grey;
 $nav-height: 30px;
 $nav-caret-color: #fff;
 
 .header-placeholder {
-  height: $header-height + $nav-height;
+  height: $header-height;
 }
 
 #header {
