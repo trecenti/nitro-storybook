@@ -11,6 +11,7 @@
     "build-storybook": "build-storybook -s public -o .out",
     "lint": "./node_modules/eslint/bin/eslint.js . --ext .js,.jsx",
     "lint-fix": "./node_modules/eslint/bin/eslint.js . --ext .js,.jsx --fix",
+    "applicationcss:watch": "node-sass -w ./sass-mixins/application.scss --include-path=components -o ./public",
     "applicationcss": "node-sass ./sass-mixins/application.scss --include-path=components -o ./public",
     "powerbuilder": "webpack --config .storybook/powuhbuilda.webpack.config.js"
   },
