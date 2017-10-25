@@ -3,3 +3,4 @@ export DateTimePickerStory from "../components/DateTimePicker/DateTimePickerStor
 export SearchCollectionSelectStory from "../components/SearchCollectionSelect/SearchCollectionSelectStory"
 export Milestones from "../components/Milestones/MilestonesStory"
 export ModalStory from '../components/Modal/ModalStory'
+export GradeStory from '../components/Grade/GradeStory'
