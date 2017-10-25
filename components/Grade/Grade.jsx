@@ -8,6 +8,7 @@ import styles from './grade.scss'
 
 type Props = {
   className: string,
+  label: string,
   grade: number,
   starFullAt: number,
   starEmptyAt: number,
@@ -24,11 +25,12 @@ class Grade extends React.Component<Props> {
   static defaultProps = {
     starFullAt: 10,
     starEmptyAt: 0,
+    label: 'Grade'
   }
   props: Props
 
   render() {
-    const { grade, starFullAt, starEmptyAt, className } = this.props
+    const { grade, label, starFullAt, starEmptyAt, className } = this.props
     const classes = [
       className,
       styles.grade
@@ -43,7 +45,7 @@ class Grade extends React.Component<Props> {
         />
         <div>
           <p>{grade}</p>
-          <label>{'Grade'}</label>
+          <label>{label}</label>
         </div>
       </div>
     )

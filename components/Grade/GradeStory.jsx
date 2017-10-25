@@ -1,7 +1,7 @@
 import React from "react"
 import Grade from "./Grade"
 
-import { number } from "@storybook/addon-knobs"
+import { number, text } from "@storybook/addon-knobs"
 
 export default function GradeStory(stories) {
   stories.add("Grade",
@@ -10,6 +10,7 @@ export default function GradeStory(stories) {
         grade: number("grade", 8.5, { range: true, min: 0, max: 10, step: 0.5 }),
         starFullAt: number("starFullAt", 10, { range: true, min: 0, max: 10, step: 0.5 }),
         starEmptyAt: number("starEmptyAt", 0, { range: true, min: 0, max: 10, step: 0.5 }),
+        label: text("label", "Grade")
       }
       return <Grade {...props}/>
     }
