@@ -1,0 +1,31 @@
+@import "base-variables/_colors.scss";
+@import "base-variables/_spacing.sass";
+@import "base-variables/_border-radius.sass";
+@import "base-variables/_typography.sass";
+
+.step-meter {
+  list-style-type: none;
+  padding: 0 $space-base;
+  margin: 0;
+
+  li {
+    width: 90px;
+    background: $sky;
+    border-radius: $border-rad-heavy*2;
+    display: inline-block;
+    text-align: center;
+    height: 18px;
+    line-height: 20px;
+    color: $ink-light;
+    margin: 0 $space-smallest;
+    font-size: $font-smaller;
+    text-transform: uppercase;
+    font-weight: 400;
+    display: inline-block;
+
+    &.done { background: $power-green; }
+    &.started { background: $power-blue; }
+
+    &.done, &.started { color: white; }
+  }
+}
