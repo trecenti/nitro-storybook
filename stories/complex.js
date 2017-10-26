@@ -4,3 +4,4 @@ export SearchCollectionSelectStory from "../components/SearchCollectionSelect/Se
 export Milestones from "../components/Milestones/MilestonesStory"
 export StepMeterStory from "../components/StepMeter/StepMeterStory"
 export ModalStory from '../components/Modal/ModalStory'
+export GradeStory from '../components/Grade/GradeStory'
