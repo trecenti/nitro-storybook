@@ -2,4 +2,5 @@ export ColorPickerInputStory from "../components/ColorPickerInput/ColorPickerInp
 export DateTimePickerStory from "../components/DateTimePicker/DateTimePickerStory"
 export SearchCollectionSelectStory from "../components/SearchCollectionSelect/SearchCollectionSelectStory"
 export Milestones from "../components/Milestones/MilestonesStory"
+export StepMeterStory from "../components/StepMeter/StepMeterStory"
 export ModalStory from '../components/Modal/ModalStory'
