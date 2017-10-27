@@ -76,6 +76,8 @@ export default class Survey extends React.Component<Props> {
       styles.surveyQuestion,
     ])
 
+    if(!questions.length) return null
+
     return (
       <ol className={styles['survey-question-list']}>
         {questions.map((q, i) =>
@@ -166,6 +168,7 @@ export default class Survey extends React.Component<Props> {
   render() {
     const {
       loading,
+      questions,
     } = this.props
 
     return (
@@ -176,8 +179,10 @@ export default class Survey extends React.Component<Props> {
         <div>
           <If condition={loading}>{this.renderLoading()}</If>
           {this.renderHeader()}
-          {this.renderBody()}
-          {this.renderFooter()}
+          <If condition={questions.length}>
+            {this.renderBody()}
+            {this.renderFooter()}
+          </If>
         </div>
       </form>
     )
