@@ -14,6 +14,7 @@ type Props = {
   size: "smaller" | "small" | "base" | "large" | "larger",
   thumb: string,
   url: string,
+  onError: () => void,
 }
 
 /**
@@ -43,6 +44,7 @@ export default class Avatar extends React.Component<Props> {
       size,
       thumb,
       url,
+      onError,
     } = this.props
     const imgCSS = [
       "avatar",
@@ -59,6 +61,7 @@ export default class Avatar extends React.Component<Props> {
     const image = (
       <img alt={alt}
           className={classnames(imgCSS, styles[`avatar-${size}-thumb`])}
+          onError={onError}
           src={thumb}
       />
     )

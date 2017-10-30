@@ -1,0 +1,22 @@
+@import "base-variables/_colors.scss";
+@import "base-variables/_typography.sass";
+
+$width: 98px;
+$height: 98px;
+$border-size: 4px;
+
+.alternative-avatar {
+  border: $border-size solid $white;
+  display: inline-block;
+  color: $white;
+  background: $ink-lightest;
+  width: $width;
+  height: $height;
+
+  p {
+    text-align: center;
+    font-size: $font-largest;
+
+    line-height: $height - (2 * $border-size);
+  }
+}
