@@ -4,7 +4,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { isEmpty, map } from 'lodash'
 
-import styles from './alternative_avatar.scss'
+import styles from './monogram_avatar.scss'
 
 import Avatar from '../Avatar/Avatar'
 
@@ -22,7 +22,7 @@ const initials = (name: string): string => (
   map(name.split(/\s/), name => name[0])
 )
 
-class AlternativeAvatar extends React.Component<Props, State> {
+class MonogramAvatar extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = { showInitials: false }
@@ -47,8 +47,13 @@ class AlternativeAvatar extends React.Component<Props, State> {
       personName,
     } = this.props
 
+    const classes = [
+      className,
+      styles['monogram-avatar'],
+    ]
+
     return (
-      <div className={classnames([className, styles['alternative-avatar']])}>
+      <div className={classnames(classes)}>
         <Choose>
           <When condition={!this.state.showInitials}>
             <Avatar
@@ -69,4 +74,4 @@ class AlternativeAvatar extends React.Component<Props, State> {
   }
 }
 
-export default AlternativeAvatar
+export default MonogramAvatar
