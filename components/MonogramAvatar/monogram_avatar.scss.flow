@@ -10,6 +10,7 @@ declare module.exports: {|
   +'black-opacity-7': string;
   +'black-opacity-8': string;
   +'black-opacity-9': string;
+  +'initials': string;
   +'ink': string;
   +'ink-dark': string;
   +'ink-light': string;
@@ -89,4 +90,5 @@ declare module.exports: {|
   +'white-opacity-7': string;
   +'white-opacity-8': string;
   +'white-opacity-9': string;
+  +'with-border': string;
 |};

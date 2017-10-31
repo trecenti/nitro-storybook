@@ -12,6 +12,7 @@ type Props = {
   url: string,
   personName: string,
   className: string,
+  border: boolean,
 }
 
 type State = {
@@ -23,6 +24,9 @@ const initials = (name: string): string => (
 )
 
 class MonogramAvatar extends React.Component<Props, State> {
+  static defaultProps = {
+    border: true
+  }
   constructor(props: Props) {
     super(props)
     this.state = { showInitials: false }
@@ -45,11 +49,14 @@ class MonogramAvatar extends React.Component<Props, State> {
       url,
       className,
       personName,
+      border,
     } = this.props
 
     const classes = [
       className,
       styles['monogram-avatar'],
+      (this.state.showInitials ? styles['initials'] : null),
+      (border ? styles['with-border'] : null),
     ]
 
     return (

@@ -6,14 +6,30 @@ $height: 98px;
 $border-size: 4px;
 
 .monogram-avatar {
-  border: $border-size solid $white;
   display: inline-block;
   color: $white;
-  background: $ink-lightest;
-  width: $width;
-  height: $height;
+  border-radius: $border-size;
+
+  img, p {
+    border-radius: $border-size;
+  }
+
+  &.with-border {
+    border: $border-size solid $white;
+    background: $white;
+
+    img, p {
+      border-radius: $border-size/2;
+    }
+  }
+
+  &.initials {
+    width: $width;
+    height: $height;
+  }
 
   p {
+    background: $ink-lightest;
     text-align: center;
     font-size: $font-largest;
 
