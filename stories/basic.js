@@ -1,4 +1,5 @@
 export AvatarStory from "../components/Avatar/AvatarStory";
+export MonogramAvatarStory from "../components/MonogramAvatar/MonogramAvatarStory";
 export BadgeStory from "../components/Badge/BadgeStory";
 export ButtonStory from "../components/Button/ButtonStory";
 export ColorStory from "../components/Color/ColorStory";
