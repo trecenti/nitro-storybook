@@ -3,7 +3,7 @@
 @import "base-variables/_typography.sass";
 
 .overlay {
-  background: rgba($gray-1, 0.5);
+  background: transparent;
   position: absolute;
   left: 0;
   right: 0;
@@ -20,6 +20,7 @@
 .survey {
   position: relative;
   padding: $space-larger;
+  background: transparent;
   &-question {
     list-style: none;
     counter-increment: step-counter;
