@@ -30,7 +30,7 @@ type Props = {
  * @returns {ReactElement} JSX.
  */
 export default class Avatar extends React.Component<Props> {
-  static defaultProps: {
+  static defaultProps = {
     alt: 'Avatar Image',
     size: 'base',
     showPopover: true,

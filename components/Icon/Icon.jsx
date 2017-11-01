@@ -25,7 +25,7 @@ type Props = {
  */
 
 export default class Icon extends React.Component<Props> {
-  static defaultProps: {
+  static defaultProps = {
     label: "",
     spin: false,
   }
