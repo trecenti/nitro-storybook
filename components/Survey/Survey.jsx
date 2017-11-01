@@ -179,7 +179,7 @@ export default class Survey extends React.Component<Props> {
         <div>
           <If condition={loading}>{this.renderLoading()}</If>
           {this.renderHeader()}
-          <If condition={questions.length}>
+          <If condition={questions.length > 0}>
             {this.renderBody()}
             {this.renderFooter()}
           </If>
