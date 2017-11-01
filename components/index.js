@@ -9,6 +9,7 @@ export SearchCollectionSelect from './SearchCollectionSelect/SearchCollectionSel
 export Tab from './Tab/Tab.jsx'
 export TabList from './TabList/TabList.jsx'
 export Text from './Text/Text.jsx'
+export TextInput from './TextInput/TextInput.jsx'
 export ToggleButton from './ToggleButton/ToggleButton.jsx'
 export Milestones from './Milestones/Milestones.jsx'
 export Grade from './Grade/Grade.jsx'
