@@ -5,9 +5,11 @@ import classnames from 'classnames'
 
 import Icon from '../Icon/Icon'
 import Panel from '../Panel/Panel'
-import Text from "../Text/Text"
+import Text from '../Text/Text'
 
 import styles from './styles.scss'
+
+type FileType = 'file-excel' | 'file-pdf' | 'file-word' | 'file-image' | 'file-powerpoint' | 'file-video' | 'file-text' | 'file-zip' | 'file-code' | 'file-sound' | 'file'
 
 type Props = {
   className: string,
@@ -16,16 +18,16 @@ type Props = {
   downloadUrl: string,
   layout: string,
   openNewTab: boolean,
-  type: string,
+  type: FileType,
   children: Array<Component>
 }
 
 export default class FileCard extends React.Component<Props> {
   static defaultProps = {
-    className: "",
-    layout: "vertical",
+    className: '',
+    layout: 'vertical',
     openNewTab: false,
-    type: "file"
+    type: 'file'
   }
   props: Props
 
@@ -39,9 +41,9 @@ export default class FileCard extends React.Component<Props> {
     const IconComponent = (
       <Icon
           className={styles[`icon-large`]}
-          label=""
+          label=''
           name={`${type}-o`}
-          size="lg"
+          size='lg'
           title={displayName}
       />
     )
@@ -67,12 +69,12 @@ export default class FileCard extends React.Component<Props> {
     } = this.props
     const DisplayNameComponent = (
       <Text
-          bold="true"
+          bold='true'
           color={'ink-light'}
       >{displayName}</Text>
     )
     return (
-      <h5 className="m-0">
+      <h5 className='m-0'>
         <If condition={downloadUrl}>
           <a
               href={downloadUrl}
@@ -92,7 +94,7 @@ export default class FileCard extends React.Component<Props> {
       description
     } = this.props
     return (
-      <p className="m-0">
+      <p className='m-0'>
         <Text color={'ink-lighter'}>{description}</Text>
       </p>
     )
@@ -108,16 +110,16 @@ export default class FileCard extends React.Component<Props> {
     } = this.props
     const css = [
       className,
-      styles[`file-card`],
+      styles['file-card'],
       styles[`layout-${layout}`],
     ]
     return (
-      <Panel bodyClass={"p-0"}>
+      <Panel bodyClass={'p-0'}>
         <div className={classnames(css)}>
-          <div className={styles[`file-type-box`]}>
+          <div className={styles['file-type-box']}>
             {this.renderIcon()}
           </div>
-          <div className={styles[`file-content-box`]}>
+          <div className={styles['file-content-box']}>
             <If condition={displayName}>{this.renderDisplayName()}</If>
             <If condition={description}>{this.renderDescription()}</If>
             <If condition={children}>{children}</If>
