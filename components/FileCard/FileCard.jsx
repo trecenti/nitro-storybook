@@ -65,7 +65,12 @@ export default class FileCard extends React.Component<Props> {
       downloadUrl,
       openNewTab
     } = this.props
-    const DisplayNameComponent = <Text bold="true">{displayName}</Text>
+    const DisplayNameComponent = (
+      <Text
+          bold="true"
+          color={'ink-light'}
+      >{displayName}</Text>
+    )
     return (
       <h5 className="m-0">
         <If condition={downloadUrl}>
@@ -88,7 +93,7 @@ export default class FileCard extends React.Component<Props> {
     } = this.props
     return (
       <p className="m-0">
-        <Text>{description}</Text>
+        <Text color={'ink-lighter'}>{description}</Text>
       </p>
     )
   }
