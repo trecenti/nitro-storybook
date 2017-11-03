@@ -33,6 +33,7 @@ export default class FileCard extends React.Component<Props> {
     const {
       downloadUrl,
       openNewTab,
+      displayName,
       type,
     } = this.props
     const IconComponent = (
@@ -41,7 +42,7 @@ export default class FileCard extends React.Component<Props> {
           label=""
           name={`${type}-o`}
           size="lg"
-          title="Battery Percentage"
+          title={displayName}
       />
     )
     return (
