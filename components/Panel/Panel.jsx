@@ -7,6 +7,7 @@ import { isEmpty } from 'lodash'
 type Props = {
   children: Array<Component>,
   className?: string,
+  bodyClass?: string,
   headingLinks?: Array<Component>,
   title?: string,
 }
@@ -46,9 +47,11 @@ export default class Panel extends Component<Props> {
   renderBody() {
     const {
       children,
+      bodyClass,
     } = this.props
+
     return (
-      <div className="panel-body">
+      <div className={classnames("panel-body", bodyClass)}>
         {children}
       </div>
     )

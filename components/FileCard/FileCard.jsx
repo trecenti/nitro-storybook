@@ -106,7 +106,7 @@ export default class FileCard extends React.Component<Props> {
       styles[`layout-${layout}`],
     ]
     return (
-      <Panel>
+      <Panel bodyClass={"p-0"}>
         <div className={classnames(css)}>
           <div className={styles[`file-type-box`]}>
             {this.renderIcon()}

@@ -36,7 +36,7 @@ export default function FileCardStory(stories) {
       return (
         <div className="container">
           <div className="row my-4">
-            <div className="col-sm-4">
+            <div className="col-sm-3">
               <FileCard {...props}>
                 <Button
                     className="mt-2 btn-sm btn-power-royal"
