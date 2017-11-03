@@ -2,12 +2,13 @@
 
 import React, { Component } from 'react'
 import classnames from 'classnames'
+import { isEmpty } from 'lodash'
 
 type Props = {
   children: Array<Component>,
   className?: string,
   headingLinks?: Array<Component>,
-  title: string,
+  title?: string,
 }
 
 import styles from './panel.scss'
@@ -59,13 +60,16 @@ export default class Panel extends Component<Props> {
       "panel",
       this.props.className,
     ]
+    const { title, headingLinks } = this.props
 
     return (
       <div className={classnames(css)}>
-        <div className="panel-heading clearfix">
-          {this.renderHeadingLinks()}
-          {this.renderHeadingTitle()}
-        </div>
+        <If condition={!isEmpty(title) || !isEmpty(headingLinks)}>
+          <div className="panel-heading clearfix">
+            {this.renderHeadingLinks()}
+            {this.renderHeadingTitle()}
+          </div>
+        </If>
         {this.renderBody()}
       </div>
     )
