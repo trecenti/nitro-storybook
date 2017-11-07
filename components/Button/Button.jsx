@@ -2,14 +2,17 @@
 
 import React from 'react'
 import classnames from 'classnames'
-
+import { IconType } from "../types"
 import styles from './styles.scss'
 
 
 type Props = {
-  type: "anchor" | "button" | "submit" | "",
-  text: string,
   className: string,
+  disabled: boolean,
+  icon: IconType,
+  onClick: () => mixed,
+  text: string,
+  type: "anchor" | "button" | "submit" | "",
 }
 
 export default class Button extends React.Component<Props> {
@@ -18,7 +21,14 @@ export default class Button extends React.Component<Props> {
   }
   props: Props
   createElementTag = () => {
-    const {className, text, type} = this.props;
+    const {
+      className,
+      disabled,
+      icon,
+      onClick,
+      text,
+      type
+    } = this.props
     let tag
     let props = {}
     switch(type) {
@@ -44,7 +54,9 @@ export default class Button extends React.Component<Props> {
       className,
       styles.btn,
     ]
+    props.onClick = onClick
     props.className = classnames(css)
+    if(disabled) props.disabled = true
 
     const element = React.createElement(tag, props)
 
@@ -53,6 +65,7 @@ export default class Button extends React.Component<Props> {
     } else {
       return (
         <element.type {...element.props}>
+          <If condition={icon}>{icon}</If>
           {text}
         </element.type>
       )
