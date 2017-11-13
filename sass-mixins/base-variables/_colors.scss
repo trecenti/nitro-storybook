@@ -6,7 +6,7 @@
 
 // POWER COLORS
 $power-navy:        #004976;
-$power-navy-darker: #2C3946;
+$power-navy-darker: #1F2B52;
 $power-gold:        #daaa00;
 $power-blue:        #00a3e0;
 $power-red:         #f9423a;
@@ -263,16 +263,3 @@ $off-brand-colors: (alex-yellow: $alex-yellow, pine-green: $pine-green, online-g
 // Move to general specific component sass or general bootstrap variables
 
 @import "color-ui-elements";    // Element Specific Coloring // Not sure we need this here CSS MODULES
-
-
-:export {
-
-  @mixin export-colors($colors-list) {
-    @each $name, $color in $colors-list {
-      #{$name}: $color;
-    }
-  }
-  @include export-colors($power-colors);
-  @include export-colors($interface-colors);
-  @include export-colors($opacity-colors);
-}

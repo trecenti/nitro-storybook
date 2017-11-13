@@ -6,7 +6,7 @@ import _ from 'lodash'
 
 import Text from "../Text/Text"
 import styles from './styles.scss'
-import colors from '../../sass-mixins/base-variables/_colors.scss'
+import colors from '../../sass-mixins/base-variables/_colors-export.scss'
 
 type Props = {
   children?: Array<React.Node>,
