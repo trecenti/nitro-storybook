@@ -1,16 +1,97 @@
 @import "../base-mixins/all";
 @import "../base-variables/all";
 $slideout-menu-width: 200px;
+$slideout-menu-item-height: 40px;
+$slideout-menu-icon: 50px;
+$slideout-menu-text: 150px;
+$slideout-menu-border: rgba($ink-lightest, $opacity-3);
+
 
 .sidebar-loading {
   margin: 10px;
   text-align: center;
 }
 
-#full-nav-sidebar {
+.sidebar-nav {
   position: relative;
-  background: $power-navy-dark
+  background: $power-navy-dark;
 }
+
+#sub-nav-sidebar {
+  width: $slideout-menu-width;
+  display: block;
+  border-left: 1px solid $slideout-menu-border;
+  .subnav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li a {
+      color: $white;
+      display: block;
+      font-size: $font-small;
+      border-radius: $border-rad-light;
+      padding:  ($space-smallest + 1px) $space-base;
+      margin: $space-base;
+      &:hover {
+        background: shade($power-navy-dark, 10%);
+      }
+      &.active {
+        background: $power-royal;
+        font-weight: $bold;
+      }
+    }
+  }
+}
+
+// Collapse state
+#main-nav-sidebar {
+  &.collapse-main-nav {
+    .full-menu li a span, .collapser span {
+        display: none;
+    }
+    .collapser .full-menu-icon.fa-angle-left {
+      display: none;
+    }
+    .collapser .full-menu-icon.fa-angle-right {
+      display: block;
+    }
+  }
+}
+
+// Collapse button
+.collapser {
+  @include clearfix;
+  border-bottom: 1px solid $slideout-menu-border;
+  display: block;
+  &:hover {
+    border-bottom: 1px solid $slideout-menu-border;
+  }
+  .full-menu-icon.fa-angle-right {
+    display: none;
+  }
+  span, .full-menu-icon {
+    display: block;
+    float: left;
+    height: $slideout-menu-item-height;
+  }
+  span {
+    width: $slideout-menu-text;
+    color: $ink-lightest;
+    font-size: $font-small;
+    line-height: $slideout-menu-item-height;
+  }
+  .full-menu-icon {
+    width: $slideout-menu-icon;
+    line-height: $slideout-menu-item-height;
+    transition-property: color;
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+    font-size: $font-large;
+    color: $ink-lightest;
+  }
+}
+
+
 
 .full-menu {
   @include title-font;
@@ -20,38 +101,37 @@ $slideout-menu-width: 200px;
   padding: 0;
   top: 0;
   z-index: 10000;
-  // position: absolute;
-  // height: 100%;
-  // width: 100%;
-
   li {
     a {
 
-      // border-bottom: 1px solid mix($sky, $sky-light, 50%);
-      // border-right: 1px solid mix($sky, $sky-light, 50%);
       color: $white;
       display: block;
-      font-size: 13px;
+      font-size: $font-small;
       margin: 0;
-      padding: 18px 21px;
       position: relative;
-      // font-weight: $bold;
-      @include smooth-font;
       transition-property: color, border-color, background-color;
       transition-duration: 0.15s;
       transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 
       i.full-menu-icon {
         display: inline-block;
-        // left: 14px;
-        // position: absolute;
-        // top: 15px;
+        width: $slideout-menu-icon;
+        height: $slideout-menu-item-height;
+        line-height: $slideout-menu-item-height;
+        float: left;
+        transition-property: color;
+        transition-duration: 0.15s;
+        transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
         font-size: $font-large;
         color: $ink-lightest;
       }
       span {
         display: inline-block;
-        margin-left: 2em;
+        width: $slideout-menu-text;
+        height: $slideout-menu-item-height;
+        line-height: $slideout-menu-item-height;
+        float: left;
+        @include text-truncate;
       }
       span.badge {
         display: block;
@@ -73,7 +153,18 @@ $slideout-menu-width: 200px;
       }
 
       &:hover {
-        background: $light-yellow;
+        background: shade($power-navy-dark, 10%);
+        i.full-menu-icon {
+          color: $white;
+        }
+      }
+      &.active {
+        background: $power-royal;
+        font-weight: $bold;
+        @include smooth-font;
+        i.full-menu-icon {
+          color: $white;
+        }
       }
     }
 
