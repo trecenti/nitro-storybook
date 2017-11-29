@@ -14,6 +14,8 @@ type Props = {
   defaultValue: string | Object,
   onChange: () => mixed,
   required: boolean,
+  minHour: number,
+  maxHour: number,
 }
 
 export default class TimePicker extends React.Component<Props> {
@@ -24,6 +26,8 @@ export default class TimePicker extends React.Component<Props> {
     multiGroup: true,
     labelInside: true,
     defaultValue: moment().hour(0).minute(0),
+    minHour: 0,
+    maxHour: 24,
     onChange: () => {},
   }
 
@@ -67,9 +71,10 @@ export default class TimePicker extends React.Component<Props> {
 
   renderHoursSelect() {
     let options;
+    const { minHour, maxHour } = this.props
     options = [<option key="ts-hr-option-no"/>]
 
-    for(let i = 0; i < 24; ++i) {
+    for(let i = minHour; i < maxHour; ++i) {
       const h = moment().hour(i)
       options.push(
         <option
