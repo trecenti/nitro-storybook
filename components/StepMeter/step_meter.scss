@@ -63,10 +63,8 @@ $step-size-sm: 10px;
       }
     }
   }
-}
 
-@media screen and (max-width: 500px) {
-  .step-meter {
+  &.type-simple {
     width: 100%;
     display: flex;
 

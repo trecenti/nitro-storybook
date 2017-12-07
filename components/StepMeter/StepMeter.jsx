@@ -17,16 +17,19 @@ type Step = {|
 
 type Props = {
   className: string,
-  steps: Array<Step>
+  steps: Array<Step>,
+  type: string,
 }
 
 const StepMeter = ({
   steps,
+  type,
   className
 }: Props) => {
   const classes = [
     className,
     styles['step-meter'],
+    styles[`type-${type}`],
   ]
   return (
     <ul className={classnames(classes)}>
