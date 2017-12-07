@@ -42,7 +42,9 @@ const StepMeter = ({
                   name="check"
               />
             </If>
-            {step.name}
+            <span>
+              {step.name}
+            </span>
           </li>
         ))
       }

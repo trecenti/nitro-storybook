@@ -3,6 +3,8 @@
 @import "base-variables/_border-radius.sass";
 @import "base-variables/_typography.sass";
 
+$step-size-sm: 10px;
+
 .step-meter {
   list-style-type: none;
   padding: 0 $space-base;
@@ -12,13 +14,13 @@
     background: $sky;
     border-radius: $border-rad-heavy*2;
     color: $ink-light;
-    font-size: $font-smallest;
+    font-size: $font-smallest - 1;
     font-weight: 400;
     display: inline-block;
     height: 18px;
     line-height: 20px;
-    margin: 0 $space-smaller;
-    min-width: 80px;
+    margin: 0 $space-small;
+    min-width: 75px;
     padding: 0 $space-smallest;
     position: relative;
     text-align: center;
@@ -29,10 +31,10 @@
       background: $sky;
       position: absolute;
       height: 4px;
-      left: -10px;
+      left: -14px;
       right: 0;
       top: calc(50% - 2px);
-      width: 10px;
+      width: 14px;
     }
 
     &:first-child {
@@ -43,7 +45,7 @@
 
     &.done,
     &.done::before {
-      background: $power-green;
+      background: $power-blue;
     }
     &.started,
     &.started::before {
@@ -58,6 +60,53 @@
     span {
       &:first-child {
         margin-right: $space-smallest/2;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .step-meter {
+    width: 100%;
+    display: flex;
+
+    li {
+      min-width: auto;
+      height: 10px;
+      line-height: 10px;
+      flex-grow: 1;
+      margin: 0;
+      background: transparent !important;
+
+      span {
+        display: none;
+      }
+
+      &::before {
+        height: 2px;
+        top: calc(50% - 1px);
+        left: calc(-50% + 5px);
+        width: calc(100% - 10px);
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: calc(50% - 5px);
+        width: $step-size-sm;
+        height: $step-size-sm;
+        border-radius: $step-size-sm/2;
+        background-color: $sky;
+        border: 2px solid $sky;
+      }
+
+      &.done::after {
+        background: $power-blue;
+        border-color: $power-blue;
+      }
+      &.started::after {
+        background: transparent;
+        border-color: $power-blue;
       }
     }
   }
