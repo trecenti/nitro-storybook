@@ -140,6 +140,7 @@ export default class TimePicker extends React.Component<Props> {
       className: "form-control",
       onChange: this.handleOnMinutesChange,
       value: this.state.minute,
+      disabled: this.state.hour == ''
     }
     if(this.props.required) props.required = "required"
     if(this.props.disabled) props.disabled = "disabled"
