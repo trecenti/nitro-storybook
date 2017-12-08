@@ -75,7 +75,11 @@ export default class TimePicker extends React.Component<Props> {
   }
 
   handleOnMinutesChange = (e) => {
-    const minute = e.target.value
+    let minute = e.target.value
+    const hour = this.state.hour
+    if (hour != '' && minute == '') {
+      minute = '00'
+    }
     this.setState({minute})
     this.handleTimeChange(null, minute)
   }
