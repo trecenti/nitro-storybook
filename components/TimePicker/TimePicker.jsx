@@ -32,8 +32,8 @@ export default class TimePicker extends React.Component<Props> {
   }
 
   state = {
-    hour: null,
-    minute: null,
+    hour: '',
+    minute: '',
   }
 
   componentWillMount() {
@@ -53,20 +53,33 @@ export default class TimePicker extends React.Component<Props> {
   props: Props
 
   handleTimeChange(hour, minute) {
-    this.props.onChange(`${hour || this.state.hour}:${minute || this.state.minute}`)
+    if (hour == '' && minute == '') {
+      this.props.onChange('')
+    } else {
+      this.props.onChange(`${hour}:${minute}`)
+    }
   }
 
   handleOnHourChange = (e) => {
     const hour = e.target.value
-    this.setState({hour})
-    this.handleTimeChange(hour)
+    let minute = this.state.minute
+    if (hour != '' && minute == '') {
+      minute = '00'
+    } else if (hour == '') {
+      minute = ''
+    }
+    this.setState({hour, minute})
+    this.handleTimeChange(hour, minute)
   }
 
   handleOnMinutesChange = (e) => {
-    const m = moment().minutes(e.target.value)
-    const minute = m.format('mm')
+    let minute = e.target.value
+    const hour = this.state.hour
+    if (hour != '' && minute == '') {
+      minute = '00'
+    }
     this.setState({minute})
-    this.handleTimeChange(null, minute)
+    this.handleTimeChange(hour, minute)
   }
 
   renderHoursSelect() {
@@ -81,11 +94,14 @@ export default class TimePicker extends React.Component<Props> {
             key={`ts-hr-option-${i}`}
             value={h.format('HH')}
         >
-          <If condition={this.props.clock === 12}>
-            {h.format('ha')}
-          <Else/>
-            {h.format('HH')}
-          </If>
+          <Choose>
+            <When condition={this.props.clock == 12}>
+              {h.format('ha')}
+            </When>
+            <Otherwise>
+              {h.format('HH')}
+            </Otherwise>
+          </Choose>
         </option>
       )
     }
@@ -93,7 +109,7 @@ export default class TimePicker extends React.Component<Props> {
     let props = {
       className: "form-control",
       onChange: this.handleOnHourChange,
-      defaultValue: this.state.hour,
+      value: this.state.hour,
     }
 
     if(this.props.required) props.required = "required"
@@ -125,7 +141,8 @@ export default class TimePicker extends React.Component<Props> {
     let props = {
       className: "form-control",
       onChange: this.handleOnMinutesChange,
-      defaultValue: this.state.minute,
+      value: this.state.minute,
+      disabled: this.state.hour == ''
     }
     if(this.props.required) props.required = "required"
     if(this.props.disabled) props.disabled = "disabled"
