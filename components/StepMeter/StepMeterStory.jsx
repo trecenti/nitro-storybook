@@ -1,12 +1,13 @@
 import React from "react"
 import StepMeter from "./StepMeter"
 
-import { object } from "@storybook/addon-knobs"
+import { object, select } from "@storybook/addon-knobs"
 
 export default function StepMeterStory(stories) {
   stories.add("StepMeter",
     () => {
       let props = {
+        type: select("Type", ["complex", "simple"], "complex"),
         steps: object(
           "steps",
           [

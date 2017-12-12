@@ -4,4 +4,5 @@ declare module.exports: {|
   +'done': string;
   +'started': string;
   +'step-meter': string;
+  +'type-simple': string;
 |};
