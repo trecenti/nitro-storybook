@@ -7,6 +7,8 @@ import Icon from '../Icon/Icon'
 import Panel from '../Panel/Panel'
 import Text from '../Text/Text'
 
+import { Popover, OverlayTrigger } from 'react-bootstrap'
+
 import styles from './styles.scss'
 
 type FileType = 'file-excel' | 'file-pdf' | 'file-word' | 'file-image' | 'file-powerpoint' | 'file-video' | 'file-text' | 'file-zip' | 'file-code' | 'file-sound' | 'file'
@@ -107,21 +109,44 @@ export default class FileCard extends React.Component<Props> {
 
   renderLockIcon() {
     const { hasAccess, hasProtection } = this.props
-    const lock = hasAccess ? {icon: 'unlock', title: 'Privacy Protected'} : {icon: 'lock', title: ''}
+    const lock = hasAccess ? 'unlock' : 'lock'
 
     if (!hasProtection) {
       return null
     }
 
-    return (
-      <div>
-        <Icon
-            name={lock.icon}
-            title={lock.title}
-            size={'lg'}
-        />
-      </div>
-    )
+    const popoverPrivacy = (
+      <Popover id="privacy-protected">
+        {'Privacy Protected'}
+      </Popover>
+    );
+
+    if (hasAccess) {
+      return (
+        <div>
+          <Icon
+              name={lock}
+              size={'lg'}
+          />
+        </div>
+      )
+    } else {
+      return (
+        <OverlayTrigger
+            overlay={popoverPrivacy}
+            placement="top"
+            trigger={['hover', 'focus']}
+        >
+          <div>
+            <Icon
+                name={lock}
+                size={'lg'}
+            />
+          </div>
+        </OverlayTrigger>
+      )
+    }
+
   }
 
   render() {
