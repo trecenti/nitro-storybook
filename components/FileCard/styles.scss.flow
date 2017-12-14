@@ -7,5 +7,6 @@ declare module.exports: {|
   +'hidden-xxs': string;
   +'icon-large': string;
   +'layout-horizontal': string;
+  +'lock': string;
   +'visible-xxs': string;
 |};

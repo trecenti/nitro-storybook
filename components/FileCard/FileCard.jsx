@@ -19,6 +19,8 @@ type Props = {
   layout: string,
   openNewTab: boolean,
   type: FileType,
+  hasProtection: boolean,
+  hasAccess: boolean,
   children: Array<Component>
 }
 
@@ -27,7 +29,9 @@ export default class FileCard extends React.Component<Props> {
     className: '',
     layout: 'vertical',
     openNewTab: false,
-    type: 'file'
+    type: 'file',
+    hasProtection: false,
+    hasAccess: true,
   }
   props: Props
 
@@ -37,6 +41,7 @@ export default class FileCard extends React.Component<Props> {
       openNewTab,
       displayName,
       type,
+      hasAccess,
     } = this.props
     const IconComponent = (
       <Icon
@@ -48,7 +53,7 @@ export default class FileCard extends React.Component<Props> {
       />
     )
     return (
-      <If condition={downloadUrl}>
+      <If condition={downloadUrl && hasAccess}>
         <a
             href={downloadUrl}
             target={openNewTab ? '_blank' : '_parent'}
@@ -100,6 +105,25 @@ export default class FileCard extends React.Component<Props> {
     )
   }
 
+  renderLockIcon() {
+    const { hasAccess, hasProtection } = this.props
+    const lock = hasAccess ? {icon: 'unlock', title: 'Privacy Protected'} : {icon: 'lock', title: ''}
+
+    if (!hasProtection) {
+      return null
+    }
+
+    return (
+      <div>
+        <Icon
+            name={lock.icon}
+            title={lock.title}
+            size={'lg'}
+        />
+      </div>
+    )
+  }
+
   render() {
     const {
       className,
@@ -116,6 +140,9 @@ export default class FileCard extends React.Component<Props> {
     return (
       <Panel bodyClass={'p-0'}>
         <div className={classnames(css)}>
+          <div className={styles['lock']}>
+            {this.renderLockIcon()}
+          </div>
           <div className={styles['file-type-box']}>
             {this.renderIcon()}
           </div>

@@ -7,6 +7,13 @@ $file-icon-size: 80px;
   display: block;
   width: 100%;
 
+  .lock {
+    position: absolute;
+    top: $space-small;
+    right: $space-largest;
+    color: $gray-5;
+  }
+
   .file-type-box {
     padding: $space-largest $space-large $space-jumbo;
     text-align: center;

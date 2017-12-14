@@ -31,7 +31,9 @@ export default function FileCardStory(stories) {
             "file",
           ],
           "file"
-        )
+        ),
+        hasProtection: boolean('hasProtection', false),
+        hasAccess: boolean('hasAccess', false),
       }
       return (
         <div className="container">
