@@ -7,6 +7,8 @@ import Icon from '../Icon/Icon'
 import Panel from '../Panel/Panel'
 import Text from '../Text/Text'
 
+import { Popover, OverlayTrigger } from 'react-bootstrap'
+
 import styles from './styles.scss'
 
 type FileType = 'file-excel' | 'file-pdf' | 'file-word' | 'file-image' | 'file-powerpoint' | 'file-video' | 'file-text' | 'file-zip' | 'file-code' | 'file-sound' | 'file'
@@ -19,6 +21,8 @@ type Props = {
   layout: string,
   openNewTab: boolean,
   type: FileType,
+  hasProtection: boolean,
+  hasAccess: boolean,
   children: Array<Component>
 }
 
@@ -27,7 +31,9 @@ export default class FileCard extends React.Component<Props> {
     className: '',
     layout: 'vertical',
     openNewTab: false,
-    type: 'file'
+    type: 'file',
+    hasProtection: false,
+    hasAccess: true,
   }
   props: Props
 
@@ -37,6 +43,7 @@ export default class FileCard extends React.Component<Props> {
       openNewTab,
       displayName,
       type,
+      hasAccess,
     } = this.props
     const IconComponent = (
       <Icon
@@ -48,7 +55,7 @@ export default class FileCard extends React.Component<Props> {
       />
     )
     return (
-      <If condition={downloadUrl}>
+      <If condition={downloadUrl && hasAccess}>
         <a
             href={downloadUrl}
             target={openNewTab ? '_blank' : '_parent'}
@@ -100,6 +107,48 @@ export default class FileCard extends React.Component<Props> {
     )
   }
 
+  renderLockIcon() {
+    const { hasAccess, hasProtection } = this.props
+    const lock = hasAccess ? 'unlock' : 'lock'
+
+    if (!hasProtection) {
+      return null
+    }
+
+    const popoverPrivacy = (
+      <Popover id="privacy-protected">
+        {'Privacy Protected'}
+      </Popover>
+    );
+
+    if (hasAccess) {
+      return (
+        <div>
+          <Icon
+              name={lock}
+              size={'lg'}
+          />
+        </div>
+      )
+    } else {
+      return (
+        <OverlayTrigger
+            overlay={popoverPrivacy}
+            placement="top"
+            trigger={['hover', 'focus']}
+        >
+          <div>
+            <Icon
+                name={lock}
+                size={'lg'}
+            />
+          </div>
+        </OverlayTrigger>
+      )
+    }
+
+  }
+
   render() {
     const {
       className,
@@ -116,6 +165,9 @@ export default class FileCard extends React.Component<Props> {
     return (
       <Panel bodyClass={'p-0'}>
         <div className={classnames(css)}>
+          <div className={styles['lock']}>
+            {this.renderLockIcon()}
+          </div>
           <div className={styles['file-type-box']}>
             {this.renderIcon()}
           </div>
