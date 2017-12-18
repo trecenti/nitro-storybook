@@ -1,6 +1,6 @@
 {
   "name": "nitro-styleguide",
-  "version": "1.3.5",
+  "version": "1.4.0",
   "description": "Nitro UI Styleguide + React component dev env",
   "main": "components/index.js",
   "scripts": {
