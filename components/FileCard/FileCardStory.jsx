@@ -2,6 +2,7 @@ import React from "react"
 
 import FileCard from "./FileCard"
 import Button from "../Button/Button"
+import UserStamp from '../UserStamp/UserStamp'
 
 import { boolean, text, select } from "@storybook/addon-knobs"
 
@@ -12,7 +13,7 @@ export default function FileCardStory(stories) {
         className: text("className", ""),
         layout: select("layout", ["vertical", "horizontal"], "vertical"),
         displayName: text('displayName', 'Resume'),
-        description: text('description', 'Aug. 16, 2017'),
+        description: text('description', 'Amazing file'),
         downloadUrl: text('downloadUrl', 'http://google.com'),
         openNewTab: boolean('openNewTab', false),
         type: select(
@@ -40,6 +41,12 @@ export default function FileCardStory(stories) {
           <div className="row my-4">
             <div className="col-sm-3">
               <FileCard {...props}>
+                <UserStamp
+                    action="Uploaded"
+                    date="2017-11-28"
+                    name="John Galt"
+                    thumbUrl="http://i.pravatar.cc/46"
+                />
                 <Button
                     className="mt-2 btn-sm btn-power-royal"
                     text="Download"
