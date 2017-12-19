@@ -3,6 +3,8 @@
 import React from 'react'
 
 import moment from 'moment'
+import classnames from 'classnames'
+
 import Avatar from '../Avatar/Avatar'
 import Text from '../Text/Text'
 
@@ -22,9 +24,10 @@ const UserStamp = ({ thumbUrl, name, action, date }: UserStampProps) => (
     <Avatar
         size="smaller"
         thumb={thumbUrl}
+        url={thumbUrl}
     />
     <div>
-      <p className='m-0 ml-1'>
+      <p className={classnames(styles['action-timestamp'], 'm-0 ml-1')}>
         <Text color={'ink'}>{action} {moment(date).format(DateFormat)}</Text>
       </p>
       <p className='m-0 ml-1'>
