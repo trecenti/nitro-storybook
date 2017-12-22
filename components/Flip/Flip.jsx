@@ -11,7 +11,8 @@ type FlipProps = {
 }
 
 type FlipSideProps = {
-  children?: React.Node
+  children?: React.Node,
+  className?: string,
 }
 
 const Flip = ({ children, flipped }: FlipProps) => (
@@ -29,13 +30,19 @@ const Flip = ({ children, flipped }: FlipProps) => (
 )
 
 // eslint-disable-next-line react/no-multi-comp
-const FlipFront = ({ children }: FlipSideProps) => (
-  <div className={styles.front}>{children}</div>
+const FlipFront = ({
+  children,
+  className,
+}: FlipSideProps) => (
+  <div className={classname(styles.front, className)}>{children}</div>
 )
 
 // eslint-disable-next-line react/no-multi-comp
-const FlipBack = ({ children }: FlipSideProps) => (
-  <div className={styles.back}>{children}</div>
+const FlipBack = ({
+  children,
+  className,
+}: FlipSideProps) => (
+  <div className={classname(styles.back, className)}>{children}</div>
 )
 
 Flip.Front = FlipFront
