@@ -6,11 +6,12 @@ $file-icon-size: 80px;
 .file-card {
   display: block;
   width: 100%;
+  position: relative;
 
   .lock {
     position: absolute;
     top: $space-small;
-    right: $space-largest;
+    right: $space-small;
     color: $gray-5;
   }
 
