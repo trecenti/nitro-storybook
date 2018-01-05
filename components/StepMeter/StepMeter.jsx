@@ -39,13 +39,13 @@ const StepMeter = ({
           <Choose>
             <When condition={type == 'simple'}>
               <OverlayTrigger
+                  key={idx}
                   overlay={<Tooltip id={`tooltip-step.name`}>{step.name}</Tooltip>}
                   placement="bottom"
-                  trigger="hover"
+                  trigger={['hover', 'focus']}
               >
                 <li
                     className={`text-uppercase ${styles[step.state]}`}
-                    key={idx}
                 />
               </OverlayTrigger>
             </When>
