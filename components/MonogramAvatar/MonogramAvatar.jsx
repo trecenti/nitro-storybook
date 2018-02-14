@@ -22,9 +22,12 @@ type State = {
   showInitials: boolean
 }
 
-const initials = (name: string): string => (
-  map(name.split(/\s/), name => name[0])
-)
+const initials = function(name: string): string {
+  if (!name) {
+    return <i className="fa fa-user"></i>
+  }
+  return map(name.split(/\s/), name => name[0])
+}
 
 class MonogramAvatar extends React.Component<Props, State> {
   static defaultProps = {
