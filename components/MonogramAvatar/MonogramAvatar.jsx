@@ -8,11 +8,14 @@ import styles from './monogram_avatar.scss'
 
 import Avatar from '../Avatar/Avatar'
 
+type AvatarSize = "smaller" | "small" | "base" | "large" | "larger"
+
 type Props = {
-  url: string,
-  personName: string,
-  className: string,
   border: boolean,
+  className: string,
+  personName: string,
+  size: AvatarSize,
+  url: string,
 }
 
 type State = {
@@ -25,7 +28,8 @@ const initials = (name: string): string => (
 
 class MonogramAvatar extends React.Component<Props, State> {
   static defaultProps = {
-    border: true
+    border: true,
+    size: 'base'
   }
   constructor(props: Props) {
     super(props)
@@ -49,6 +53,7 @@ class MonogramAvatar extends React.Component<Props, State> {
       url,
       className,
       personName,
+      size,
       border,
     } = this.props
 
@@ -68,7 +73,7 @@ class MonogramAvatar extends React.Component<Props, State> {
                 disableLink
                 onError={this.handleImageLoadError}
                 showPopover={false}
-                size={'base'}
+                size={this.props.size}
                 thumb={url}
             />
           </When>
