@@ -7,7 +7,7 @@ import { isEmpty, map } from 'lodash'
 import styles from './monogram_avatar.scss'
 
 import Avatar from '../Avatar/Avatar'
-import AvatarSize from '../Avatar/Avatar'
+import type AvatarSize from '../Avatar/Avatar'
 
 type Props = {
   border: boolean,
@@ -75,7 +75,7 @@ class MonogramAvatar extends React.Component<Props, State> {
                 disableLink
                 onError={this.handleImageLoadError}
                 showPopover={false}
-                size={this.props.size}
+                size={size}
                 thumb={url}
             />
           </When>
