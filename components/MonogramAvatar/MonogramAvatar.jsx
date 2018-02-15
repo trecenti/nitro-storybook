@@ -7,25 +7,31 @@ import { isEmpty, map } from 'lodash'
 import styles from './monogram_avatar.scss'
 
 import Avatar from '../Avatar/Avatar'
+import type AvatarSize from '../Avatar/Avatar'
 
 type Props = {
-  url: string,
-  personName: string,
-  className: string,
   border: boolean,
+  className: string,
+  personName: string,
+  size: AvatarSize,
+  url: string,
 }
 
 type State = {
   showInitials: boolean
 }
 
-const initials = (name: string): string => (
-  map(name.split(/\s/), name => name[0])
-)
+const initials = function(name: string): string {
+  if (!name) {
+    return <i className="fa fa-user" />
+  }
+  return map(name.split(/\s/), name => name[0]).join('').substring(0,2)
+}
 
 class MonogramAvatar extends React.Component<Props, State> {
   static defaultProps = {
-    border: true
+    border: true,
+    size: 'base'
   }
   constructor(props: Props) {
     super(props)
@@ -49,6 +55,7 @@ class MonogramAvatar extends React.Component<Props, State> {
       url,
       className,
       personName,
+      size,
       border,
     } = this.props
 
@@ -68,7 +75,7 @@ class MonogramAvatar extends React.Component<Props, State> {
                 disableLink
                 onError={this.handleImageLoadError}
                 showPopover={false}
-                size={'base'}
+                size={size}
                 thumb={url}
             />
           </When>

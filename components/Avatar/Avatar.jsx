@@ -7,6 +7,8 @@ import {OverlayTrigger, Popover} from 'react-bootstrap'
 
 import styles from './styles.scss'
 
+export type AvatarSize = "smaller" | "small" | "base" | "large" | "larger"
+
 type Props = {
   alt: string,
   disableLink: boolean,
