@@ -7,8 +7,7 @@ import { isEmpty, map } from 'lodash'
 import styles from './monogram_avatar.scss'
 
 import Avatar from '../Avatar/Avatar'
-
-type AvatarSize = "smaller" | "small" | "base" | "large" | "larger"
+import AvatarSize from '../Avatar/Avatar'
 
 type Props = {
   border: boolean,
