@@ -24,9 +24,9 @@ type State = {
 
 const initials = function(name: string): string {
   if (!name) {
-    return <i className="fa fa-user"></i>
+    return <i className="fa fa-user" />
   }
-  return map(name.split(/\s/), name => name[0])
+  return map(name.split(/\s/), name => name[0]).join('').substring(0,2)
 }
 
 class MonogramAvatar extends React.Component<Props, State> {
