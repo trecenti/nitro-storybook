@@ -1,4 +1,4 @@
-# Nitro Styleguide
+# Nitro Storybook
 
 This repo provides the tools to implement view components which make up the visual appearance of Nitro.
 

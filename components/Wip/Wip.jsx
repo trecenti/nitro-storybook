@@ -22,7 +22,7 @@ export default class Wip extends React.Component<Props> {
         <div className="alert alert-warning">
           {`W.I.P. see `}
           <a
-              href={`https://github.com/powerhome/nitro-styleguide/pull/${prNumber}`}
+              href={`https://github.com/powerhome/nitro-storybook/pull/${prNumber}`}
           >
               {branch}
           </a>
