@@ -132,6 +132,15 @@ From the current project directory, run:
 1. navigate to [localhost:9001](http://localhost:9001)
 
 
+#### Getting Your Changes Into Nitro
 
 
+1. Get your `nitro-storybook` PR approved and merged into the `nitro-storybook`'s `master` branch
+2. Update `nitro-storybook`'s version number in `package.json`
+3. [Create a new release](https://github.com/powerhome/nitro-storybook/releases/new). The release's version number should, naturally, match the version number from Step 2.
+4. Relax for a bit. You've been working super hard for the last fifteen or twenty seconds. A hot bubble bath sounds really nice, right?
+5. Create a new `nitro-web` branch.
+6. Look for any `Gemfile` containing the *old* `nitro-storybook` version number, and update it to the *new* version number from Step 2.
+7. Run `./install.sh`. This will rebuild Nitro's assets and update all the relevant `yarn.lock` files.
+8. Follow the steps you'd normally follow to get a Nitro PR out to production.
 
