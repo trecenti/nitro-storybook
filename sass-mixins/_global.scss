@@ -371,8 +371,8 @@ body {
 
 
 /* For smaller displays have modal-lg fill the screen */
-@media only screen and (device-width: 768px),
-       only screen and (max-width: 768px) {
+@media only screen and (device-width: 769px),
+       only screen and (max-width: 769px) {
   .modal-lg {
     &.modal-dialog {
       width: 100%;
