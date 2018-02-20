@@ -73,6 +73,8 @@ declare module.exports: {|
   +'power-gold': string;
   +'power-green': string;
   +'power-navy': string;
+  +'power-navy-dark': string;
+  +'power-navy-darker': string;
   +'power-red': string;
   +'power-royal': string;
   +'sky': string;

@@ -34,17 +34,5 @@ declare module.exports: {|
   +'pill-primary': string;
   +'pill-success': string;
   +'pill-warning': string;
-  +'power-blue': string;
-  +'power-gold': string;
-  +'power-green': string;
-  +'power-navy': string;
-  +'power-navy-dark': string;
-  +'power-navy-darker': string;
-  +'power-red': string;
-  +'power-royal': string;
-  +'sky': string;
-  +'sky-dark': string;
-  +'sky-light': string;
-  +'sky-lighter': string;
   +'visible-xxs': string;
 |};
