@@ -67,7 +67,7 @@ class MonogramAvatar extends React.Component<Props, State> {
     ]
 
     return (
-      <div className={classnames(classes)}>
+      <div className={classnames(classes, styles[`monogram-avatar-${size}`])}>
         <Choose>
           <When condition={!this.state.showInitials}>
             <Avatar
