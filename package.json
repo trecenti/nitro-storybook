@@ -1,5 +1,4 @@
-{
-  "name": "nitro-styleguide",
+  "name": "nitro-storybook",
   "version": "1.5.8",
   "description": "Nitro UI Styleguide + React component dev env",
   "main": "components/index.js",
@@ -17,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://github.com/powerhome/nitro-styleguide.git"
+    "url": "git+ssh://github.com/powerhome/nitro-storybook.git"
   },
   "author": "powerhome",
   "license": "ISC",
@@ -27,9 +26,9 @@
     "npm": "5.4.2"
   },
   "bugs": {
-    "url": "https://github.com/powerhome/nitro-styleguide/issues"
+    "url": "https://github.com/powerhome/nitro-storybook/issues"
   },
-  "homepage": "https://github.com/powerhome/nitro-styleguide#readme",
+  "homepage": "https://github.com/powerhome/nitro-storybook#readme",
   "devDependencies": {
     "@storybook/react": "3.2.8",
     "@storybook/storybook-deployer": "2.0.0",
