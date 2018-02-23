@@ -23,16 +23,48 @@ $border-size: 4px;
     }
   }
 
-  &.initials {
-    width: $width;
-    height: $height;
-  }
-
   p {
     background: $ink-lightest;
     text-align: center;
-    font-size: $font-largest;
+  }
 
-    line-height: $height - (2 * $border-size);
+  &-smaller {
+    $size: 30px;
+    font-size: $size * 0.4;
+    height: $size;
+    line-height: $size - (2 * $border-size);
+    width: $size;
+  }
+
+  &-small {
+    $size: 60px;
+    font-size: $size * 0.32;
+    height: $size;
+    line-height: $size - (2 * $border-size);
+    width: $size;
+  }
+
+  &-base {
+    $size: 90px;
+    font-size: $size * 0.32;
+    height: $size;
+    line-height: $size - (2 * $border-size);
+    width: $size;
+  }
+
+  &-large {
+    $size: 115px;
+    font-size: $size * 0.32;
+    height: $size;
+    line-height: $size - (2 * $border-size);
+    width: $size;
+  }
+
+  &-larger {
+    $size: 197px;
+    font-size: $size * 0.32;
+    height: $size;
+    line-height: $size - (2 * $border-size);
+    width: $size;
   }
 }
