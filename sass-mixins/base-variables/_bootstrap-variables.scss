@@ -11,7 +11,7 @@
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
-  md: 769px,
+  md: 768px,
   lg: 992px,
   xl: 1200px
 ) !default;
@@ -198,7 +198,7 @@ $thumbnail-caption-padding:   9px;
 // -----------------------------------
 
 $screen-xs-min:               480px; // Extra small screen / phone
-$screen-sm-min:               769px; // Small screen / tablet
+$screen-sm-min:               768px; // Small screen / tablet
 $screen-md-min:               992px; // Medium screen / desktop
 $screen-lg-min:               1200px; // Large screen / wide desktop
 
