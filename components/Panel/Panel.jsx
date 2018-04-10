@@ -86,14 +86,10 @@ export default class Panel extends Component<Props> {
 
   renderToggle() {
     const {collapsed} = this.state
-    const toggle = () => {
-      this.setState({collapsed: !this.state.collapsed})
-    }
     return (
       <FontAwesome
           className={styles.toggle}
           name={`chevron-circle-${collapsed ? 'down' : 'up'}`}
-          onClick={toggle}
       />
     )
   }
@@ -134,10 +130,17 @@ export default class Panel extends Component<Props> {
       className,
     ]
 
+    const toggleCollapsed = () => {
+      this.setState({collapsed: !this.state.collapsed})
+    }
+
     return (
       <div className={classnames(css)}>
         <If condition={!isEmpty(title) || !isEmpty(headingLinks)}>
-          <div className="panel-heading clearfix">
+          <div
+              className="panel-heading clearfix"
+              onClick={toggleCollapsed}
+          >
             <div className={`p-0 ${collapsible ? 'col-xs-6 col-sm-6 col-md-6' : 'col-sm-12 col-md-12'}`}>
               {this.renderHeadingLinks()}
               {this.renderHeadingTitle()}
