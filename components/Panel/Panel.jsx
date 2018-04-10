@@ -66,7 +66,7 @@ export default class Panel extends Component<Props> {
         <div>
           <Text
               bold
-              className={styles[`panel-title-main${subTitle ? '-subtitled' : ''}`]}
+              className={titleIcon ? styles[`${subTitle ? 'panel-title-main-subtitled' : 'panel-title-main'}`] : null}
               size="large"
           >
             {title}
