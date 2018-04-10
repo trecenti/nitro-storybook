@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import classnames from 'classnames'
 import { isEmpty } from 'lodash'
 import FontAwesome from 'react-fontawesome'
+import Text from '../Text/Text'
 
 type Props = {
   bodyClass?: string,
@@ -14,6 +15,7 @@ type Props = {
   headingLinks?: Array<Component>,
   title?: string,
   titleIcon?: string,
+  subTitle?: string,
 }
 
 import styles from './panel.scss'
@@ -51,16 +53,33 @@ export default class Panel extends Component<Props> {
     const {
       title,
       titleIcon,
+      subTitle,
     } = this.props
     return (
-      <h3 className="panel-title">
+      <h3 className={classnames("panel-title", styles["panel-title"])}>
         <If condition={titleIcon}>
           <FontAwesome
-              className="mr-3"
+              className={classnames("mr-3 ml-4", styles.icon)}
               name={titleIcon}
           />
         </If>
-        {title}
+        <div>
+          <Text
+              bold
+              className={styles[`panel-title-main${subTitle ? '-subtitled' : ''}`]}
+              size="large"
+          >
+            {title}
+          </Text>
+          <If condition={subTitle}>
+            <Text
+                className={classnames("clearfix", styles["panel-title-subtitle"])}
+                size="smallest"
+            >
+              {subTitle}
+            </Text>
+          </If>
+        </div>
       </h3>
     )
   }
@@ -72,7 +91,8 @@ export default class Panel extends Component<Props> {
     }
     return (
       <FontAwesome
-          name={`angle-${collapsed ? 'down' : 'up'}`}
+          className={styles.toggle}
+          name={`chevron-circle-${collapsed ? 'down' : 'up'}`}
           onClick={toggle}
       />
     )

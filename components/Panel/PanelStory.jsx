@@ -11,6 +11,7 @@ export default function PanelStory(stories) {
         collapsible: boolean("collapsible", false),
         title: text("title", "Hi, World."),
         titleIcon: text("titleIcon", "apple"),
+        subTitle: text("subTitle", null),
       }
       return (
         <Panel {...props}>
