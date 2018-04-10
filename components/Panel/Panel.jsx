@@ -138,7 +138,7 @@ export default class Panel extends Component<Props> {
       <div className={classnames(css)}>
         <If condition={!isEmpty(title) || !isEmpty(headingLinks)}>
           <div className="panel-heading clearfix">
-            <div className={`p-0 col-md-${collapsible ? '6' : '12'}`}>
+            <div className={`p-0 ${collapsible ? 'col-xs-6 col-sm-6 col-md-6' : 'col-sm-12 col-md-12'}`}>
               {this.renderHeadingLinks()}
               {this.renderHeadingTitle()}
             </div>
