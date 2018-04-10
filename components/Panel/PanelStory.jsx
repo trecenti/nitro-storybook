@@ -2,13 +2,15 @@ import React from "react"
 import Panel from "./Panel"
 import Text from "../Text/Text"
 
-import { text } from "@storybook/addon-knobs"
+import { boolean, text } from "@storybook/addon-knobs"
 
 export default function PanelStory(stories) {
   stories.add("Panel",
     () => {
       let props = {
+        collapsible: boolean("collapsible", false),
         title: text("title", "Hi, World."),
+        titleIcon: text("titleIcon", "apple"),
       }
       return (
         <Panel {...props}>
