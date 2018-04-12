@@ -8,33 +8,36 @@
     }
 
     .panel-heading {
-      display: flex;
       padding: 6px 16px;
       border-color: $sky;
-      align-items: baseline;
 
-      &.panel-collapsed {
-        background-color: $sky-lighter;
-      }
+      .panel-title {
+        flex-grow: 1;
 
-      .icon-toggle {
-        color: $ink-lightest;
-        transition: all 0.5s ease;
-        margin-left: 16px;
+        .title, .icon-title {
+          color: $ink-light;
+          font-size: $font-size-base;
+        }
+
+        .icon-title {
+          margin-right: 10px;
+        }
       }
     }
 
-    .panel-title {
-      flex-grow: 1;
+    .panel-toggle {
+      display: flex;
+      align-items: baseline;
+    }
 
-      * {
-        color: $ink-light;
-        font-size: $font-size-base;
-      }
+    .icon-toggle {
+      color: $ink-lightest;
+      transition: all 0.5s ease;
+      margin-left: 16px;
+    }
 
-      .icon-title {
-        margin-right: 10px;
-      }
+    .panel-collapsed {
+      background-color: $sky-lighter;
     }
   }
 }

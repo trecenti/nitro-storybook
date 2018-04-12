@@ -5,19 +5,23 @@ import { boolean, text } from "@storybook/addon-knobs"
 import Text from "../Text/Text"
 import PanelGroup from "./PanelGroup"
 
-const renderValidationComplete = () => (
-  <span style={{ color: "rgb(19, 171, 19)" }}>
-    {'Complete '}
-    <FontAwesome name="check-circle" />
-  </span>
-)
+function ValidationComplete() {
+  return (
+    <span style={{ color: "rgb(19, 171, 19)" }}>
+      {'Complete '}
+      <FontAwesome name="check-circle" />
+    </span>
+  )
+}
 
-const renderValidationIncomplete = () => (
-  <span style={{ color: "#ff0000" }}>
-    {'Incomplete '}
-    <FontAwesome name="exclamation-circle" />
-  </span>
-)
+function ValidationIncomplete() {
+  return (
+    <span style={{ color: "#ff0000" }}>
+      {'Incomplete '}
+      <FontAwesome name="exclamation-circle" />
+    </span>
+  )
+}
 
 export default function PanelGroupStory(stories) {
   stories.add("PanelGroup", () => {
@@ -27,11 +31,11 @@ export default function PanelGroupStory(stories) {
           <Text>Now you see me!</Text>
         </PanelGroup.Panel>
 
-        <PanelGroup.Panel icon="phone" name="Second Panel" title="My second section" notification={renderValidationIncomplete()}>
+        <PanelGroup.Panel icon="phone" name="Second Panel" title="My second section" notification={ValidationIncomplete()}>
           <Text>Now you see me!</Text>
         </PanelGroup.Panel>
 
-        <PanelGroup.Panel icon="home" name="Third Panel" title="My third section" notification={renderValidationComplete()}>
+        <PanelGroup.Panel icon="home" name="Third Panel" title="My third section" notification={ValidationComplete()}>
           <Text>Now you see me!</Text>
         </PanelGroup.Panel>
 
