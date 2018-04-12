@@ -11,8 +11,11 @@
       display: flex;
       padding: 6px 16px;
       border-color: $sky;
-      background-color: $sky-lighter;
       align-items: baseline;
+
+      &.panel-collapsed {
+        background-color: $sky-lighter;
+      }
 
       .icon-toggle {
         color: $ink-lightest;
