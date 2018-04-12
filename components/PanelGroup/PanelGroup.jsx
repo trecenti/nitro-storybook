@@ -23,7 +23,7 @@ type PanelGroupProps = {
   activePanelName?: string,
 }
 
-const Panel = ({ children, collapsed, icon, name, title }: PanelProps) => {
+const Panel = ({ children, collapsed, icon, name, title, notification }: PanelProps) => {
   const rotateProps = collapsed ? { rotate: 180 } : {}
   const headingCss = collapsed ? "panel-collapsed" : ""
   return (
@@ -33,6 +33,8 @@ const Panel = ({ children, collapsed, icon, name, title }: PanelProps) => {
           <FontAwesome className="icon-title" name={icon} />
           <Text bold>{title}</Text>
         </BootstrapPanel.Title>
+
+        {notification}
 
         <BootstrapPanel.Toggle>
           <FontAwesome className="icon-toggle" size="lg" {...rotateProps} name="angle-up" />
