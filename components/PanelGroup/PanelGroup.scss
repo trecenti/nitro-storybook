@@ -1,0 +1,36 @@
+@import "base-mixins/_all.scss";
+@import "base-variables/_all.scss";
+
+:global {
+  .nitro-panel-group {
+    .panel {
+      box-shadow: none;
+    }
+
+    .panel-heading {
+      display: flex;
+      padding: 6px 16px;
+      border-color: $sky;
+      background-color: $sky-lighter;
+      align-items: baseline;
+
+      .icon-toggle {
+        color: $ink-lightest;
+        transition: all 0.5s ease;
+      }
+    }
+
+    .panel-title {
+      flex-grow: 1;
+
+      * {
+        color: $ink-light;
+        font-size: $font-size-base;
+      }
+
+      .icon-title {
+        margin-right: 10px;
+      }
+    }
+  }
+}
