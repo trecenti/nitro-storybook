@@ -25,11 +25,11 @@ type PanelGroupProps = {
 
 const Panel = ({ children, collapsed, icon, name, title, notification }: PanelProps) => {
   const rotateProps = collapsed ? { rotate: 180 } : {}
-  const headingCss = collapsed ? "panel-collapsed" : ""
+  const panelColapsed = collapsed ? "panel-collapsed" : ""
 
   return (
-    <BootstrapPanel eventKey={name}>
-      <BootstrapPanel.Heading bsStyle="default" className={headingCss}>
+    <BootstrapPanel eventKey={name} className={panelColapsed}>
+      <BootstrapPanel.Heading bsStyle="default">
         <BootstrapPanel.Toggle className="panel-toggle">
           <BootstrapPanel.Title>
             <FontAwesome className="icon-title" name={icon} />

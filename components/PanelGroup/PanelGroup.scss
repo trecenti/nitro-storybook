@@ -4,7 +4,15 @@
 :global {
   .nitro-panel-group {
     .panel {
+      box-shadow: 0 0px 9px rgba(0, 0, 0, 0.1);
+    }
+
+    .panel.panel-collapsed {
       box-shadow: none;
+
+      .panel-heading {
+        background-color: $sky-lighter;
+      }
     }
 
     .panel-heading {
@@ -34,10 +42,6 @@
       color: $ink-lightest;
       transition: all 0.5s ease;
       margin-left: 16px;
-    }
-
-    .panel-collapsed {
-      background-color: $sky-lighter;
     }
   }
 }
