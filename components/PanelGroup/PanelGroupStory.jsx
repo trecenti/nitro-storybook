@@ -1,6 +1,6 @@
 import React from "react"
 import FontAwesome from 'react-fontawesome'
-import { boolean, text } from "@storybook/addon-knobs"
+import { boolean, text, select } from "@storybook/addon-knobs"
 
 import Text from "../Text/Text"
 import PanelGroup from "./PanelGroup"
@@ -25,8 +25,20 @@ function ValidationIncomplete() {
 
 export default function PanelGroupStory(stories) {
   stories.add("PanelGroup", () => {
+    const selectedPanel = "Second Panel"
+    const options = {
+      ["First Panel"]: "First Panel",
+      ["Second Panel"]: "Second Panel",
+      ["Third Panel"]: "Third Panel",
+      ["4th Panel"]: "4th Panel",
+    }
+
+    const props = {
+      activePanelName: select("Active Panel", options, selectedPanel, "active-panel")
+    }
+
     return (
-      <PanelGroup activePanelName="Second Panel">
+      <PanelGroup {...props}>
         <PanelGroup.Panel icon="user" name="First Panel" title="My first section" notification="Text Notification">
           <Text>Now you see me!</Text>
         </PanelGroup.Panel>
@@ -39,7 +51,7 @@ export default function PanelGroupStory(stories) {
           <Text>Now you see me!</Text>
         </PanelGroup.Panel>
 
-        <PanelGroup.Panel>
+        <PanelGroup.Panel name="4th Panel">
           <Text>Now you see me!</Text>
         </PanelGroup.Panel>
       </PanelGroup>

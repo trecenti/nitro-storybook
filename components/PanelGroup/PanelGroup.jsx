@@ -67,6 +67,10 @@ export default class PanelGroup extends React.Component<PanelGroupProps> {
     this.setState({ activePanelName });
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ activePanelName: nextProps.activePanelName })
+  }
+
   render() {
     const panels = React.Children.map(this.props.children, (child, i) => {
       const name = child.props.name || `${i}`
