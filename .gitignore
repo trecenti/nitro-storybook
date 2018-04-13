@@ -3,3 +3,4 @@ webpack-bundle.js
 public
 .DS_Store
 npm-debug.log
+.out
