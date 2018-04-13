@@ -4,38 +4,58 @@
 :global {
   .nitro-panel-group {
     .panel {
-      box-shadow: 0 0px 9px rgba(0, 0, 0, 0.1);
-    }
-
-    .panel.panel-collapsed {
       box-shadow: none;
 
       .panel-heading {
-        background-color: $sky-lighter;
+        background-color: $white;
+      }
+    }
+
+    &.inner-panel-group {
+      .panel {
+        box-shadow: 0 0px 9px rgba(0, 0, 0, 0.1);
+      }
+
+      .panel.panel-collapsed {
+        box-shadow: none;
+
+        .panel-heading {
+          background-color: $sky-lighter;
+        }
       }
     }
 
     .panel-heading {
-      padding: 6px 16px;
+      padding: 0;
       border-color: $sky;
 
+      .heading-icon {
+        margin-right: 15px;
+      }
+
       .panel-title {
+        display: flex;
+        flex-direction: column;
         flex-grow: 1;
+      }
 
-        .title, .icon-title {
-          color: $ink-light;
-          font-size: $font-size-base;
-        }
+      .heading-icon, .title, .subtitle {
+        color: $ink-light;
+      }
 
-        .icon-title {
-          margin-right: 10px;
-        }
+      .title {
+        font-size: $font-size-base;
+      }
+
+      .subtitle {
+        font-size: $font-size-small;
       }
     }
 
     .panel-toggle {
       display: flex;
-      align-items: baseline;
+      padding: 6px 16px;
+      align-items: center;
     }
 
     .icon-toggle {

@@ -13,17 +13,21 @@ import styles from "./PanelGroup.scss"
 type PanelProps = {
   children?: string,
   collapsed?: boolean,
-  icon?: string,
+  icon?: any,
   name?: string,
+  subtitle?: string,
   title?: string,
+  toggleIconName?: string,
 }
 
 type PanelGroupProps = {
+  activePanel?: string,
+  className?: string,
   id?: string,
-  activePanelName?: string,
+  inner?: boolean,
 }
 
-const Panel = ({ children, collapsed, icon, name, title, notification }: PanelProps) => {
+const Panel = ({ children, collapsed, icon, name, subtitle, title, toggleIconName, notification }: PanelProps) => {
   const rotateProps = collapsed ? { rotate: 180 } : {}
   const panelColapsed = collapsed ? "panel-collapsed" : ""
 
@@ -31,14 +35,21 @@ const Panel = ({ children, collapsed, icon, name, title, notification }: PanelPr
     <BootstrapPanel eventKey={name} className={panelColapsed}>
       <BootstrapPanel.Heading bsStyle="default">
         <BootstrapPanel.Toggle className="panel-toggle">
+          <If condition={icon}>
+            <div className="heading-icon">{icon}</div>
+          </If>
+
           <BootstrapPanel.Title>
-            <FontAwesome className="icon-title" name={icon} />
             <Text className="title" bold>{title}</Text>
+
+            <If condition={subtitle}>
+              <Text className="subtitle">{subtitle}</Text>
+            </If>
           </BootstrapPanel.Title>
 
           {notification}
 
-          <FontAwesome className="icon-toggle" size="lg" {...rotateProps} name="angle-up" />
+          <FontAwesome className="icon-toggle" size="lg" {...rotateProps} name={toggleIconName} />
         </BootstrapPanel.Toggle>
       </BootstrapPanel.Heading>
 
@@ -50,6 +61,7 @@ const Panel = ({ children, collapsed, icon, name, title, notification }: PanelPr
 Panel.defaultProps = {
   collapsed: true,
   title: "",
+  toggleIconName: "angle-up"
 }
 
 export default class PanelGroup extends React.Component<PanelGroupProps> {
@@ -57,31 +69,34 @@ export default class PanelGroup extends React.Component<PanelGroupProps> {
 
   static defaultProps = {
     id: `${Math.random()}`,
+    inner: false,
   }
 
   state = {
-    activePanelName: this.props.activePanelName,
+    activePanel: this.props.activePanel,
   }
 
-  handleSelect = (activePanelName) => {
-    this.setState({ activePanelName });
+  handleSelect = (activePanel) => {
+    this.setState({ activePanel });
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ activePanelName: nextProps.activePanelName })
+    this.setState({ activePanel: nextProps.activePanel })
   }
 
   render() {
-    const panels = React.Children.map(this.props.children, (child, i) => {
-      const name = child.props.name || `${i}`
-      const collapsed = this.state.activePanelName !== name
-      return React.cloneElement(child, { name, collapsed })
+    const { children, name, id, inner, className } = this.props
+
+    const panels = React.Children.map(children, (child, i) => {
+      const panelName = name || `${i}`
+      const collapsed = this.state.activePanel !== panelName
+      return React.cloneElement(child, { name: panelName, collapsed })
     })
 
     return (
-      <BootstrapPanelGroup id={this.props.id} accordion
-        activeKey={this.state.activePanelName}
-        className="nitro-panel-group"
+      <BootstrapPanelGroup id={id} accordion
+        activeKey={this.state.activePanel}
+        className={`nitro-panel-group ${className} ${inner ? "inner-panel-group": ""}`}
         onSelect={this.handleSelect}
       >
         {panels}

@@ -23,36 +23,78 @@ function ValidationIncomplete() {
   )
 }
 
+const userIcon = (
+  <FontAwesome name="user" />
+)
+
+const largeUserIcon = (
+  <FontAwesome name="user-circle-o" size="2x" />
+)
+
+const phoneIcon = (
+  <FontAwesome name="phone" />
+)
+
+const homeIcon = (
+  <FontAwesome name="home" />
+)
+
+const dollarIcon = (
+  <FontAwesome name="dollar" />
+)
+
 export default function PanelGroupStory(stories) {
   stories.add("PanelGroup", () => {
-    const selectedPanel = "Second Panel"
+    const selectedPanel = "main-applicant"
     const options = {
-      ["First Panel"]: "First Panel",
-      ["Second Panel"]: "Second Panel",
-      ["Third Panel"]: "Third Panel",
-      ["4th Panel"]: "4th Panel",
+      ["main-applicant"]: "Main Applicant",
+      ["co-applicant"]: "Co-Applicant",
     }
 
     const props = {
-      activePanelName: select("Active Panel", options, selectedPanel, "active-panel")
+      activePanel: select("Active Panel", options, selectedPanel, "active-panel")
     }
 
     return (
       <PanelGroup {...props}>
-        <PanelGroup.Panel icon="user" name="First Panel" title="My first section" notification="Text Notification">
-          <Text>Now you see me!</Text>
+        <PanelGroup.Panel icon={largeUserIcon} name="main-applicant" title="Applicant Name" subtitle="Main Applicant" toggleIconName="caret-up" notification={ValidationIncomplete()}>
+          <PanelGroup inner>
+            <PanelGroup.Panel icon={userIcon} name="First Panel" title="Applicataion Information" notification={ValidationIncomplete()}>
+              <Text>Now you see me!</Text>
+            </PanelGroup.Panel>
+
+            <PanelGroup.Panel icon={phoneIcon} name="Second Panel" title="Contact Information" notification={ValidationIncomplete()}>
+              <Text>Now you see me!</Text>
+            </PanelGroup.Panel>
+
+            <PanelGroup.Panel icon={dollarIcon} name="Third Panel" title="Income Sources" notification={ValidationComplete()}>
+              <Text>Now you see me!</Text>
+            </PanelGroup.Panel>
+
+            <PanelGroup.Panel icon={homeIcon} name="4th Panel" title="Applicant Home Information" notification={ValidationComplete()}>
+              <Text>Now you see me!</Text>
+            </PanelGroup.Panel>
+          </PanelGroup>
         </PanelGroup.Panel>
 
-        <PanelGroup.Panel icon="phone" name="Second Panel" title="My second section" notification={ValidationIncomplete()}>
-          <Text>Now you see me!</Text>
-        </PanelGroup.Panel>
+        <PanelGroup.Panel icon={largeUserIcon} name="co-applicant" title="Co-Applicant Name" subtitle="Co-Applicant" toggleIconName="caret-up" notification={ValidationIncomplete()}>
+          <PanelGroup inner>
+            <PanelGroup.Panel icon={userIcon} name="First Panel" title="Applicataion Information" notification={ValidationIncomplete()}>
+              <Text>Now you see me!</Text>
+            </PanelGroup.Panel>
 
-        <PanelGroup.Panel icon="home" name="Third Panel" title="My third section" notification={ValidationComplete()}>
-          <Text>Now you see me!</Text>
-        </PanelGroup.Panel>
+            <PanelGroup.Panel icon={phoneIcon} name="Second Panel" title="Contact Information" notification={ValidationIncomplete()}>
+              <Text>Now you see me!</Text>
+            </PanelGroup.Panel>
 
-        <PanelGroup.Panel name="4th Panel">
-          <Text>Now you see me!</Text>
+            <PanelGroup.Panel icon={dollarIcon} name="Third Panel" title="Income Sources" notification={ValidationComplete()}>
+              <Text>Now you see me!</Text>
+            </PanelGroup.Panel>
+
+            <PanelGroup.Panel icon={homeIcon} name="4th Panel" title="Applicant Home Information" notification={ValidationComplete()}>
+              <Text>Now you see me!</Text>
+            </PanelGroup.Panel>
+          </PanelGroup>
         </PanelGroup.Panel>
       </PanelGroup>
     )
