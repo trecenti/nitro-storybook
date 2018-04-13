@@ -57,7 +57,7 @@ export default function PanelGroupStory(stories) {
 
     return (
       <PanelGroup {...props}>
-        <PanelGroup.Panel icon={largeUserIcon} name="main-applicant" title="Applicant Name" subtitle="Main Applicant" toggleIconName="caret-up" notification={ValidationIncomplete()}>
+        <PanelGroup.Panel icon={largeUserIcon} name="main-applicant" title="Applicant Name" subtitle="Main Applicant" notification={ValidationIncomplete()}>
           <PanelGroup inner>
             <PanelGroup.Panel icon={userIcon} name="First Panel" title="Applicataion Information" notification={ValidationIncomplete()}>
               <Text>Now you see me!</Text>
@@ -77,7 +77,7 @@ export default function PanelGroupStory(stories) {
           </PanelGroup>
         </PanelGroup.Panel>
 
-        <PanelGroup.Panel icon={largeUserIcon} name="co-applicant" title="Co-Applicant Name" subtitle="Co-Applicant" toggleIconName="caret-up" notification={ValidationIncomplete()}>
+        <PanelGroup.Panel icon={largeUserIcon} name="co-applicant" title="Co-Applicant Name" subtitle="Co-Applicant" notification={ValidationIncomplete()}>
           <PanelGroup inner>
             <PanelGroup.Panel icon={userIcon} name="First Panel" title="Applicataion Information" notification={ValidationIncomplete()}>
               <Text>Now you see me!</Text>
