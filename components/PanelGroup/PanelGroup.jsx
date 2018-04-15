@@ -47,7 +47,9 @@ const Panel = ({ children, collapsed, icon, name, subtitle, title, toggleIconNam
             </If>
           </BootstrapPanel.Title>
 
-          {notification}
+          <If condition={notification}>
+            {notification}
+          </If>
 
           <FontAwesome className="icon-toggle" size="lg" {...rotateProps} name={toggleIconName} />
         </BootstrapPanel.Toggle>
