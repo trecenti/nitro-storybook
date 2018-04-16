@@ -83,7 +83,9 @@ export default class PanelGroup extends React.Component<PanelGroupProps> {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ activePanel: nextProps.activePanel })
+    if (nextProps.activePanel !== this.props.activePanel) {
+      this.setState({ activePanel: nextProps.activePanel })
+    }
   }
 
   render() {
