@@ -29,10 +29,10 @@ type PanelGroupProps = {
 
 const Panel = ({ children, collapsed, icon, name, subtitle, title, toggleIconName, notification }: PanelProps) => {
   const rotateProps = collapsed ? { rotate: 180 } : {}
-  const panelColapsed = collapsed ? "panel-collapsed" : ""
+  const css = collapsed ? "panel-collapsed" : ""
 
   return (
-    <BootstrapPanel eventKey={name} className={panelColapsed}>
+    <BootstrapPanel eventKey={name} className={css}>
       <BootstrapPanel.Heading bsStyle="default">
         <BootstrapPanel.Toggle className="panel-toggle">
           <If condition={icon}>
@@ -47,7 +47,9 @@ const Panel = ({ children, collapsed, icon, name, subtitle, title, toggleIconNam
             </If>
           </BootstrapPanel.Title>
 
-          {notification}
+          <If condition={notification}>
+            {notification}
+          </If>
 
           <FontAwesome className="icon-toggle" size="lg" {...rotateProps} name={toggleIconName} />
         </BootstrapPanel.Toggle>
@@ -81,14 +83,16 @@ export default class PanelGroup extends React.Component<PanelGroupProps> {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ activePanel: nextProps.activePanel })
+    if (nextProps.activePanel !== this.props.activePanel) {
+      this.setState({ activePanel: nextProps.activePanel })
+    }
   }
 
   render() {
-    const { children, name, id, inner, className } = this.props
+    const { children, id, inner, className } = this.props
     const toggleIconName = inner ? "angle-up" : "caret-up"
     const panels = React.Children.map(children, (child, i) => {
-      const panelName = name || `${i}`
+      const panelName = child.props.name || `${i}`
       const collapsed = this.state.activePanel !== panelName
       return React.cloneElement(child, { name: panelName, collapsed, toggleIconName })
     })
