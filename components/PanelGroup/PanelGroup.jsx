@@ -87,10 +87,10 @@ export default class PanelGroup extends React.Component<PanelGroupProps> {
   }
 
   render() {
-    const { children, name, id, inner, className } = this.props
+    const { children, id, inner, className } = this.props
     const toggleIconName = inner ? "angle-up" : "caret-up"
     const panels = React.Children.map(children, (child, i) => {
-      const panelName = name || `${i}`
+      const panelName = child.props.name || `${i}`
       const collapsed = this.state.activePanel !== panelName
       return React.cloneElement(child, { name: panelName, collapsed, toggleIconName })
     })
