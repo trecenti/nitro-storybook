@@ -15,6 +15,7 @@ type Props = {
   }>,
   labelInside: boolean,
   labelText: string,
+  multiInput: boolean,
   onChange: () => mixed,
   dateFormat: string,
   timeFormat: string,
@@ -26,11 +27,13 @@ type Props = {
 export default class DatePicker extends React.Component<Props> {
 
   static defaultProps = {
+    className: "input-group",
     inputProps: {
       type: "text",
     },
     onChange: function(){},
     labelInside: true,
+    multiInput: false,
     dateFormat: "MM/DD/YYYY",
     closeOnSelect: true,
     timeZone: null,
@@ -66,6 +69,7 @@ export default class DatePicker extends React.Component<Props> {
       defaultValue,
       labelInside,
       labelText,
+      multiInput,
       dateFormat,
       timeFormat,
       closeOnSelect,
@@ -74,7 +78,6 @@ export default class DatePicker extends React.Component<Props> {
     } = this.props
 
     const wrapperCSS = [
-      "input-group",
       className,
       labelInside ? "label-inside" : null,
     ]
@@ -103,7 +106,7 @@ export default class DatePicker extends React.Component<Props> {
             timeZone={timeZone}
         />
         <span
-            className="input-group-addon"
+            className={`input-group-addon ${multiInput ? "multi" : null}`}
         >
           <FontAwesome name="calendar"/>
         </span>

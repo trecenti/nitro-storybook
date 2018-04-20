@@ -43,10 +43,12 @@ $selectors: (
       width: auto;
     }
     .input-group-addon, &.input-group-addon {
-      width: auto;
-      display: block;
-      vertical-align: -webkit-baseline-middle;
-      padding-top: 9px;
+      &:not(.multi) {
+        width: auto;
+        display: block;
+        vertical-align: -webkit-baseline-middle;
+        padding-top: 9px;  
+      }
     }
     // Everything but the last
     &:not(:last-child)  {
