@@ -1,6 +1,10 @@
 import React from 'react'
 import classnames from 'classnames'
 import FontAwesome from 'react-fontawesome'
+import {
+  FormControl,
+  InputGroup,
+} from 'react-bootstrap'
 
 import moment from 'moment'
 require('moment-timezone')
@@ -27,7 +31,7 @@ type Props = {
 export default class DatePicker extends React.Component<Props> {
 
   static defaultProps = {
-    className: "input-group",
+    className: "",
     inputProps: {
       type: "text",
     },
@@ -63,13 +67,26 @@ export default class DatePicker extends React.Component<Props> {
     }
   }
 
+  renderInput = (props, openCalendar) => {
+    return (
+      <InputGroup>
+        <FormControl {...props}/>
+        <span
+            className="input-group-addon"
+            onClick={openCalendar}
+        >
+          <FontAwesome name="calendar"/>
+        </span>
+      </InputGroup>
+    )
+  }
+
   render() {
     let {
       className,
       defaultValue,
       labelInside,
       labelText,
-      multiInput,
       dateFormat,
       timeFormat,
       closeOnSelect,
@@ -102,14 +119,10 @@ export default class DatePicker extends React.Component<Props> {
             defaultValue={defaultValue}
             inputProps={inputProps}
             onChange={this.handleOnChange}
+            renderInput={this.renderInput}
             timeFormat={timeFormat}
             timeZone={timeZone}
         />
-        <span
-            className={`input-group-addon ${multiInput ? "multi" : null}`}
-        >
-          <FontAwesome name="calendar"/>
-        </span>
       </div>
     )
   }
