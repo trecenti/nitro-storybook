@@ -13,6 +13,7 @@ import Datetime from 'react-datetime'
 type Props = {
   className: string,
   defaultValue: string,
+  errorClass?: string,
   inputProps: Object<{
     type: "text"
   }>,
@@ -31,6 +32,7 @@ export default class DatePicker extends React.Component<Props> {
 
   static defaultProps = {
     className: "",
+    errorClass: "has-error",
     inputProps: {
       type: "text",
     },
@@ -95,6 +97,7 @@ export default class DatePicker extends React.Component<Props> {
     let {
       defaultValue,
       dateFormat,
+      errorClass,
       timeFormat,
       closeOnSelect,
       timeZone,
@@ -110,7 +113,7 @@ export default class DatePicker extends React.Component<Props> {
 
     const wrapperCSS = [
       "react-datetime",
-      this.state.valid ? "" : "has-error",
+      this.state.valid ? null : errorClass,
       labelInside ? "label-inside" : null,
       multiInput ? "multi-input-group-item" : null,
     ]
