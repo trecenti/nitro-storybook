@@ -3,7 +3,6 @@ import classnames from 'classnames'
 import FontAwesome from 'react-fontawesome'
 import {
   FormControl,
-  InputGroup,
 } from 'react-bootstrap'
 
 import moment from 'moment'
@@ -67,63 +66,67 @@ export default class DatePicker extends React.Component<Props> {
     }
   }
 
-  renderInput = (props, openCalendar) => {
-    return (
-      <InputGroup>
-        <FormControl {...props}/>
-        <span
-            className="input-group-addon"
-            onClick={openCalendar}
-        >
-          <FontAwesome name="calendar"/>
-        </span>
-      </InputGroup>
-    )
-  }
-
-  render() {
-    let {
-      className,
-      defaultValue,
-      labelInside,
+  renderInput = (inputProps, openCalendar) => {
+    const {
       labelText,
-      dateFormat,
-      timeFormat,
-      closeOnSelect,
-      timeZone,
       required,
     } = this.props
 
-    const wrapperCSS = [
-      className,
-      labelInside ? "label-inside" : null,
-    ]
-
-    let inputProps = this.props.inputProps
-    if(required) inputProps.required = "required"
-
-    if(defaultValue) defaultValue = moment(defaultValue).format(dateFormat)
-
     return (
-      <div className={classnames(wrapperCSS)}>
+      <span className="d-flex">
         <If condition={labelText}>
           <label>
             <If condition={required}>{`* `}</If>
             {labelText}
           </label>
         </If>
-        <Datetime
-            className={classnames("react-datetime", this.state.valid ? "" : "has-error")}
-            closeOnSelect={closeOnSelect}
-            dateFormat={dateFormat}
-            defaultValue={defaultValue}
-            inputProps={inputProps}
-            onChange={this.handleOnChange}
-            renderInput={this.renderInput}
-            timeFormat={timeFormat}
-            timeZone={timeZone}
-        />
-      </div>
+        <FormControl {...inputProps}/>
+        <span
+            className="input-group-addon"
+            onClick={openCalendar}
+        >
+          <FontAwesome name="calendar"/>
+        </span>
+      </span>
+    )
+  }
+
+  render() {
+    let {
+      defaultValue,
+      dateFormat,
+      timeFormat,
+      closeOnSelect,
+      timeZone,
+      required,
+      labelInside,
+      multiInput,
+    } = this.props
+
+    let inputProps = this.props.inputProps
+    if(required) inputProps.required = "required"
+
+    if(defaultValue) defaultValue = moment(defaultValue).format(dateFormat)
+
+    const wrapperCSS = [
+      "react-datetime",
+      this.state.valid ? "" : "has-error",
+      labelInside ? "label-inside" : null,
+      multiInput ? "multi-input-group-item" : null,
+    ]
+
+    return (
+      <Datetime
+          className={classnames(wrapperCSS)}
+          closeOnSelect={closeOnSelect}
+          dateFormat={dateFormat}
+          defaultValue={defaultValue}
+          inputProps={inputProps}
+          onChange={this.handleOnChange}
+          renderInput={this.renderInput}
+          timeFormat={timeFormat}
+          timeZone={timeZone}
+      />
     )
   }
 }
