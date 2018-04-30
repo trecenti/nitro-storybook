@@ -9,7 +9,6 @@ import styles from './styles.scss'
 
 type Props = {
   className: string,
-  colClassNames: Array<string>,
   datePickerProps: Object<{
     disabled: boolean | "disabled",
     dateFormat: string,
@@ -28,11 +27,7 @@ type Props = {
 export default class DateTimePicker extends React.Component<Props> {
 
   static defaultProps = {
-    className: "row",
-    colClassNames: [
-      "col-sm-6",
-      "col-sm-6",
-    ],
+    className: "",
     datePickerProps: {
       disabled: false,
       dateFormat: "MM/DD/YYYY",
@@ -70,7 +65,6 @@ export default class DateTimePicker extends React.Component<Props> {
   render() {
     const {
       className,
-      colClassNames,
       datePickerProps,
       defaultValue,
       timePickerProps,
@@ -86,19 +80,20 @@ export default class DateTimePicker extends React.Component<Props> {
 
     return (
       <div className={classnames(css)}>
-        <div className={colClassNames[0]}>
+        <div className="multi-input-group full">
           <DatePicker
               defaultValue={defaultDateValue}
+              multiInput
               onChange={this.handleOnDateChanged}
               {...datePickerProps}
           />
-        </div>
-        <div className={colClassNames[1]}>
-          <TimePicker
-              defaultValue={defaultValue}
-              onChange={this.handleOnTimeChanged}
-              {...timePickerProps}
-          />
+          <div className="multi-input-group-item">
+            <TimePicker
+                defaultValue={defaultValue}
+                onChange={this.handleOnTimeChanged}
+                {...timePickerProps}
+            />
+          </div>
         </div>
       </div>
     )

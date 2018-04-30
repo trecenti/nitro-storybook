@@ -10,6 +10,7 @@ export default function DateTimePickerStory(stories) {
     () => {
       const props = {
         datePickerProps: {
+          labelText: "Date",
           disabled: boolean("datePickerProps.disabled", false),
           timeFormat: ""
         },

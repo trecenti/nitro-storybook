@@ -95,6 +95,7 @@ export default class DatePicker extends React.Component<Props> {
 
   render() {
     let {
+      className,
       defaultValue,
       dateFormat,
       errorClass,
@@ -112,6 +113,7 @@ export default class DatePicker extends React.Component<Props> {
     if(defaultValue) defaultValue = moment(defaultValue).format(dateFormat)
 
     const wrapperCSS = [
+      className,
       "react-datetime",
       this.state.valid ? null : errorClass,
       labelInside ? "label-inside" : null,
