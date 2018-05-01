@@ -61,7 +61,9 @@ export default class DatePicker extends React.Component<Props> {
     if(dateTime.format && dateTime.isValid()) {
       this.setState({valid: true})
       const dt = this.props.timeZone ? moment.tz(dateTime) : dateTime
-      this.props.onChange(dt.format(timeFormat && timeFormat !== "" ? "YYYY-MM-DDTHH:mm:00Z" : "YYYY-MM-DD"))
+      setTimeout(() => {
+        this.props.onChange(dt.format(timeFormat && timeFormat !== "" ? "YYYY-MM-DDTHH:mm:00Z" : "YYYY-MM-DD"))
+      }, 100)
     } else {
       this.setState({valid: false})
       this.props.onChange("")
