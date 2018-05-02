@@ -26,6 +26,7 @@ type Props = {
   closeOnSelect: boolean,
   timeZone: string,
   required: boolean,
+  value: string,
 }
 
 export default class DatePicker extends React.Component<Props> {
@@ -50,7 +51,7 @@ export default class DatePicker extends React.Component<Props> {
   }
 
   componentWillMount() {
-    const defaultValue = moment(this.props.defaultValue)
+    const defaultValue = moment(this.props.defaultValue || "")
     if(defaultValue.isValid()) this.handleOnChange(defaultValue)
   }
 
@@ -107,33 +108,34 @@ export default class DatePicker extends React.Component<Props> {
       required,
       labelInside,
       multiInput,
+      value,
     } = this.props
 
-    let inputProps = this.props.inputProps
+    const inputProps = this.props.inputProps
     if(required) inputProps.required = "required"
 
-    if(defaultValue) defaultValue = moment(defaultValue).format(dateFormat)
+    const dateTimeProps = {
+      className: classnames([
+        className,
+        "react-datetime",
+        this.state.valid ? null : errorClass,
+        labelInside ? "label-inside" : null,
+        multiInput ? "multi-input-group-item" : null,
+      ]),
+      closeOnSelect,
+      dateFormat,
+      inputProps,
+      onChange: this.handleOnChange,
+      renderInput: this.renderInput,
+      timeFormat,
+      timeZone,
+    }
 
-    const wrapperCSS = [
-      className,
-      "react-datetime",
-      this.state.valid ? null : errorClass,
-      labelInside ? "label-inside" : null,
-      multiInput ? "multi-input-group-item" : null,
-    ]
+    const formattedDate = moment(defaultValue || value).format(dateFormat)
+    dateTimeProps.value = formattedDate === "Invalid date" ? "" : formattedDate
 
     return (
-      <Datetime
-          className={classnames(wrapperCSS)}
-          closeOnSelect={closeOnSelect}
-          dateFormat={dateFormat}
-          defaultValue={defaultValue}
-          inputProps={inputProps}
-          onChange={this.handleOnChange}
-          renderInput={this.renderInput}
-          timeFormat={timeFormat}
-          timeZone={timeZone}
-      />
+      <Datetime {...dateTimeProps}/>
     )
   }
 }
