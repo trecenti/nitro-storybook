@@ -16,6 +16,7 @@ export default class InputList extends React.PureComponent {
   static Input = Input
   static defaultProps = {
     value: [],
+    className: "",
     onChange: () => {},
   }
 
@@ -94,6 +95,6 @@ export default class InputList extends React.PureComponent {
       return child
     })
 
-    return <div className="input-list">{children}</div>
+    return <div className={`input-list ${this.props.className}`}>{children}</div>
   }
 }
