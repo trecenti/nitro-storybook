@@ -56,6 +56,11 @@ $file-icon-size: 80px;
         vertical-align: middle;
         padding: $space-base $space-large;
         flex: 0 0 calc(100% - #{$file-icon-size});
+
+        h5 {
+          line-height: 17.5px;
+          height: 17.5px;
+        }
       }
 
       &::after {
