@@ -1,37 +1,23 @@
 import React from "react"
-import PropTypes from "prop-types"
+import type { Item, State, InputListProps, WrapperProps } from "./types"
 
-const Input = ({ children }) => children
-Input.propTypes = {
-  children: PropTypes.element
-}
+const Input = ({ children }: WrapperProps) => children
+const Add = ({ children }: WrapperProps) => children
 
-const Add = ({ children }) => children
-Add.propTypes = {
-  children: PropTypes.element
-}
-
-export default class InputList extends React.PureComponent {
+export default class InputList extends React.PureComponent<InputListProps, State> {
   static Add = Add
   static Input = Input
   static defaultProps = {
-    value: [],
     className: "",
     onChange: () => {},
-  }
-
-  static propTypes = {
-    onChange: PropTypes.func,
-    value: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    })),
+    value: [],
   }
 
   state = {
     inputs: this.props.value
   }
 
-  handleInputChange = (input, i) => {
+  handleInputChange = (input: HTMLInputElement, i: number) => {
     const inputValue = { ...this.state.inputs[i] }
     inputValue[input.name] = input.type === "checkbox" ? input.checked : input.value
 
@@ -53,13 +39,13 @@ export default class InputList extends React.PureComponent {
     })
   }
 
-  handleRemoveClick = (index) => {
+  handleRemoveClick = (index: number) => {
     this.setState({
       inputs: this.state.inputs.filter((_, i) => i !== index)
     })
   }
 
-  createInput = (wrapper, value, i) => {
+  createInputElement = (wrapper: Add, value: Item, i: number) => {
     const input = React.Children.only(wrapper.props.children)
     return React.cloneElement(input, {
       key: value.id || value.key,
@@ -72,7 +58,7 @@ export default class InputList extends React.PureComponent {
     })
   }
 
-  createAdd = (wrapper) => {
+  createAddElement = (wrapper: Input) => {
     const button = React.Children.only(wrapper.props.children)
     return React.cloneElement(button, {
       onClick: (e) => {
@@ -85,11 +71,11 @@ export default class InputList extends React.PureComponent {
   render() {
     const children = React.Children.map(this.props.children, child => {
       if (child.type === Input) {
-        return this.state.inputs.map((value, i) => this.createInput(child, value, i))
+        return this.state.inputs.map((value, i) => this.createInputElement(child, value, i))
       }
 
       if (child.type === Add) {
-        return this.createAdd(child)
+        return this.createAddElement(child)
       }
 
       return child
