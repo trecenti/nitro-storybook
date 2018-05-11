@@ -44,7 +44,7 @@ export default class InputList extends React.PureComponent {
     }, () => this.props.onChange(this.state.inputs))
   }
 
-  handleAddClick = e => {
+  handleAddClick = () => {
     this.setState({
       inputs: [
         ...this.state.inputs,
@@ -53,7 +53,7 @@ export default class InputList extends React.PureComponent {
     })
   }
 
-  handleRemoveClick = index => {
+  handleRemoveClick = (index) => {
     this.setState({
       inputs: this.state.inputs.filter((_, i) => i !== index)
     })
@@ -64,18 +64,18 @@ export default class InputList extends React.PureComponent {
     return React.cloneElement(input, {
       key: value.id || value.key,
       value: value,
-      onRemove: e => this.handleRemoveClick(i),
-      onChange: e => {
+      onRemove: (e) => this.handleRemoveClick(i),
+      onChange: (e) => {
         input.props.onChange && input.props.onChange(e)
         this.handleInputChange(e.target, i)
       }
     })
   }
 
-  createAdd = wrapper => {
+  createAdd = (wrapper) => {
     const button = React.Children.only(wrapper.props.children)
     return React.cloneElement(button, {
-      onClick: e => {
+      onClick: (e) => {
         button.props.onClick && button.props.onClick(e)
         this.handleAddClick(e)
       }
