@@ -8,6 +8,14 @@ This repo provides the tools to implement view components which make up the visu
 The intent of this repo is to provide a base on which other UIs can be built such that they maintain visual consistency and the Nitro brand.
 
 
+- [Quick Start](#quick-start)
+- [Local Storybook Development in Nitro-Web](#local-storybook-development-in-nitro-web)
+- [Other options for storybook in Nitro-Web](#other-options-for-storybook-in-nitro-web)
+- [Getting Your Changes Into Nitro-Web](#getting-your-changes-into-nitro-web)
+- [Creating Components](#creating-components)
+- [Converting Existing Components](#converting-existing-components)
+
+
 ## Quick Start
 From the current project directory, run:
 
@@ -21,7 +29,7 @@ From the current project directory, run:
 ## Local Storybook Development in Nitro-Web
 Its easy to create and test out a component on nitro in real time, even with hot reload. You can point your local storybook folder as you develop it.
 
-##### Update the storybook  in the Gemfile to a local path
+##### Update the storybook in the Gemfile to a local path
 `gem "nitro_sg", :path => "/path/to/storybook/locally"`
 
 ##### Update the storybook in package.json to a local path
