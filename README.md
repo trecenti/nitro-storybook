@@ -103,6 +103,8 @@ gem "nitro_sg", git: "git@github.com:powerhome/nitro-storybook.git", tag: "v1.9.
 If your updated styling doesn’t show up, you may have old assets you need to remove. 
 `bundle exec rake assets:clobber`
 
+---
+
 ## Creating Components
 
 Creation of new components requires a bit of forethought. Ask yourself these questions first:
@@ -117,41 +119,8 @@ Creation of new components requires a bit of forethought. Ask yourself these que
     - CSSModules
     - Composing complex React components/organisms (so that you don't create them here!)
     - [Storybook]()
-
-## Converting Existing Components
-
-Conversion of existing components in `nitro_react` is a little different since we already have a decent class structure in the jsx component. There are, however, a few considerations:
-
-- Use Flow.js types instead of `PropTypes`
-- use `class` instead of `function` (see the examples below)
-- Try and fix as many eslint and Flow warnings as possible - this is your chance and the time is now! 😬 💀
-
-1. Create a `Props` flow type
-    ```javascript
-    type Props = {
-      children?: Array<React.Node>,
-      bold: boolean,
-      italic: boolean,
-      className: string,
-    }
-    ```
-1. Add the type to your class
-    ```javascript
-    export default class Foo extends React.Component<Props> {
-      static defaultProps = {}
-      props: Props
-      ...
-    ```
-1. You can still deconstruct `this.props` in any of your methods in the normal way
-    ```javascript
-    const {bar} = this.props
-    ```
-1. Lint your code `npm run lint`
-1. For some lint warning you can `npm run lint-fix` which will automagically fix things like indentation.
-
-
-
-### Now You Can Begin 😉
+    
+### New React Component
 
 Here are the steps to creating a new `Foo` component (in order):
 
@@ -217,6 +186,43 @@ Here are the steps to creating a new `Foo` component (in order):
     export FooStory from '../components/Foo/FooStory'
     ```
     This will add your `Foo` story to the categoy "Basic Components" in Storybook
+
+---
+
+## Converting Existing Components
+
+Conversion of existing components in `nitro_react` is a little different since we already have a decent class structure in the jsx component. There are, however, a few considerations:
+
+- Use Flow.js types instead of `PropTypes`
+- use `class` instead of `function` (see the examples below)
+- Try and fix as many eslint and Flow warnings as possible - this is your chance and the time is now! 😬 💀
+
+1. Create a `Props` flow type
+    ```javascript
+    type Props = {
+      children?: Array<React.Node>,
+      bold: boolean,
+      italic: boolean,
+      className: string,
+    }
+    ```
+1. Add the type to your class
+    ```javascript
+    export default class Foo extends React.Component<Props> {
+      static defaultProps = {}
+      props: Props
+      ...
+    ```
+1. You can still deconstruct `this.props` in any of your methods in the normal way
+    ```javascript
+    const {bar} = this.props
+    ```
+1. Lint your code `npm run lint`
+1. For some lint warning you can `npm run lint-fix` which will automagically fix things like indentation.
+
+
+
+
 
 
 
