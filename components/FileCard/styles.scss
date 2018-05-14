@@ -4,9 +4,7 @@
 $file-icon-size: 80px;
 
 .file-card {
-  display: block;
-  width: 100%;
-  position: relative;
+  height: 100%;
 
   .lock {
     position: absolute;
@@ -30,6 +28,12 @@ $file-icon-size: 80px;
   .file-content-box {
     padding: $space-large $space-large;
     border-top: 1px solid $gray-2;
+    
+    height: calc(100% - 150px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;  
   }
 
   &.layout-{
