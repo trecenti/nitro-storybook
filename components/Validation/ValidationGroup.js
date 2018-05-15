@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { validationCssMapping } from "./helpers"
 
 const isValid = (validations, expectedValidationsCount) => {
@@ -8,15 +9,15 @@ const isValid = (validations, expectedValidationsCount) => {
 
 export default class ValidationGroup extends React.PureComponent {
   static contextTypes = {
-    onInputValid: React.PropTypes.func,
-    onInputInvalid: React.PropTypes.func,
-    registerWithGroup: React.PropTypes.func,
+    onInputValid: PropTypes.func,
+    onInputInvalid: PropTypes.func,
+    registerWithGroup: PropTypes.func,
   }
 
   static childContextTypes = {
-    onInputValid: React.PropTypes.func,
-    onInputInvalid: React.PropTypes.func,
-    registerWithGroup: React.PropTypes.func,
+    onInputValid: PropTypes.func,
+    onInputInvalid: PropTypes.func,
+    registerWithGroup: PropTypes.func,
   }
 
   static defaultProps = {

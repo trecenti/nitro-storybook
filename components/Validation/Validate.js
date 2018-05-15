@@ -1,12 +1,13 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { validationCssMapping } from "./helpers"
 
 export default class Validate extends React.PureComponent {
   static contextTypes = {
-    onInputValid: React.PropTypes.func,
-    onInputInvalid: React.PropTypes.func,
-    registerWithGroup: React.PropTypes.func,
-    registerWithForm: React.PropTypes.func,
+    onInputValid: PropTypes.func,
+    onInputInvalid: PropTypes.func,
+    registerWithGroup: PropTypes.func,
+    registerWithForm: PropTypes.func,
   }
 
   static defaultProps = {
