@@ -1,3 +1,5 @@
+//-------------------------------------------------
+// Color Classes for Text, Backgrounds, & Borders
 =color-classes($colors-list)
   @each $name, $color in $colors-list
     // background
@@ -11,7 +13,15 @@
     // Text
     @include text-emphasis-variant(".text-#{$name}", $color)
 
++color-classes($power-colors)
++color-classes($gray-colors)
++color-classes($opacity-colors)
++color-classes($interface-colors)
 
+
+
+//------------------------
+// Backgrounds Extended
 =bg-variant($parent, $color)
   #{$parent}
     background-color: $color
@@ -20,36 +30,11 @@
   a#{$parent}:focus
     background-color: darken($color, 10%)
 
+.bg-none
+  background-color: none !important
 
-
-
-+color-classes($power-colors)
-+color-classes($gray-colors)
-+color-classes($opacity-colors)
-+color-classes($interface-colors)
-
-
-
-// TEXT COLOR IN COLORS
-@include text-emphasis-variant('.text-muted', $gray-6)
-@include text-emphasis-variant('.text-primary', $brand-primary)
-@include text-emphasis-variant('.text-success', $brand-success)
-@include text-emphasis-variant('.text-info', $brand-info)
-@include text-emphasis-variant('.text-warning', $power-gold)
-@include text-emphasis-variant('.text-danger', $brand-danger)
-@include text-emphasis-variant('.text-gray-dark', $gray-8)
-
-
-
-
-// THIS IS DUMB!!!
-// Contextual backgrounds
-// For now we'll leave these alongside the text classes until v4 when we can
-// safely shift things around (per SemVer rules).
 .bg-primary
-  // Given the contrast here, this is the only class to have its color inverted
-  // automatically.
-  color: #fff
+  color: $white
 
 @include bg-variant('.bg-primary', $brand-primary)
 
@@ -60,3 +45,17 @@
 @include bg-variant('.bg-warning', $state-warning-bg)
 
 @include bg-variant('.bg-danger', $state-danger-bg)
+
+
+
+
+
+//-------------------------
+// Additional Text Colors
+@include text-emphasis-variant('.text-muted', $gray-6)
+@include text-emphasis-variant('.text-primary', $brand-primary)
+@include text-emphasis-variant('.text-success', $brand-success)
+@include text-emphasis-variant('.text-info', $brand-info)
+@include text-emphasis-variant('.text-warning', $power-gold)
+@include text-emphasis-variant('.text-danger', $brand-danger)
+@include text-emphasis-variant('.text-gray-dark', $gray-8)
