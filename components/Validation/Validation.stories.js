@@ -32,7 +32,7 @@ const IncomeSourceSection = ({ source, income, onChange, valid }) => (
         </div>
         <div className="group">
             <label>Income:</label>
-            <Validate>
+            <Validate propagate>
                 <input type="number" name="income" value={income} onChange={onChange} required />
             </Validate>
         </div>
