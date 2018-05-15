@@ -3,11 +3,11 @@ import InputList from "./"
 
 import { text, boolean } from "@storybook/addon-knobs"
 
-const IncomeSourceInput = ({ value, onChange, onRemove }) => (
+const IncomeSourceInputRow = ({ index, value, onChange, onRemove }) => (
   <div>
     <input type="checkbox" name="default" value={value.default} onChange={onChange} />
-    <input name="source" value={value.source} onChange={onChange} />
-    <input name="income" value={value.income} onChange={onChange} />
+    <input name={`source-${index}`} value={value.source} onChange={onChange} />
+    <input name={`income-${index}`} value={value.income} onChange={onChange} />
     <button type="button" onClick={onRemove}>{"Remove"}</button>
   </div>
 );
@@ -25,9 +25,9 @@ export default function InputListStory(stories) {
           <button type="button">{"Add"}</button>
         </InputList.Add>
 
-        <InputList.Input>
-          <IncomeSourceInput />
-        </InputList.Input>
+        <InputList.Row>
+          <IncomeSourceInputRow />
+        </InputList.Row>
       </InputList>
     )
   })

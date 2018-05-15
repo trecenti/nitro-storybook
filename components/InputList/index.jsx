@@ -1,12 +1,12 @@
 import React from "react"
 import type { Item, State, InputListProps, WrapperProps } from "./types"
 
-const Input = ({ children }: WrapperProps) => children
+const Row = ({ children }: WrapperProps) => children
 const Add = ({ children }: WrapperProps) => children
 
 export default class InputList extends React.PureComponent<InputListProps, State> {
   static Add = Add
-  static Input = Input
+  static Row = Row
   static defaultProps = {
     className: "",
     onChange: () => {},
@@ -45,10 +45,11 @@ export default class InputList extends React.PureComponent<InputListProps, State
     })
   }
 
-  createInputElement = (wrapper: Add, value: Item, i: number) => {
+  createInputRowElement = (wrapper: Add, value: Item, i: number) => {
     const input = React.Children.only(wrapper.props.children)
     return React.cloneElement(input, {
       key: value.id || value.key,
+      index: i,
       value: value,
       onRemove: (e) => this.handleRemoveClick(i),
       onChange: (e) => {
@@ -58,7 +59,7 @@ export default class InputList extends React.PureComponent<InputListProps, State
     })
   }
 
-  createAddElement = (wrapper: Input) => {
+  createAddElement = (wrapper: Row) => {
     const button = React.Children.only(wrapper.props.children)
     return React.cloneElement(button, {
       onClick: (e) => {
@@ -70,8 +71,8 @@ export default class InputList extends React.PureComponent<InputListProps, State
 
   render() {
     const children = React.Children.map(this.props.children, child => {
-      if (child.type === Input) {
-        return this.state.inputs.map((value, i) => this.createInputElement(child, value, i))
+      if (child.type === Row) {
+        return this.state.inputs.map((value, i) => this.createInputRowElement(child, value, i))
       }
 
       if (child.type === Add) {
