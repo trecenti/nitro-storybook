@@ -34,7 +34,7 @@ export default class Validate extends React.PureComponent {
         const input = e.target
 
         child.props.onInvalid && child.props.onInvalid(e)
-        this.setState({ valid: false }, () => this.context.onInputInvalid(input))
+        this.setState({ valid: false }, () => this.context.onInputInvalid && this.context.onInputInvalid(input))
       },
       [trigger]: e => {
         const input = e.target
@@ -44,9 +44,9 @@ export default class Validate extends React.PureComponent {
         }
 
         if (input.checkValidity()) {
-          this.setState({ valid: true }, () => this.context.onInputValid(input))
+          this.setState({ valid: true }, () => this.context.onInputValid && this.context.onInputValid(input))
         } else {
-          this.setState({ valid: false }, () => this.context.onInputInvalid(input))
+          this.setState({ valid: false }, () => this.context.onInputInvalid && this.context.onInputInvalid(input))
         }
       }
     })
