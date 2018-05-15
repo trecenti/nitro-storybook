@@ -1,4 +1,4 @@
-export const validationCssMapping = {
+export const validationStateMapping = {
   true: "valid",
   false: "invalid",
   undefined: "prestine"

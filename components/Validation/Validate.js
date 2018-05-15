@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { validationCssMapping } from "./helpers"
+import { validationStateMapping } from "./helpers"
 
 export default class Validate extends React.PureComponent {
   static contextTypes = {
@@ -16,8 +16,6 @@ export default class Validate extends React.PureComponent {
   }
 
   state = {
-    // 'undefined' represents a prestine validation state,
-    // where no validation has taken place yet
     valid: undefined
   }
 
@@ -30,7 +28,7 @@ export default class Validate extends React.PureComponent {
     const child = React.Children.only(children)
 
     return React.cloneElement(child, {
-      className: `validation-${validationCssMapping[this.state.valid]}`,
+      className: `validation-${validationStateMapping[this.state.valid]}`,
       valid: propagate ? this.state.valid : undefined,
       onInvalid: e => {
         const input = e.target

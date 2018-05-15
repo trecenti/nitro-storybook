@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { validationCssMapping } from "./helpers"
+import { validationStateMapping } from "./helpers"
 
 const isValid = (validations, expectedValidationsCount) => {
   const validationsCount = Object.values(validations).filter(valid => valid).length
@@ -27,7 +27,7 @@ export default class ValidationGroup extends React.PureComponent {
   state = {
     valid: undefined,
     validations: {},
-    expectedValidationsCount: 0
+    expectedValidationsCount: 0,
   }
 
   handleInputRegister = () => {
@@ -78,7 +78,7 @@ export default class ValidationGroup extends React.PureComponent {
     })
 
     return (
-      <div className={`validation-${validationCssMapping[this.state.valid]}`}>
+      <div className={`validation-${validationStateMapping[this.state.valid]}`}>
         {children}
       </div>
     )

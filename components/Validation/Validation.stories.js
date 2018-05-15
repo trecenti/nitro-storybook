@@ -3,9 +3,14 @@ import { Validate, ValidationGroup } from "./"
 
 import styles from "./styles.stories.scss"
 
+const validationState = (valid) => {
+    if (valid === undefined) return ""
+    return valid ? "Yes" : "No"
+}
+
 const ApplicantSection = ({ name, email, onChange, valid }) => (
     <div>
-        <div>{`Is this section valid? ${valid}`}</div>
+        <div>{"Is this section valid? "}<strong>{validationState(valid)}</strong></div>
         <div className="group">
             <label>Name:</label>
             <Validate>
@@ -23,7 +28,7 @@ const ApplicantSection = ({ name, email, onChange, valid }) => (
 
 const IncomeSourceSection = ({ source, income, onChange, valid }) => (
     <div>
-        <div>{`Is this section valid? ${valid}`}</div>
+        <div>{`Is this section valid? `}<strong>{validationState(valid)}</strong></div>
         <div className="group">
             <label>Source:</label>
             <Validate>
@@ -40,7 +45,7 @@ const IncomeSourceSection = ({ source, income, onChange, valid }) => (
 )
 
 const FormValidationState = ({ valid }) => (
-    <div>{`Is the entire form valid? ${valid}`}</div>
+    <div>{`Is the entire form valid? `}<strong>{validationState(valid)}</strong></div>
 )
 
 export default function RequiredInput(stories) {
@@ -65,7 +70,7 @@ export default function RequiredInput(stories) {
 
         render() {
             return (
-                <form ref={form => this.form = form}>
+                <form ref={form => this.form = form} onSubmit={e => e.preventDefault()}>
                     <ValidationGroup propagate>
                         <FormValidationState />
 
@@ -76,8 +81,9 @@ export default function RequiredInput(stories) {
                         <ValidationGroup propagate>
                             <IncomeSourceSection source={this.state.source} income={this.state.income} onChange={this.handleChange} />
                         </ValidationGroup>
-                    </ValidationGroup> 
-                    <button type="button" onClick={this.handleValidate}>{"Validate"}</button>
+                    </ValidationGroup>
+
+                    <button onClick={this.handleValidate}>{"Validate"}</button>
                 </form>
             )
         }
