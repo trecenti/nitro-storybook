@@ -3,7 +3,6 @@ import classnames from 'classnames'
 import FontAwesome from 'react-fontawesome'
 import {
   FormControl,
-  InputGroup,
 } from 'react-bootstrap'
 
 import moment from 'moment'
@@ -14,6 +13,7 @@ import Datetime from 'react-datetime'
 type Props = {
   className: string,
   defaultValue: string,
+  errorClass?: string,
   inputProps: Object<{
     type: "text"
   }>,
@@ -26,12 +26,14 @@ type Props = {
   closeOnSelect: boolean,
   timeZone: string,
   required: boolean,
+  value: string,
 }
 
 export default class DatePicker extends React.Component<Props> {
 
   static defaultProps = {
     className: "",
+    errorClass: "has-error",
     inputProps: {
       type: "text",
     },
@@ -49,7 +51,7 @@ export default class DatePicker extends React.Component<Props> {
   }
 
   componentWillMount() {
-    const defaultValue = moment(this.props.defaultValue)
+    const defaultValue = moment(this.props.defaultValue || "")
     if(defaultValue.isValid()) this.handleOnChange(defaultValue)
   }
 
@@ -60,24 +62,37 @@ export default class DatePicker extends React.Component<Props> {
     if(dateTime.format && dateTime.isValid()) {
       this.setState({valid: true})
       const dt = this.props.timeZone ? moment.tz(dateTime) : dateTime
-      this.props.onChange(dt.format(timeFormat && timeFormat !== "" ? "YYYY-MM-DDTHH:mm:00Z" : "YYYY-MM-DD"))
+      setTimeout(() => {
+        this.props.onChange(dt.format(timeFormat && timeFormat !== "" ? "YYYY-MM-DDTHH:mm:00Z" : "YYYY-MM-DD"))
+      }, 100)
     } else {
       this.setState({valid: false})
       this.props.onChange("")
     }
   }
 
-  renderInput = (props, openCalendar) => {
+  renderInput = (inputProps, openCalendar) => {
+    const {
+      labelText,
+      required,
+    } = this.props
+
     return (
-      <InputGroup>
-        <FormControl {...props}/>
+      <span className="d-flex">
+        <If condition={labelText}>
+          <label>
+            <If condition={required}>{`* `}</If>
+            {labelText}
+          </label>
+        </If>
+        <FormControl {...inputProps}/>
         <span
             className="input-group-addon"
             onClick={openCalendar}
         >
           <FontAwesome name="calendar"/>
         </span>
-      </InputGroup>
+      </span>
     )
   }
 
@@ -85,45 +100,42 @@ export default class DatePicker extends React.Component<Props> {
     let {
       className,
       defaultValue,
-      labelInside,
-      labelText,
       dateFormat,
+      errorClass,
       timeFormat,
       closeOnSelect,
       timeZone,
       required,
+      labelInside,
+      multiInput,
+      value,
     } = this.props
 
-    const wrapperCSS = [
-      className,
-      labelInside ? "label-inside" : null,
-    ]
-
-    let inputProps = this.props.inputProps
+    const inputProps = this.props.inputProps
     if(required) inputProps.required = "required"
 
-    if(defaultValue) defaultValue = moment(defaultValue).format(dateFormat)
+    const dateTimeProps = {
+      className: classnames([
+        className,
+        "react-datetime",
+        this.state.valid ? null : errorClass,
+        labelInside ? "label-inside" : null,
+        multiInput ? "multi-input-group-item" : null,
+      ]),
+      closeOnSelect,
+      dateFormat,
+      inputProps,
+      onChange: this.handleOnChange,
+      renderInput: this.renderInput,
+      timeFormat,
+      timeZone,
+    }
+
+    const formattedDate = moment(defaultValue || value).format(dateFormat)
+    dateTimeProps.value = formattedDate === "Invalid date" ? "" : formattedDate
 
     return (
-      <div className={classnames(wrapperCSS)}>
-        <If condition={labelText}>
-          <label>
-            <If condition={required}>{`* `}</If>
-            {labelText}
-          </label>
-        </If>
-        <Datetime
-            className={classnames("react-datetime", this.state.valid ? "" : "has-error")}
-            closeOnSelect={closeOnSelect}
-            dateFormat={dateFormat}
-            defaultValue={defaultValue}
-            inputProps={inputProps}
-            onChange={this.handleOnChange}
-            renderInput={this.renderInput}
-            timeFormat={timeFormat}
-            timeZone={timeZone}
-        />
-      </div>
+      <Datetime {...dateTimeProps}/>
     )
   }
 }

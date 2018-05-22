@@ -7,6 +7,104 @@ This repo provides the tools to implement view components which make up the visu
 
 The intent of this repo is to provide a base on which other UIs can be built such that they maintain visual consistency and the Nitro brand.
 
+
+- [Quick Start](#quick-start)
+- [Local Storybook Development in Nitro-Web](#local-storybook-development-in-nitro-web)
+- [Other options for storybook in Nitro-Web](#other-options-for-storybook-in-nitro-web)
+- [Getting Your Changes Into Nitro-Web](#getting-your-changes-into-nitro-web)
+- [Creating Components](#creating-components)
+- [Converting Existing Components](#converting-existing-components)
+
+
+## Quick Start
+From the current project directory, run:
+
+1. ensure you are running proper node version (see `package.json` => `engines`)
+2. `npm install`
+3. `npm run storybook`
+4. navigate to [localhost:9001](http://localhost:9001)
+
+---
+
+## Local Storybook Development in Nitro-Web
+Its easy to create and test out a component on nitro in real time, even with hot reload. You can point your local storybook folder as you develop it.
+
+##### Update the storybook in the Gemfile to a local path
+`gem "nitro_sg", :path => "/path/to/storybook/locally"`
+
+##### Update the storybook in package.json to a local path
+`”nitro-storybook": "/path/to/storybook/locally"`
+
+> if you have any problems with assets not showing try running:
+`bundle exec rake assets:clobber`
+
+
+---
+
+## Other options for storybook in Nitro-Web
+You’ll need to point to a something published on GitHub when your ready to deploy it. Here are some options for you:
+
+##### Gemfile - Tag
+`gem "nitro_sg", git: "git@github.com:powerhome/nitro-styleguide.git", tag: "v1.2.1"`
+
+##### Gemfile - SHA
+`gem "nitro_sg", git: "git@github.com:powerhome/nitro-styleguide.git", ref: "4aded"`
+
+##### Gemfile - Branch
+`gem "nitro_sg", git: "git@github.com:powerhome/nitro-styleguide.git", branch: "branchname"`
+
+##### package.json - Branch
+`"nitro-storybook": "git+ssh://git@github.com/powerhome/nitro-storybook.git#branchname",`
+
+
+---
+
+## Getting Your Changes Into Nitro-Web
+
+### 1. Increase your version
+
+Check the [releases](https://github.com/powerhome/nitro-storybook/releases) and increase your version by 1 in the following files:
+
+```
+lib/nitro_sg/version.rb
+package.json
+```
+
+### 2. Prep a Storybook PR
+
+Get your `nitro-storybook` PR approved and merged into the `nitro-storybook`'s `master` branch. 
+
+### 3. Create a Tag & Release
+
+Once your merged you need to create a tag so we can reference this version. Here are some easy ways to create and delete tags:
+
+##### Add A Tag
+```
+git tag v1.0.1
+git push origin v1.0.1
+```
+
+##### Remove A Tag
+```
+git tag -d v1.0.1
+git push --delete origin v1.0.1
+```
+
+### 4. Update references in Nitro Web
+
+##### Package.json
+`"nitro-storybook": "git+ssh://git@github.com/powerhome/nitro-storybook.git#v1.9.2",`
+
+##### Gemfile (Usually 4 Spots)
+```
+gem "nitro_sg", git: "git@github.com:powerhome/nitro-storybook.git", tag: "v1.9.2"
+```
+
+If your updated styling doesn’t show up, you may have old assets you need to remove. 
+`bundle exec rake assets:clobber`
+
+---
+
 ## Creating Components
 
 Creation of new components requires a bit of forethought. Ask yourself these questions first:
@@ -21,41 +119,8 @@ Creation of new components requires a bit of forethought. Ask yourself these que
     - CSSModules
     - Composing complex React components/organisms (so that you don't create them here!)
     - [Storybook]()
-
-## Converting Existing Components
-
-Conversion of existing components in `nitro_react` is a little different since we already have a decent class structure in the jsx component. There are, however, a few considerations:
-
-- Use Flow.js types instead of `PropTypes`
-- use `class` instead of `function` (see the examples below)
-- Try and fix as many eslint and Flow warnings as possible - this is your chance and the time is now! 😬 💀
-
-1. Create a `Props` flow type
-    ```javascript
-    type Props = {
-      children?: Array<React.Node>,
-      bold: boolean,
-      italic: boolean,
-      className: string,
-    }
-    ```
-1. Add the type to your class
-    ```javascript
-    export default class Foo extends React.Component<Props> {
-      static defaultProps = {}
-      props: Props
-      ...
-    ```
-1. You can still deconstruct `this.props` in any of your methods in the normal way
-    ```javascript
-    const {bar} = this.props
-    ```
-1. Lint your code `npm run lint`
-1. For some lint warning you can `npm run lint-fix` which will automagically fix things like indentation.
-
-
-
-### Now You Can Begin 😉
+    
+### New React Component
 
 Here are the steps to creating a new `Foo` component (in order):
 
@@ -122,25 +187,44 @@ Here are the steps to creating a new `Foo` component (in order):
     ```
     This will add your `Foo` story to the categoy "Basic Components" in Storybook
 
-#### Test Your Shiz (a.k.a. Running Storybook Locally)
+---
 
-From the current project directory, run:
+## Converting Existing Components
 
-1. ensure you are running proper node version (see `package.json` => `engines`)
-1. `npm install`
-1. `npm run storybook`
-1. navigate to [localhost:9001](http://localhost:9001)
+Conversion of existing components in `nitro_react` is a little different since we already have a decent class structure in the jsx component. There are, however, a few considerations:
+
+- Use Flow.js types instead of `PropTypes`
+- use `class` instead of `function` (see the examples below)
+- Try and fix as many eslint and Flow warnings as possible - this is your chance and the time is now! 😬 💀
+
+1. Create a `Props` flow type
+    ```javascript
+    type Props = {
+      children?: Array<React.Node>,
+      bold: boolean,
+      italic: boolean,
+      className: string,
+    }
+    ```
+1. Add the type to your class
+    ```javascript
+    export default class Foo extends React.Component<Props> {
+      static defaultProps = {}
+      props: Props
+      ...
+    ```
+1. You can still deconstruct `this.props` in any of your methods in the normal way
+    ```javascript
+    const {bar} = this.props
+    ```
+1. Lint your code `npm run lint`
+1. For some lint warning you can `npm run lint-fix` which will automagically fix things like indentation.
 
 
-#### Getting Your Changes Into Nitro
 
 
-1. Get your `nitro-storybook` PR approved and merged into the `nitro-storybook`'s `master` branch
-2. Update `nitro-storybook`'s version number in `package.json`
-3. [Create a new release](https://github.com/powerhome/nitro-storybook/releases/new). The release's version number should, naturally, match the version number from Step 2.
-4. Relax for a bit. You've been working super hard for the last fifteen or twenty seconds. A hot bubble bath sounds really nice, right?
-5. Create a new `nitro-web` branch.
-6. Look for any `Gemfile` containing the *old* `nitro-storybook` version number, and update it to the *new* version number from Step 2.
-7. Run `./install.sh`. This will rebuild Nitro's assets and update all the relevant `yarn.lock` files.
-8. Follow the steps you'd normally follow to get a Nitro PR out to production.
+
+
+
+
 

@@ -172,30 +172,25 @@ export default class TimePicker extends React.Component<Props> {
 
     const itemCSS = [
       "multi-input-group-item",
-      "form-group",
       labelInside ? "label-inside" : null
     ]
 
     return (
       <div className={classnames(wrapperCSS)}>
         <If condition={multiGroup}>
-          <div className="col-md-6">
-            <div className={classnames(itemCSS)}>
-              <label>
-                <If condition={required}>{`* `}</If>
-                {`Hour`}
-              </label>
-              {this.renderHoursSelect()}
-            </div>
+          <div className={classnames(itemCSS)}>
+            <label>
+              <If condition={required}>{`* `}</If>
+              {`Hour`}
+            </label>
+            {this.renderHoursSelect()}
           </div>
-          <div className="col-md-6">
-            <div className={classnames(itemCSS)}>
-              <label>
-                <If condition={required}>{`* `}</If>
-                {`Minutes`}
-              </label>
-              {this.renderMinsSelect()}
-            </div>
+          <div className={classnames(itemCSS)}>
+            <label>
+              <If condition={required}>{`* `}</If>
+              {`Minutes`}
+            </label>
+            {this.renderMinsSelect()}
           </div>
         <Else/>
           <div className="col-md-6">
