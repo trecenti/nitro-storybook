@@ -95,7 +95,7 @@ export default class DatePicker extends React.Component<Props> {
   }
 
   render() {
-    let {
+    const {
       className,
       defaultValue,
       dateFormat,
