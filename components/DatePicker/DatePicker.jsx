@@ -55,8 +55,6 @@ export default class DatePicker extends React.Component<Props> {
     if(defaultValue.isValid()) this.handleOnChange(defaultValue)
   }
 
-  props: Props
-
   handleOnChange = (dateTime) => {
     const {timeFormat} = this.props
     if(dateTime.format && dateTime.isValid()) {
