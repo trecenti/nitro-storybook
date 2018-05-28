@@ -10,13 +10,14 @@ require('moment-timezone')
 
 import Datetime from 'react-datetime'
 
-type Props = {
+export type Props = {
   className: string,
   defaultValue: string,
   errorClass?: string,
   inputProps: Object<{
     type: "text"
   }>,
+  isValidDate: () => boolean,
   labelInside: boolean,
   labelText: string,
   multiInput: boolean,
@@ -100,6 +101,7 @@ export default class DatePicker extends React.Component<Props> {
       defaultValue,
       dateFormat,
       errorClass,
+      isValidDate,
       timeFormat,
       closeOnSelect,
       timeZone,
@@ -123,6 +125,7 @@ export default class DatePicker extends React.Component<Props> {
       closeOnSelect,
       dateFormat,
       inputProps,
+      isValidDate,
       onChange: this.handleOnChange,
       renderInput: this.renderInput,
       timeFormat,
