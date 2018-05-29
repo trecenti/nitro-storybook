@@ -98,6 +98,7 @@ $list-group-link-active-bg:      $gray-5 !default;
 }
 
 
+
 // Individual list items
 //
 // Use on `li`s or `div`s within the `.list-group` parent.
@@ -188,6 +189,21 @@ $list-group-link-active-bg:      $gray-5 !default;
     .list-group-item:last-child {
       border-bottom: 0;
     }
+  }
+}
+
+// Button Like Navigation
+// Future extend styles using list-group-{$color}
+.list-group-item-button {
+  margin-bottom: $space-smaller;
+  border: 0 !important;
+  font-weight: $bold;
+  border-radius: $border-rad-light;
+  color: $ink-lightest;
+  @include smooth-font;
+  &.active {
+    background: $sky-light;
+    color: $ink;
   }
 }
 

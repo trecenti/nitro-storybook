@@ -47,7 +47,7 @@ $selectors: (
         width: auto;
         display: block;
         vertical-align: -webkit-baseline-middle;
-        padding-top: 9px;  
+        padding-top: 9px;
       }
     }
     // Everything but the last
@@ -78,7 +78,9 @@ $selectors: (
   &.full {
     width: 100%;
     .multi-input-group-item {
-      width: 100%;
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: auto;
     }
     .auto, .input-group-addon.auto, .multi-input-group-item.auto {
       width: auto;
