@@ -4,7 +4,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: [
-    path.resolve(__dirname, '../sass-mixins/application.scss')
+    path.resolve(__dirname, '../sass-mixins/application.scss'),
   ],
 
   output: {

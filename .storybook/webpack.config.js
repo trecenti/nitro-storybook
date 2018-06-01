@@ -1,7 +1,17 @@
 const webpack = require('webpack');
 const path = require('path');
 
+const entries = [
+  path.resolve(__dirname, '../fonts/fa-regular.min.js'),
+  path.resolve(__dirname, '../fonts/fontawesome.min.js'),
+]
+
 module.exports = (storybookBaseConfig, configType) => {
+  for(let e = 0, eL = entries.length; e < eL; ++e) {
+    storybookBaseConfig.entry.manager.push(entries[e])
+    storybookBaseConfig.entry.preview.push(entries[e])
+  }
+
   storybookBaseConfig.module.rules.push({
     test: /\.(s?css|sass)$/,
     use: [

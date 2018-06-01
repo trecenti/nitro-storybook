@@ -35,7 +35,7 @@ $slideout-menu-width: 200px;
       transition-duration: 0.15s;
       transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 
-      i.full-menu-icon {
+      .full-menu-icon {
         display: block;
         left: 14px;
         position: absolute;
@@ -57,7 +57,7 @@ $slideout-menu-width: 200px;
         position: relative;
         z-index: 1;
       }
-      i.full-menu-caret {
+      .full-menu-caret {
         border-top-color: $ink;
         float: none;
         margin: none;
@@ -115,7 +115,7 @@ $slideout-menu-width: 200px;
         color: $sky-light;
         padding: 5px 15px;
 
-        i {
+        i, svg {
           font-size: 70%;
           left: 20px;
           top: 11px;

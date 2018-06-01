@@ -38,7 +38,7 @@ export default class Icon extends React.Component<Props> {
           title={title}
       >
         <FontAwesome
-            className={className}
+            className={`far ${className}`}
             name={name}
             size={size}
             spin={spin}

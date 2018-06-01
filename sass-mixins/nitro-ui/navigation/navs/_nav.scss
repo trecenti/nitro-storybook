@@ -99,7 +99,7 @@ $nav-caret-color: #fff;
     }
 
     /* Power P fill color since it's svg */
-    img, svg {
+    img, svg.powergon-logo {
       margin-top: 6px;
     }
     path {
@@ -117,7 +117,7 @@ $nav-caret-color: #fff;
     }
 
     &.phone {
-      .fa-phone { margin-top: 8px; }
+      .fa-phone-square { margin-top: 8px; }
       .head-nav-link-caret { right: 5px; }
     }
 
@@ -126,7 +126,7 @@ $nav-caret-color: #fff;
     }
   }
   .head-nav-link:hover, .head-nav-link:focus, .head-nav-link:active  {
-    color: $header-icon-hover-color;
+    color: $white;
     outline: 0;
     text-decoration: none;
 
@@ -141,11 +141,14 @@ $nav-caret-color: #fff;
   }
 
   .badge-connect-unread-messages {
-    bottom: 0.5em;
-    color: $power-red;
+    bottom: 0.7em;
+    background: $power-red;
     display: none;
     position: absolute;
-    right: 0.8em;
+    right: 1em;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
   }
 
   #menu-link {
