@@ -31,6 +31,13 @@
   @include container-fixed;
 }
 
+.container-tablet { max-width: $container-tablet }
+.container-sm { max-width: $container-sm }
+.container-desktop { max-width: $container-desktop }
+.container-md { max-width: $container-md }
+.container-large-desktop { max-width: $container-large-desktop }
+.container-lg { max-width: $container-lg }
+
 
 // Row
 //

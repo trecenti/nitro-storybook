@@ -15,6 +15,7 @@ $power-green:       #00bf6f;
 
 $power-colors: (
   power-navy: $power-navy,
+  power-navy-darker: $power-navy-darker,
   power-gold: $power-gold,
   power-blue: $power-blue,
   power-red: $power-red,
@@ -37,6 +38,7 @@ $gray-9: mix(#000, #ffffff, 80%);
 $black: #1A1A1A;
 
 $gray-colors: (
+  white: $white,
   gray-1: $gray-1,
   gray-2: $gray-2,
   gray-3: $gray-3,

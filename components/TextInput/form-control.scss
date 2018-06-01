@@ -79,4 +79,18 @@
   fieldset[disabled] & {
     cursor: $cursor-disabled;
   }
+  &.clear {
+
+
+    // height: $input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+    padding: $padding-base-vertical ($padding-base-horizontal/1.5);
+    // font-size: $font-small;
+    // font-weight: $bold;
+    // line-height: $line-height-base;
+    // color: $gray-9;
+    background-color: transparent;
+    background-image: none;
+    border: 0;
+
+  }
 }

@@ -1,3 +1,3 @@
 module NitroSg
-  VERSION = "2.0.1".freeze
+  VERSION = "2.0.3".freeze
 end
