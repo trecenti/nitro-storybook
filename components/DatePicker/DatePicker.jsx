@@ -101,7 +101,6 @@ export default class DatePicker extends React.Component<Props> {
       defaultValue,
       dateFormat,
       errorClass,
-      isValidDate,
       timeFormat,
       closeOnSelect,
       timeZone,
@@ -109,10 +108,11 @@ export default class DatePicker extends React.Component<Props> {
       labelInside,
       multiInput,
       value,
+      ...props
     } = this.props
 
     const inputProps = this.props.inputProps
-    if(required) inputProps.required = "required"
+    if (required) inputProps.required = "required"
 
     const dateTimeProps = {
       className: classnames([
@@ -125,7 +125,6 @@ export default class DatePicker extends React.Component<Props> {
       closeOnSelect,
       dateFormat,
       inputProps,
-      isValidDate,
       onChange: this.handleOnChange,
       renderInput: this.renderInput,
       timeFormat,
@@ -136,7 +135,7 @@ export default class DatePicker extends React.Component<Props> {
     dateTimeProps.value = formattedDate === "Invalid date" ? "" : formattedDate
 
     return (
-      <Datetime {...dateTimeProps}/>
+      <Datetime {...props} {...dateTimeProps}/>
     )
   }
 }
