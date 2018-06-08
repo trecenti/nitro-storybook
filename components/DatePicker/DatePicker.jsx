@@ -21,14 +21,14 @@ export type Props = {
   labelInside: boolean,
   labelText: string,
   multiInput: boolean,
-  onChange: () => mixed,
+  onChange: (any) => void,
   dateFormat: string,
   timeFormat: string,
   closeOnSelect: boolean,
   timeZone: string,
   required: boolean,
   value: string,
-}
+};
 
 export default class DatePicker extends React.Component<Props> {
 
@@ -38,7 +38,7 @@ export default class DatePicker extends React.Component<Props> {
     inputProps: {
       type: "text",
     },
-    onChange: function(){},
+    onChange: function() {},
     labelInside: true,
     multiInput: false,
     dateFormat: "MM/DD/YYYY",
@@ -47,26 +47,30 @@ export default class DatePicker extends React.Component<Props> {
   }
 
   state = {
-    open: false,
     valid: true,
   }
 
+  props: Props
+
   componentWillMount() {
-    const defaultValue = moment(this.props.defaultValue || "")
-    if(defaultValue.isValid()) this.handleOnChange(defaultValue)
+    this.props.onChange(this.defaultValue())
+  }
+
+  fieldFormat = () => {
+    const { timeFormat, dateFormat } = this.props
+    return timeFormat && timeFormat !== "" ? "YYYY-MM-DDTHH:mm:00Z" : dateFormat
   }
 
   handleOnChange = (dateTime) => {
-    const {timeFormat} = this.props
-    if(dateTime.format && dateTime.isValid()) {
-      this.setState({valid: true})
-      const dt = this.props.timeZone ? moment.tz(dateTime) : dateTime
-      setTimeout(() => {
-        this.props.onChange(dt.format(timeFormat && timeFormat !== "" ? "YYYY-MM-DDTHH:mm:00Z" : "YYYY-MM-DD"))
-      }, 100)
+    const { timeZone, onChange } = this.props
+
+    if(dateTime.isValid()) {
+      this.setState({ valid: true })
+      const date = timeZone ? moment.tz(dateTime) : dateTime
+      onChange(date.format(this.fieldFormat()))
     } else {
-      this.setState({valid: false})
-      this.props.onChange("")
+      this.setState({ valid: false })
+      onChange("")
     }
   }
 
@@ -74,10 +78,17 @@ export default class DatePicker extends React.Component<Props> {
     const {
       labelText,
       required,
+      labelInside,
     } = this.props
 
+    const wrapperClass = classnames(
+      "d-flex",
+      "input-group",
+      { "label-inside": labelInside },
+    )
+
     return (
-      <span className="d-flex">
+      <div className={wrapperClass}>
         <If condition={labelText}>
           <label>
             <If condition={required}>{`* `}</If>
@@ -91,37 +102,35 @@ export default class DatePicker extends React.Component<Props> {
         >
           <FontAwesome name="calendar"/>
         </span>
-      </span>
+      </div>
     )
   }
 
-  render() {
-    const {
+  dateTimeProps = () => {
+    let {
       className,
-      defaultValue,
       dateFormat,
       errorClass,
       timeFormat,
       closeOnSelect,
       timeZone,
       required,
-      labelInside,
       multiInput,
-      value,
       ...props
     } = this.props
 
     const inputProps = this.props.inputProps
     if (required) inputProps.required = "required"
 
-    const dateTimeProps = {
-      className: classnames([
+    return {
+      className: classnames(
         className,
         "react-datetime",
-        this.state.valid ? null : errorClass,
-        labelInside ? "label-inside" : null,
-        multiInput ? "multi-input-group-item" : null,
-      ]),
+        {
+          [errorClass]: !this.state.valid,
+          "multi-input-group-item": multiInput,
+        },
+      ),
       closeOnSelect,
       dateFormat,
       inputProps,
@@ -129,13 +138,22 @@ export default class DatePicker extends React.Component<Props> {
       renderInput: this.renderInput,
       timeFormat,
       timeZone,
+      value: this.defaultValue(),
+      ...props,
     }
+  }
 
-    const formattedDate = moment(defaultValue || value).format(dateFormat)
-    dateTimeProps.value = formattedDate === "Invalid date" ? "" : formattedDate
+  defaultValue = () => {
+    const { value, defaultValue } = this.props
+    if (!value && defaultValue == '') {
+      return ''
+    }
+    return moment(value || defaultValue).format(this.fieldFormat())
+  }
 
+  render() {
     return (
-      <Datetime {...props} {...dateTimeProps}/>
+      <Datetime {...this.dateTimeProps()}/>
     )
   }
 }
