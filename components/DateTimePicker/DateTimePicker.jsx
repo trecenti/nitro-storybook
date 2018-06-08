@@ -80,14 +80,14 @@ export default class DateTimePicker extends React.Component<Props> {
 
     return (
       <div className={classnames(css)}>
-        <div className="multi-input-group full">
+        <div className="multi-input-group full form-group">
           <DatePicker
               defaultValue={defaultDateValue}
               multiInput
               onChange={this.handleOnDateChanged}
               {...datePickerProps}
           />
-          <div className="multi-input-group-item">
+          <div className="form-group multi-input-group-item">
             <TimePicker
                 defaultValue={defaultValue}
                 onChange={this.handleOnTimeChanged}
