@@ -50,8 +50,6 @@ export default class DatePicker extends React.Component<Props> {
     valid: true,
   }
 
-  props: Props
-
   componentWillMount() {
     this.props.onChange(this.defaultValue())
   }
