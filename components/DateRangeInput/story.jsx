@@ -6,14 +6,15 @@ import { text } from "@storybook/addon-knobs"
 
 import 'react-datetime/css/react-datetime.css'
 
-const now = moment()
+const eighteenYearsAgo = moment().subtract(18, "years")
+const onehundredYearsAgo = moment().subtract(100, "years")
 
 export default function DateRangeInputStory(stories) {
   stories.add("DateRangeInput", () => {
     const props = {
-      fromDate: text("From Date", now),
-      toDate:   text("To Date", moment(now).add(10, "days")),
-      viewDate: text("Default Calendar Date", now)
+      fromDate: text("From Date", onehundredYearsAgo),
+      toDate:   text("To Date", eighteenYearsAgo),
+      viewDate: text("Default Calendar Date", eighteenYearsAgo)
     }
 
     return (
