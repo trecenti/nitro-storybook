@@ -22,8 +22,10 @@ const DateRangeInput = ({ className, fromDate, toDate, isValidDate, viewDate, ..
       return afterFromDate && beforeToDate
     } else if (fromDate) {
       return afterFromDate
-    } else {
+    } else if (toDate) {
       return beforeToDate
+    } else {
+      return true
     }
   }
 
