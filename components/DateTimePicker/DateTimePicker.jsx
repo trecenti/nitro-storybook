@@ -1,6 +1,7 @@
 import React from "react"
 import classnames from "classnames"
 import moment from "moment"
+import { get } from "lodash"
 
 import DatePicker from "../DatePicker/DatePicker"
 import TimePicker from "../TimePicker/TimePicker"
@@ -14,15 +15,17 @@ type Props = {
     dateFormat: string,
     timeFormat: string,
   }>,
-  defaultValue: string | Object,
   onChange: () => mixed,
   timePickerProps: Object<{
     clock: 12 | 24,
     disabled: boolean | "disabled",
     multiGroup: boolean,
     labelInside: boolean,
-  }>
+  }>,
+  value: string | Object,
 }
+
+const defaultDateFormat = "MM/DD/YYYY"
 
 export default class DateTimePicker extends React.Component<Props> {
 
@@ -30,7 +33,7 @@ export default class DateTimePicker extends React.Component<Props> {
     className: "",
     datePickerProps: {
       disabled: false,
-      dateFormat: "MM/DD/YYYY",
+      dateFormat: defaultDateFormat,
       timeFormat: "",
     },
     timePickerProps: {
@@ -49,29 +52,35 @@ export default class DateTimePicker extends React.Component<Props> {
   props: Props
 
   handleOnDateChanged = (date) => {
-    const {time} = this.state
+    const { time } = this.state
     this.setState({date})
     if(!time) return
-    this.props.onChange(`${date} ${time}`)
+    this.props.onChange(`${this.formatDate(date)} ${time}`)
   }
 
   handleOnTimeChanged = (time) => {
     const {date} = this.state
     this.setState({time})
     if(!date) return
-    this.props.onChange(`${date} ${time}`)
+    this.props.onChange(`${this.formatDate(date)} ${time}`)
+  }
+
+  formatDate(date) {
+    const { datePickerProps } = this.props
+    const dateFormat = get(datePickerProps, "dateFormat", defaultDateFormat)
+    return moment(date).format(dateFormat)
   }
 
   render() {
     const {
       className,
       datePickerProps,
-      defaultValue,
       timePickerProps,
+      value,
     } = this.props
 
-    const defaultDate = moment(defaultValue)
-    const defaultDateValue = defaultDate.isValid() ? defaultDate.format(datePickerProps.dateFormat || "MM/DD/YYYY") : null
+    const defaultDate = moment(value)
+    const defaultDateValue = defaultDate.isValid() ? this.formatDate(defaultDate) : null
 
     const css = [
       className,
@@ -82,15 +91,15 @@ export default class DateTimePicker extends React.Component<Props> {
       <div className={classnames(css)}>
         <div className="multi-input-group full form-group">
           <DatePicker
-              defaultValue={defaultDateValue}
               multiInput
               onChange={this.handleOnDateChanged}
+              value={defaultDateValue}
               {...datePickerProps}
           />
           <div className="form-group multi-input-group-item">
             <TimePicker
-                defaultValue={defaultValue}
                 onChange={this.handleOnTimeChanged}
+                value={value}
                 {...timePickerProps}
             />
           </div>
