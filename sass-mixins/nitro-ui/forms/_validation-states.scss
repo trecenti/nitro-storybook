@@ -73,6 +73,7 @@
   @include form-control-validation($state-danger-text, $state-danger-text, $state-danger-bg);
   &-corner {
     @include form-control-validation-corner($state-danger-text);
+    position: relative;
     z-index: 1;
   }
 }
