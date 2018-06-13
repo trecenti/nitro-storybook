@@ -7,20 +7,23 @@ export type Props = {
   preventMinor: boolean,
 }
 
-const DOBInput = ({ className, preventMinor, viewDate, ...props }) => {
+const eighteenYearsAgo = moment().subtract(18, "years")
+
+const DOBInput = ({ preventMinor, viewDate, ...props }) => {
 
   if (preventMinor) {
-    props.viewDate = viewDate || moment()
-    props.toDate = moment().subtract(18, "years")
+    props.viewDate = viewDate || eighteenYearsAgo
+    props.toDate = eighteenYearsAgo
   }
 
   return (
-    <DateRangeInput {...props} className={className} />
+    <DateRangeInput {...props} />
   )
 }
 
 DOBInput.defaultProps = {
   value: "",
+  preventMinor: false,
 }
 
 export default DOBInput
