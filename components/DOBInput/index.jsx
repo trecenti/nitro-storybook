@@ -1,9 +1,6 @@
 import React from "react"
 import moment from "moment"
-import classnames from "classnames"
-import { DatePicker, Props as DatePickerProps } from "../"
-
-import styles from "./styles.scss"
+import { DateRangeInput, Props as DatePickerProps } from "../"
 
 export type Props = {
   ...DatePickerProps,
@@ -11,19 +8,16 @@ export type Props = {
 }
 
 const eighteenYearsAgo = moment().subtract(18, "years")
-const isNotMinor = (currentDate, selectedDate) =>
-  currentDate.isBefore(eighteenYearsAgo)
 
-const DOBInput = ({ className, preventMinor, isValidDate, viewDate, ...props }) => {
-  className = classnames(className, styles.dob)
+const DOBInput = ({ preventMinor, viewDate, ...props }) => {
 
   if (preventMinor) {
     props.viewDate = viewDate || eighteenYearsAgo
-    props.isValidDate = isValidDate || isNotMinor
+    props.toDate = eighteenYearsAgo
   }
 
   return (
-    <DatePicker {...props} className={className} />
+    <DateRangeInput {...props} />
   )
 }
 

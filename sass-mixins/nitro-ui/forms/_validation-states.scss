@@ -59,6 +59,7 @@
     bottom: 0;
     left: 0;
     border-radius: 3px;
+    z-index: 10;
   }
 }
 
@@ -73,6 +74,7 @@
   @include form-control-validation($state-danger-text, $state-danger-text, $state-danger-bg);
   &-corner {
     @include form-control-validation-corner($state-danger-text);
-    z-index: 1;
+    position: relative;
+    z-index: 10;
   }
 }
