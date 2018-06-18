@@ -1,5 +1,2 @@
 export ToggleButtonStory from "../components/ToggleButton/ToggleButtonStory"
-export DOBInputStory from "../components/DOBInput/story"
-export IssueDateInputStory from "../components/IssueDateInput/story"
-export ExpiryDateInputStory from "../components/ExpiryDateInput/story"
-export DateRangeInputStory from "../components/DateRangeInput/story"
+export Story from "../components/DOBInput/story"

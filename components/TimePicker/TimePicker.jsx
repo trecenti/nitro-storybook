@@ -11,11 +11,11 @@ type Props = {
   disabled: boolean | "disabled",
   multiGroup: boolean,
   labelInside: boolean,
+  defaultValue: string | Object,
   onChange: () => mixed,
   required: boolean,
   minHour: number,
   maxHour: number,
-  value: string | Object,
 }
 
 export default class TimePicker extends React.Component<Props> {
@@ -25,10 +25,10 @@ export default class TimePicker extends React.Component<Props> {
     disabled: false,
     multiGroup: true,
     labelInside: true,
+    defaultValue: moment().hour(0).minute(0),
     minHour: 0,
     maxHour: 24,
     onChange: () => {},
-    value: moment().hour(0).minute(0),
   }
 
   state = {
@@ -37,8 +37,8 @@ export default class TimePicker extends React.Component<Props> {
   }
 
   componentWillMount() {
-    const { value } = this.props
-    const t = moment(value)
+    const {defaultValue} = this.props
+    const t = moment(defaultValue)
     const hour = t.format('HH')
     const minute = t.format('mm')
     if(t.isValid()) {
