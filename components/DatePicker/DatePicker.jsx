@@ -12,7 +12,6 @@ import Datetime from 'react-datetime'
 
 export type Props = {
   className: string,
-  defaultValue: string,
   errorClass?: string,
   inputProps: Object<{
     type: "text"
@@ -48,10 +47,6 @@ export default class DatePicker extends React.Component<Props> {
 
   state = {
     valid: true,
-  }
-
-  componentWillMount() {
-    this.props.onChange(this.defaultValue())
   }
 
   fieldFormat = () => {
@@ -136,17 +131,17 @@ export default class DatePicker extends React.Component<Props> {
       renderInput: this.renderInput,
       timeFormat,
       timeZone,
-      value: this.defaultValue(),
+      value: this.formattedValue(),
       ...props,
     }
   }
 
-  defaultValue = () => {
-    const { value, defaultValue } = this.props
-    if (!value && defaultValue == '') {
+  formattedValue = () => {
+    const { value } = this.props
+    if (!value) {
       return ''
     }
-    return moment(value || defaultValue).format(this.fieldFormat())
+    return moment(value).format(this.fieldFormat())
   }
 
   render() {
