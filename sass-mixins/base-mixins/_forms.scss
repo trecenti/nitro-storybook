@@ -14,3 +14,20 @@
   &::-moz-placeholder { @content; }
   &:-ms-input-placeholder { @content; }
 }
+
+
+// select image settings
+@mixin select-arrow-image-settings {
+  background-position: 98% 50%, 0 0;
+  background-repeat: no-repeat, repeat;
+  background-size: 20px, auto;
+}
+
+// Custom Select
+@mixin select($select-color: (linear-gradient(to bottom, $white 10%, $gray-1 100%)), $arrow-color: $gray-5) {
+	background: $select-color;
+  background-image: image-url('nitro_theme/caret.svg'); /* fallback */
+  background-image: image-url('nitro_theme/caret.svg'), $select-color; /* W3C */
+  @include select-arrow-image-settings;
+	padding-right: 3em;
+}
