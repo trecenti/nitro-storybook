@@ -14,7 +14,7 @@ $md-col: 250px;
     flex-direction: row;
     @each $name, $size in $grid-breakpoints {
       @include media-max-width($size) {
-        .collapse-#{$name} {
+        &.collapse-#{$name} {
           flex-direction: column;
           .sidebar-layout-nav {
             border-width: 0 0 1px 0;
