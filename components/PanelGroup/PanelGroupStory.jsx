@@ -1,5 +1,5 @@
 import React from "react"
-import FontAwesome from 'react-fontawesome'
+import Icon from "../Icon/Icon"
 import { boolean, text, select } from "@storybook/addon-knobs"
 
 import Text from "../Text/Text"
@@ -7,40 +7,40 @@ import PanelGroup from "./PanelGroup"
 
 function ValidationComplete() {
   return (
-    <span style={{ color: "rgb(19, 171, 19)" }}>
+    <span className="text-power-green text-small font-weight-normal">
       {'Complete '}
-      <FontAwesome name="check-circle" />
+      <Icon name="check-circle" />
     </span>
   )
 }
 
 function ValidationIncomplete() {
   return (
-    <span style={{ color: "#ff0000" }}>
-      {'Incomplete '}
-      <FontAwesome name="exclamation-circle" />
+    <span className="text-power-red text-small font-weight-normal">
+      {'Not Complete '}
+      <Icon name="exclamation-circle" />
     </span>
   )
 }
 
 const userIcon = (
-  <FontAwesome name="user" />
+  <Icon name="user" />
 )
 
 const largeUserIcon = (
-  <FontAwesome name="user-circle-o" size="2x" />
+  <Icon name="user-circle" size="2x" />
 )
 
 const phoneIcon = (
-  <FontAwesome name="phone" />
+  <Icon name="phone" />
 )
 
 const homeIcon = (
-  <FontAwesome name="home" />
+  <Icon name="home" />
 )
 
 const dollarIcon = (
-  <FontAwesome name="dollar" />
+  <Icon name="usd-circle" />
 )
 
 export default function PanelGroupStory(stories) {

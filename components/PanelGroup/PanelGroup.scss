@@ -3,25 +3,48 @@
 
 :global {
   .nitro-panel-group {
+    margin-bottom: 0px;
+
     .panel {
       box-shadow: none;
+      margin-bottom: $space-base;
 
       .panel-heading {
         background-color: $white;
+
+      }
+
+      .panel-body{
+        padding-top: $space-largest;
+
+        .title {
+          font-size: $font-size-base;
+          font-weight: $bold;
+        }
       }
     }
 
     &.inner-panel-group {
       .panel {
-        box-shadow: 0 0px 9px rgba(0, 0, 0, 0.1);
-      }
+        box-shadow: $shadow-default;
 
-      .panel.panel-collapsed {
-        box-shadow: none;
-
-        .panel-heading {
-          background-color: $sky-lighter;
+        .panel-toggle {
+          padding-top: $space-small;
+          padding-bottom: $space-small;
         }
+
+        &.panel-collapsed {
+          box-shadow: none;
+          margin-bottom: $space-base;
+
+            .panel-heading {
+              background-color: $sky-lighter;
+            }
+        }
+          .panel-body {
+            padding-top: $space-largest;
+
+          }
       }
     }
 
@@ -29,39 +52,45 @@
       padding: 0;
       border-color: $sky;
 
-      .heading-icon {
-        margin-right: 15px;
-      }
+        .heading-icon {
+          margin-right: $space-large;
+        }
 
-      .panel-title {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-      }
+        .panel-title {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          line-height: $space-large;
 
-      .heading-icon, .title, .subtitle {
-        color: $ink-light;
-      }
+        }
 
-      .title {
-        font-size: $font-size-base;
-      }
+        .heading-icon, .title, .subtitle {
+          color: $ink-light;
+        }
 
-      .subtitle {
-        font-size: $font-size-small;
-      }
+        .title {
+          font-size: $font-size-large;
+          font-weight: $regular;
+          line-height: $space-larger;
+        }
+        .subtitle {
+          font-size: $font-size-small;
+        }
     }
 
     .panel-toggle {
       display: flex;
       padding: 6px 16px;
       align-items: center;
+      padding-top: $space-large;
+      padding-bottom: $space-large;
+
     }
 
     .icon-toggle {
       color: $ink-lightest;
       transition: all 0.5s ease;
-      margin-left: 16px;
+      margin-left: $space-large;
     }
   }
 }

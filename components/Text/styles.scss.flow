@@ -96,6 +96,7 @@ declare module.exports: {|
   +'text-power-gold': string;
   +'text-power-green': string;
   +'text-power-navy': string;
+  +'text-power-navy-darker': string;
   +'text-power-red': string;
   +'text-power-royal': string;
   +'text-primary': string;
@@ -108,6 +109,7 @@ declare module.exports: {|
   +'text-smallest': string;
   +'text-success': string;
   +'text-warning': string;
+  +'text-white': string;
   +'text-white-opacity-1': string;
   +'text-white-opacity-2': string;
   +'text-white-opacity-3': string;
