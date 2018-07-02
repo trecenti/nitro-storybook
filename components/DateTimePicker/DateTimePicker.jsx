@@ -47,19 +47,23 @@ export default class DateTimePicker extends React.Component<Props> {
   }
 
   props: Props
+  
+  formatDateTime = (date, time) => (
+    `${date.format(datePickerProps.dateFormat || "MM/DD/YYYY")} ${time}`
+  )
 
   handleOnDateChanged = (date) => {
     const {time} = this.state
     this.setState({date})
     if(!time) return
-    this.props.onChange(`${date} ${time}`)
+    this.props.onChange(this.formatDateTime(date, time))
   }
 
   handleOnTimeChanged = (time) => {
     const {date} = this.state
     this.setState({time})
     if(!date) return
-    this.props.onChange(`${date} ${time}`)
+    this.props.onChange(this.formatDateTime(date, time))
   }
 
   render() {

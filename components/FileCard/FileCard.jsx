@@ -49,7 +49,7 @@ export default class FileCard extends React.Component<Props> {
       <Icon
           className={styles[`icon-large`]}
           label=''
-          name={`${type}-o`}
+          name={`${type}`}
           size='lg'
           title={displayName}
       />

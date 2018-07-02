@@ -22,7 +22,6 @@
   +btn-chains
   +solid-button-colors($power-colors)
   &-default
-    // +ghost-button($gray-4)
     +ghost-button($border-color)
     background: $white
   &-primary
@@ -37,10 +36,13 @@
     +solid-button($power-red)
   &-white
     +solid-button($white)
+  &-select
+    +select
+    border-color: $sky
+
 a.btn
   &.disabled, fieldset[disabled] &
     pointer-events: none
-    // Future-proof disabling of clicks on `<a>` elements
 
 .btn-ghost
   +ghost-button-colors($power-colors)

@@ -143,3 +143,70 @@ $pagination-disabled-border:           #ddd;
 .pagination-sm {
   @include pagination-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $border-radius-small);
 }
+
+
+// OVERRIDES FROM NITRO
+
+/* Only show previous, active and next links in pagination for smaller screens */
+.pagination {
+  margin: 10px 0;
+
+  @media print { display: none; }
+
+  &.alpha {
+    margin: 0 0 15px 0;
+
+    a {
+      font-size: 18px;
+      padding: 0 6px;
+
+      &:hover, &:focus {
+        border-radius: 4px;
+        background-color: #b6ea64;
+        text-decoration: none;
+      }
+    }
+
+    .current {
+      border-radius: 4px;
+      font-size: 18px;
+      padding: 0 6px;
+    }
+
+    .disabled {
+      font-size: 18px;
+      padding: 0 6px;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .pagination {
+    li {
+      display: none;
+
+      &.prev,
+      &.next,
+      &.active { display: inline; }
+    }
+  }
+}
+
+/* smallest viewport - like mobile app */
+@media (max-width: 380px) {
+
+  .pagination {
+    &.alpha {
+      position: absolute;
+      right: 22px;
+      top: 163px;
+      width: 20px;
+      z-index: 1000;
+      line-height: 23px;
+      display: block;
+
+      a:hover, a:focus  { font-size: 25px; }
+    }
+  }
+
+} /*end of 380px media query*/
