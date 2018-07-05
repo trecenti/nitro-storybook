@@ -1,5 +1,5 @@
 import React from "react"
-import FontAwesome from 'react-fontawesome'
+import Icon from "../Icon/Icon"
 
 import {
   Panel as BootstrapPanel,
@@ -43,7 +43,7 @@ const Panel = ({ children, collapsed, icon, name, subtitle, title, toggleIconNam
             <Text className="title" bold>{title}</Text>
 
             <If condition={subtitle}>
-              <Text className="subtitle">{subtitle}</Text>
+              <Text color="ink-lightest" className="subtitle">{subtitle}</Text>
             </If>
           </BootstrapPanel.Title>
 
@@ -51,7 +51,7 @@ const Panel = ({ children, collapsed, icon, name, subtitle, title, toggleIconNam
             {notification}
           </If>
 
-          <FontAwesome className="icon-toggle" size="lg" {...rotateProps} name={toggleIconName} />
+          <Icon className="icon-toggle" size="lg" {...rotateProps} name={toggleIconName} />
         </BootstrapPanel.Toggle>
       </BootstrapPanel.Heading>
 
@@ -63,7 +63,7 @@ const Panel = ({ children, collapsed, icon, name, subtitle, title, toggleIconNam
 Panel.defaultProps = {
   collapsed: true,
   title: "",
-  toggleIconName: "angle-up"
+  toggleIconName: "chevron-up"
 }
 
 export default class PanelGroup extends React.Component<PanelGroupProps> {
@@ -90,7 +90,7 @@ export default class PanelGroup extends React.Component<PanelGroupProps> {
 
   render() {
     const { children, id, inner, className } = this.props
-    const toggleIconName = inner ? "angle-up" : "caret-up"
+    const toggleIconName = inner ? "angle-up" : "chevron-down "
     const panels = React.Children.map(children, (child, i) => {
       const panelName = child.props.name || `${i}`
       const collapsed = this.state.activePanel !== panelName
