@@ -17,7 +17,7 @@ type Props = {
 
 export default class Text extends React.Component<Props> {
   static defaultProps = {
-    children: <span>She stared through the window at the stars.</span>,
+    children: <span/>,
     size: "base",
     color: "ink",
     bold: false,
